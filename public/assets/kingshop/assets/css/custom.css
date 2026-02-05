@@ -1,0 +1,21 @@
+body{
+    overflow-x: hidden;
+}
+
+/* Password field toggle */
+.password-field {
+    position: relative;
+}
+
+.password-field span {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.password-field span:hover {
+    color: #0aad0a;
+}

@@ -1,0 +1,3683 @@
+.pdp-accordion ul,
+.pdp-accordion ul-city-blue,
+.pdp-accordion ul-danger,
+.pdp-accordion ul-dark,
+.pdp-accordion ul-dark-blue,
+.pdp-accordion ul-dark-grey,
+.pdp-accordion ul-info,
+.pdp-accordion ul-leccy-blue,
+.pdp-accordion ul-light,
+.pdp-accordion ul-primary,
+.pdp-accordion ul-secondary,
+.pdp-accordion ul-success,
+.pdp-accordion ul-warning,
+.pdp-accordion ul-white {
+    margin: 12px 0 24px
+}
+
+@use "sass:map";
+
+.pdp-accordion ul li:before,
+.pdp-accordion ul-city-blue li:before,
+.pdp-accordion ul-danger li:before,
+.pdp-accordion ul-dark li:before,
+.pdp-accordion ul-dark-blue li:before,
+.pdp-accordion ul-dark-grey li:before,
+.pdp-accordion ul-info li:before,
+.pdp-accordion ul-leccy-blue li:before,
+.pdp-accordion ul-light li:before,
+.pdp-accordion ul-primary li:before,
+.pdp-accordion ul-secondary li:before,
+.pdp-accordion ul-success li:before,
+.pdp-accordion ul-warning li:before,
+.pdp-accordion ul-white li:before {
+    background: transparent no-repeat 50%;
+    background-size: contain;
+    box-sizing: border-box;
+    display: inline-block;
+    transition: .2s ease 0s;
+    vertical-align: top
+}
+
+.pdp-accordion ul,
+.pdp-accordion ul-city-blue,
+.pdp-accordion ul-danger,
+.pdp-accordion ul-dark,
+.pdp-accordion ul-dark-blue,
+.pdp-accordion ul-dark-grey,
+.pdp-accordion ul-info,
+.pdp-accordion ul-leccy-blue,
+.pdp-accordion ul-light,
+.pdp-accordion ul-primary,
+.pdp-accordion ul-secondary,
+.pdp-accordion ul-success,
+.pdp-accordion ul-warning,
+.pdp-accordion ul-white {
+    list-style: none;
+    margin: 10px 0 20px;
+    padding: 0
+}
+
+.pdp-accordion ul-city-blue:first-child,
+.pdp-accordion ul-danger:first-child,
+.pdp-accordion ul-dark-blue:first-child,
+.pdp-accordion ul-dark-grey:first-child,
+.pdp-accordion ul-dark:first-child,
+.pdp-accordion ul-info:first-child,
+.pdp-accordion ul-leccy-blue:first-child,
+.pdp-accordion ul-light:first-child,
+.pdp-accordion ul-primary:first-child,
+.pdp-accordion ul-secondary:first-child,
+.pdp-accordion ul-success:first-child,
+.pdp-accordion ul-warning:first-child,
+.pdp-accordion ul-white:first-child,
+.pdp-accordion ul:first-child {
+    margin-top: 0
+}
+
+.pdp-accordion ul-city-blue:last-child,
+.pdp-accordion ul-danger:last-child,
+.pdp-accordion ul-dark-blue:last-child,
+.pdp-accordion ul-dark-grey:last-child,
+.pdp-accordion ul-dark:last-child,
+.pdp-accordion ul-info:last-child,
+.pdp-accordion ul-leccy-blue:last-child,
+.pdp-accordion ul-light:last-child,
+.pdp-accordion ul-primary:last-child,
+.pdp-accordion ul-secondary:last-child,
+.pdp-accordion ul-success:last-child,
+.pdp-accordion ul-warning:last-child,
+.pdp-accordion ul-white:last-child,
+.pdp-accordion ul:last-child {
+    margin-bottom: 0
+}
+
+.pdp-accordion ul li,
+.pdp-accordion ul-city-blue li,
+.pdp-accordion ul-danger li,
+.pdp-accordion ul-dark li,
+.pdp-accordion ul-dark-blue li,
+.pdp-accordion ul-dark-grey li,
+.pdp-accordion ul-info li,
+.pdp-accordion ul-leccy-blue li,
+.pdp-accordion ul-light li,
+.pdp-accordion ul-primary li,
+.pdp-accordion ul-secondary li,
+.pdp-accordion ul-success li,
+.pdp-accordion ul-warning li,
+.pdp-accordion ul-white li {
+    margin-bottom: 3px;
+    padding: 0 0 0 29px;
+    position: relative
+}
+
+.pdp-accordion ul li:before,
+.pdp-accordion ul-city-blue li:before,
+.pdp-accordion ul-danger li:before,
+.pdp-accordion ul-dark li:before,
+.pdp-accordion ul-dark-blue li:before,
+.pdp-accordion ul-dark-grey li:before,
+.pdp-accordion ul-info li:before,
+.pdp-accordion ul-leccy-blue li:before,
+.pdp-accordion ul-light li:before,
+.pdp-accordion ul-primary li:before,
+.pdp-accordion ul-secondary li:before,
+.pdp-accordion ul-success li:before,
+.pdp-accordion ul-warning li:before,
+.pdp-accordion ul-white li:before {
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 4px;
+    transform: none
+}
+
+.pull-left-xs {
+    float: left
+}
+
+.pull-right-xs {
+    float: right
+}
+
+@media (min-width:576px) and (max-width:767.98px) {
+    .pull-left-sm {
+        float: left
+    }
+
+    .pull-right-sm {
+        float: right
+    }
+}
+
+@media (min-width:768px) and (max-width:991.98px) {
+    .pull-left-md {
+        float: left
+    }
+
+    .pull-right-md {
+        float: right
+    }
+}
+
+@media (min-width:992px) and (max-width:1199.98px) {
+    .pull-left-lg {
+        float: left
+    }
+
+    .pull-right-lg {
+        float: right
+    }
+}
+
+@media (min-width:1200px) and (max-width:1439.98px) {
+    .pull-left-xl {
+        float: left
+    }
+
+    .pull-right-xl {
+        float: right
+    }
+}
+
+@media (min-width:1440px) and (max-width:1919.98px) {
+    .pull-left-xxl {
+        float: left
+    }
+
+    .pull-right-xxl {
+        float: right
+    }
+}
+
+@media (min-width:1920px) {
+    .pull-left-3k {
+        float: left
+    }
+
+    .pull-right-3k {
+        float: right
+    }
+}
+
+@media (max-width:575.98px) {
+    .hidden-xs-down {
+        display: none !important
+    }
+}
+
+@media (max-width:767.98px) {
+    .hidden-sm-down {
+        display: none !important
+    }
+}
+
+@media (max-width:991.98px) {
+    .hidden-md-down {
+        display: none !important
+    }
+}
+
+@media (max-width:1199.98px) {
+    .hidden-lg-down {
+        display: none !important
+    }
+}
+
+@media (max-width:1439.98px) {
+    .hidden-xl-down {
+        display: none !important
+    }
+}
+
+@media (max-width:1919.98px) {
+    .hidden-xxl-down {
+        display: none !important
+    }
+}
+
+.hidden-3k-down {
+    display: none !important
+}
+
+.row.equal-height>[class^=col] {
+    display: flex
+}
+
+.swatch-circle-beige {
+    background: beige;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-beige.disabled {
+    opacity: .2
+}
+
+.swatch-filter-beige {
+    background: beige;
+    background-color: beige;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-beige.disabled {
+    opacity: .2
+}
+
+.swatch-circle-black {
+    background: #000;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-black.disabled {
+    opacity: .2
+}
+
+.swatch-filter-black {
+    background: #000;
+    background-color: #000;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-black.disabled {
+    opacity: .2
+}
+
+.swatch-circle-blue {
+    background: #0070d2;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-blue.disabled {
+    opacity: .2
+}
+
+.swatch-filter-blue {
+    background: #0070d2;
+    background-color: #0070d2;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-blue.disabled {
+    opacity: .2
+}
+
+.swatch-circle-brown {
+    background: brown;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-brown.disabled {
+    opacity: .2
+}
+
+.swatch-filter-brown {
+    background: brown;
+    background-color: brown;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-brown.disabled {
+    opacity: .2
+}
+
+.swatch-circle-green {
+    background: #00b67b;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-green.disabled {
+    opacity: .2
+}
+
+.swatch-filter-green {
+    background: #00b67b;
+    background-color: #00b67b;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-green.disabled {
+    opacity: .2
+}
+
+.swatch-circle-grey {
+    background: #8f979d;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-grey.disabled {
+    opacity: .2
+}
+
+.swatch-filter-grey {
+    background: #8f979d;
+    background-color: #8f979d;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-grey.disabled {
+    opacity: .2
+}
+
+.swatch-circle-navy {
+    background: navy;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-navy.disabled {
+    opacity: .2
+}
+
+.swatch-filter-navy {
+    background: navy;
+    background-color: navy;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-navy.disabled {
+    opacity: .2
+}
+
+.swatch-circle-orange {
+    background: orange;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-orange.disabled {
+    opacity: .2
+}
+
+.swatch-filter-orange {
+    background: orange;
+    background-color: orange;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-orange.disabled {
+    opacity: .2
+}
+
+.swatch-circle-pink {
+    background: #fe249a;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-pink.disabled {
+    opacity: .2
+}
+
+.swatch-filter-pink {
+    background: #fe249a;
+    background-color: #fe249a;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-pink.disabled {
+    opacity: .2
+}
+
+.swatch-circle-purple {
+    background: purple;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-purple.disabled {
+    opacity: .2
+}
+
+.swatch-filter-purple {
+    background: purple;
+    background-color: purple;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-purple.disabled {
+    opacity: .2
+}
+
+.swatch-circle-red {
+    background: red;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-red.disabled {
+    opacity: .2
+}
+
+.swatch-filter-red {
+    background: red;
+    background-color: red;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-red.disabled {
+    opacity: .2
+}
+
+.swatch-circle-white {
+    background: #fff;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-white.disabled {
+    opacity: .2
+}
+
+.swatch-filter-white {
+    background: #fff;
+    background-color: #fff;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-white.disabled {
+    opacity: .2
+}
+
+.swatch-circle-yellow {
+    background: #ff0;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-yellow.disabled {
+    opacity: .2
+}
+
+.swatch-filter-yellow {
+    background: #ff0;
+    background-color: #ff0;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-yellow.disabled {
+    opacity: .2
+}
+
+.swatch-circle-miscellaneous {
+    background: linear-gradient(0deg, #821e91, #821e91 25%, #edd134 0, #ff0 50%, #edd134 0, #59ba00 0, #59ba00 76%, #111 0, #111), linear-gradient(0deg, #0e5cd1, #0e5cd1 50%, #e20b0b 0, #e20b0b);
+    background-repeat: repeat-y, repeat;
+    background-size: 50% 100%, 100% 100%;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    transform: rotate(35deg);
+    width: 2.5em
+}
+
+.swatch-circle-miscellaneous.disabled {
+    opacity: .2
+}
+
+.swatch-circle-miscellaneous.selected:after {
+    transform: rotate(-35deg)
+}
+
+.product-detail .swatch-circle {
+    background: #fff;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: inline-block;
+    height: 2.5em;
+    margin-right: .313em;
+    position: relative;
+    width: 2.5em
+}
+
+.product-detail .swatch-circle.color-value[data-selected=true]:after {
+    color: #000;
+    content: "\f058";
+    display: table-caption;
+    font-family: FontAwesome;
+    font-size: 1.625em;
+    left: .295em;
+    position: absolute
+}
+
+.product-detail .swatch-circle.color-value.selected:after {
+    color: #000;
+    content: "\f058";
+    display: table-caption;
+    font-family: FontAwesome;
+    font-size: 1.625em;
+    left: .31em;
+    position: absolute;
+    top: .35em
+}
+
+.product-detail .swatch-circle i.fa-times-circle,
+.product-detail .swatch-circle.color-value.selected:after {
+    background: #fff;
+    border-radius: 50%;
+    height: .75em;
+    line-height: .8em;
+    width: .8em
+}
+
+.product-detail .swatch-circle.unselectable,
+.product-detail [disabled] .swatch-circle {
+    cursor: not-allowed
+}
+
+.product-detail .swatch-circle.unselectable.color-value.selected:after,
+.product-detail [disabled] .swatch-circle.color-value.selected:after {
+    background-color: #495057
+}
+
+label.color~a:hover {
+    text-decoration: none
+}
+
+.description-and-detail {
+    margin-top: 2em
+}
+
+@media (max-width:575.98px) {
+    .description-and-detail {
+        margin-top: 0
+    }
+
+    .description-and-detail .title {
+        font-family: Dosis, sans-serif;
+        font-size: 1.5rem;
+        margin-bottom: 0
+    }
+
+    .description-and-detail>div:last-child {
+        margin-bottom: 1em
+    }
+}
+
+@media (min-width:576px) {
+    .description-and-detail .description {
+        margin-bottom: 2em
+    }
+}
+
+@media (max-width:575.98px) {
+    .description-and-detail .content {
+        margin-top: 1em
+    }
+}
+
+.social-container {
+    padding-top: .9375em;
+    text-align: center
+}
+
+.social-container .social-icons {
+    color: #707070;
+    font-size: 1.875em;
+    list-style-type: none;
+    padding: 0;
+    text-decoration: none
+}
+
+@media (max-width:991.98px) {
+    .social-container .social-icons {
+        font-size: 1.5625em
+    }
+}
+
+.social-container .social-icons a,
+.social-container .social-icons i {
+    color: #707070;
+    padding-right: .2em
+}
+
+label.availability {
+    padding-right: .3125em
+}
+
+@media (min-width:576px) {
+    .product-number-rating {
+        border-bottom: 1px solid #dee2e6
+    }
+}
+
+@media (min-width:768px) {
+    .product-number-rating {
+        border-top: 1px solid #dee2e6
+    }
+}
+
+@media (min-width:576px) and (max-width:767.98px) {
+    .product-name {
+        border-bottom: 1px solid #dee2e6
+    }
+}
+
+@media (min-width:576px) {
+    .ratings {
+        margin-top: .625em
+    }
+}
+
+@media (max-width:575.98px) {
+    .ratings {
+        background-color: #fff;
+        margin-right: -.9375em;
+        margin-top: -1.875em;
+        padding: .1875em
+    }
+}
+
+.product-number {
+    color: #dee2e6;
+    font-size: .875em;
+    padding-bottom: .938em;
+    padding-top: .938em
+}
+
+.promotions {
+    font-weight: 400;
+    height: 85%;
+    text-align: center
+}
+
+.promotions div.collapsible-xl button.callout {
+    color: red;
+    font-size: 1.25em;
+    padding-bottom: 1.25rem;
+    padding-top: 1.25rem
+}
+
+@media (min-width:576px) {
+    .promotions div.collapsible-xl button.callout {
+        font-size: 1.375em
+    }
+}
+
+.promotions div.collapsible-xl button.callout:after {
+    color: #000
+}
+
+.product-breadcrumb .breadcrumb {
+    border-bottom: none;
+    margin-bottom: 0;
+    margin-left: -1rem
+}
+
+@media (max-width:991.98px) {
+    .product-breadcrumb .breadcrumb {
+        border-top: 1px solid #dee2e6
+    }
+}
+
+.price {
+    font-size: 1.5rem
+}
+
+.product-options {
+    margin-top: 1.25em
+}
+
+.size-chart .size-chart-collapsible {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .5s;
+    transition-timing-function: cubic-bezier(0, 1, 0, 1)
+}
+
+.size-chart .size-chart-collapsible.active {
+    max-height: 100%;
+    transition-timing-function: ease-in-out
+}
+
+.color-attribute {
+    background: none;
+    border: none;
+    padding: 0
+}
+
+.non-input-label {
+    display: block;
+    margin-bottom: .5rem
+}
+
+@media (min-width:768px) {
+    .attributes {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem
+    }
+}
+
+@keyframes spinLoader {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(1turn)
+    }
+}
+
+.product-name {
+    border-bottom: 0 !important;
+    font: 400 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 1.63
+}
+
+.product-brand {
+    font: 500 33px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    font-weight: 300;
+    letter-spacing: .33px;
+    line-height: 1.19
+}
+
+.product-stock-message {
+    font: 400 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 1.63;
+    margin: 20px 0 0
+}
+
+.product-preorder-text .product-stock-message {
+    color: red;
+    font: 900 27px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    font-weight: 300;
+    letter-spacing: .27px;
+    line-height: 1.26;
+    text-align: center;
+    text-transform: uppercase
+}
+
+.product-accordion-content {
+    font: 500 33px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    font-weight: 300;
+    letter-spacing: .33px;
+    line-height: 1.19
+}
+
+.product-accordion-title,
+.product-description {
+    font: 500 33px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .33px;
+    line-height: 1.19
+}
+
+.product-accordion-title {
+    font-weight: 600
+}
+
+.product-promotions .callout {
+    color: #98c5e9;
+    text-transform: uppercase
+}
+
+.primary-images .product-promotions .callout,
+.product-promotions-image {
+    display: none
+}
+
+.primary-images .product-promotions-image {
+    display: block;
+    left: 0;
+    max-height: 75px;
+    max-width: 75px;
+    position: absolute;
+    top: 0;
+    z-index: 1
+}
+
+@media only screen and (min-width:768px) {
+    .primary-images .product-promotions-image {
+        left: 22px
+    }
+}
+
+.product-slot-content {
+    color: #001838;
+    font: 500 33px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .33px;
+    line-height: 1.19;
+    margin-bottom: 20px
+}
+
+.product-content {
+    margin-bottom: 20px
+}
+
+@media only screen and (min-width:768px) {
+    .product-content {
+        margin-top: 20px
+    }
+}
+
+.product-content .primary-images {
+    position: relative
+}
+
+.product-detail .add-to-cart,
+.product-detail .add-to-cart-global {
+    align-items: center;
+    display: flex;
+    font: 500 33px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    font-weight: 700;
+    height: 48px;
+    justify-content: center;
+    letter-spacing: .33px;
+    line-height: 1.19;
+    max-width: 100%;
+    text-transform: uppercase;
+    width: 100%
+}
+
+@media only screen and (min-width:768px) {
+
+    .product-detail .add-to-cart,
+    .product-detail .add-to-cart-global {
+        font: 700 21px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+        letter-spacing: .21px;
+        line-height: 1.22;
+        text-transform: uppercase
+    }
+}
+
+.product-detail .add-to-cart-global.loading,
+.product-detail .add-to-cart.loading {
+    pointer-events: none
+}
+
+.product-detail .add-to-cart-global.loading *,
+.product-detail .add-to-cart.loading * {
+    opacity: 0
+}
+
+.product-detail .add-to-cart-global.loading .loading-animation,
+.product-detail .add-to-cart.loading .loading-animation {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    opacity: 1;
+    pointer-events: none;
+    position: absolute;
+    transition: opacity .2s;
+    z-index: 10
+}
+
+.product-detail .add-to-cart-global.loading .loading-animation.visible,
+.product-detail .add-to-cart.loading .loading-animation.visible {
+    opacity: 1
+}
+
+.product-detail .add-to-cart-global.loading .loading-animation:after,
+.product-detail .add-to-cart.loading .loading-animation:after {
+    animation: spinLoader 1s;
+    animation-iteration-count: infinite;
+    border-color: #fff #fff transparent transparent;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+    content: "";
+    display: block;
+    height: 18px;
+    width: 18px
+}
+
+.product-detail .add-to-cart[disabled] .out-of-stock-text.d-none~.select-size-text {
+    display: block
+}
+
+.product-detail .add-to-cart[disabled] .add-to-cart-text,
+.product-detail .select-size-text {
+    display: none
+}
+
+.product-detail .swatch-scaler {
+    display: block;
+    padding-top: 100%;
+    width: 100%
+}
+
+.product-detail .swatch-text {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.product-detail .swatch-color-column,
+.product-detail .swatch-size-column,
+.product-detail [data-attr=badge] .swatch-badge-column,
+.product-detail [data-attr=badge] .swatch-font-column,
+[data-attr=badge] .product-detail .swatch-badge-column,
+[data-attr=badge] .product-detail .swatch-font-column {
+    flex-shrink: 0;
+    position: relative
+}
+
+.product-detail .swatch-color-column,
+.product-detail [data-attr=badge] .swatch-badge-column,
+.product-detail [data-attr=badge] .swatch-font-column,
+[data-attr=badge] .product-detail .swatch-badge-column,
+[data-attr=badge] .product-detail .swatch-font-column {
+    width: 29%
+}
+
+.product-detail .swatch-size-column {
+    flex-shrink: 0;
+    width: 48px
+}
+
+.product-detail .swatch-scroll-container {
+    display: flex;
+    gap: 5px;
+    margin-left: -20px;
+    overflow-x: auto;
+    width: calc(100% + 40px)
+}
+
+@media only screen and (max-width:767px) {
+    .product-detail .swatch-scroll-container {
+        -ms-overflow-style: none;
+        scrollbar-width: none
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .product-detail .swatch-scroll-container::-webkit-scrollbar {
+        display: none
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .product-detail .swatch-scroll-container {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%
+    }
+}
+
+.product-detail .swatch-scroll-container:after,
+.product-detail .swatch-scroll-container:before {
+    content: "";
+    display: block;
+    flex-shrink: 0;
+    width: 15px
+}
+
+@media only screen and (min-width:768px) {
+
+    .product-detail .swatch-scroll-container:after,
+    .product-detail .swatch-scroll-container:before {
+        display: none
+    }
+}
+
+.product-detail .swatch-square {
+    align-items: center;
+    background-position: 50%;
+    background-size: cover;
+    border: none;
+    border-radius: 0;
+    display: flex;
+    height: auto;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    width: 100%
+}
+
+.product-detail .swatch-square.color-value {
+    color: transparent
+}
+
+.product-detail .swatch-square.color-value:after {
+    visibility: hidden
+}
+
+.product-detail .swatch-square.color-value.selected {
+    border: 1px solid #000
+}
+
+.product-detail .swatch-square.color-value.unselectable {
+    border-color: transparent
+}
+
+.product-detail .swatch-square.unselectable {
+    cursor: not-allowed;
+    opacity: .2;
+    pointer-events: none
+}
+
+.product-detail .swatch-square.unselectable:before {
+    background: #fff;
+    content: "";
+    height: 1px;
+    left: -10px;
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: rotate(-45deg)
+}
+
+.product-detail [data-attr=size] .swatch-square {
+    border: 1px solid #00080d;
+    font-size: 14px;
+    transition: all .2s
+}
+
+.product-detail [data-attr=size] .swatch-square:focus,
+.product-detail [data-attr=size] .swatch-square:hover {
+    border: 1px solid #00080d
+}
+
+.product-detail [data-attr=size] .swatch-square.selected {
+    background: #00080d;
+    color: #fff
+}
+
+.product-detail [data-attr=size] .swatch-square.unselectable {
+    border-color: #dde6ed;
+    color: #dde6ed;
+    opacity: 1
+}
+
+.product-detail [data-attr=size] .swatch-square.unselectable:before {
+    display: none
+}
+
+@media only screen and (min-width:768px) {
+    .product-detail .set-item-image {
+        flex: 0 0 180px;
+        max-width: 180px
+    }
+}
+
+.product-detail .set-item-detail {
+    display: flex;
+    flex-direction: column
+}
+
+@media only screen and (min-width:768px) {
+    .product-detail .set-item-detail {
+        max-width: calc(100% - 180px)
+    }
+}
+
+.product-detail .set-item .product-name {
+    display: block;
+    font: 900 57px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    font-weight: 700;
+    letter-spacing: .57px;
+    line-height: 1.02;
+    margin: 0 0 10px;
+    overflow: hidden;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap
+}
+
+.product-detail .set-item .product-brand {
+    font: 900 57px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .57px;
+    line-height: 1.02;
+    text-transform: uppercase
+}
+
+.product-detail .set-item .prices {
+    margin: 0 0 5px;
+    padding: 0
+}
+
+.product-detail .set-item .prices .price {
+    font: 900 57px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    font-weight: 700;
+    letter-spacing: .57px;
+    line-height: 1.02;
+    text-transform: uppercase
+}
+
+.product-detail .set-item .prices .price .strike-through {
+    font: inherit;
+    margin-right: 10px
+}
+
+.product-detail .set-item .attribute__current-value {
+    display: none;
+    min-width: 0
+}
+
+.product-detail .set-item .swatch-color-column,
+.product-detail .set-item .swatch-size-column,
+.product-detail .set-item [data-attr=badge] .swatch-badge-column,
+.product-detail .set-item [data-attr=badge] .swatch-font-column,
+[data-attr=badge] .product-detail .set-item .swatch-badge-column,
+[data-attr=badge] .product-detail .set-item .swatch-font-column {
+    flex: 0 0 48px;
+    margin: 0
+}
+
+.product-detail .set-item .swatch-square {
+    display: block
+}
+
+.product-detail-set-total {
+    font-weight: 700
+}
+
+.product-detail-set-total .items:after {
+    content: attr(data-count)
+}
+
+.product-detail-set-total .price {
+    color: #00080d;
+    font-weight: 700
+}
+
+.product-detail-set-size-chart {
+    border-top: 1px solid #707070;
+    font-weight: 700;
+    padding-bottom: 13px;
+    padding-top: 13px;
+    position: relative
+}
+
+.product-detail-set-size-chart:after {
+    background-image: url(../images/chevron-down.svg);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    content: "";
+    height: 24px;
+    position: absolute;
+    right: 0;
+    top: 12px;
+    transform: rotate(270deg);
+    transition: transform .3s;
+    width: 24px
+}
+
+.product-detail-set-size-chart a {
+    display: block;
+    text-decoration: none
+}
+
+.attribute {
+    margin-bottom: 20px;
+    margin-top: 20px
+}
+
+.attribute label {
+    align-items: baseline;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    position: relative
+}
+
+.attribute__label {
+    margin-bottom: 1px
+}
+
+.attribute__current-value,
+.attribute__label {
+    font: 900 27px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    font-weight: 300;
+    letter-spacing: .27px;
+    line-height: 1.26
+}
+
+.attribute__current-value {
+    display: inline-block;
+    padding-left: 5px;
+    text-transform: uppercase
+}
+
+.attribute .size-info {
+    align-items: baseline;
+    display: flex;
+    justify-content: end;
+    margin-top: 10px
+}
+
+.attribute .size-description {
+    display: block
+}
+
+.attribute .size-chart>a {
+    white-space: nowrap
+}
+
+.prices .price {
+    display: block;
+    font: 400 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 1.63
+}
+
+.prices .price .sales {
+    color: #00080d;
+    display: inline-block;
+    font-size: inherit;
+    font-weight: inherit;
+    vertical-align: bottom
+}
+
+.prices .price .strike-through {
+    color: rgba(0, 8, 13, .27);
+    font: 400 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    line-height: 1.63
+}
+
+.prices .price .strike-through+.sales {
+    color: #98c5e9
+}
+
+.prices .price .list {
+    color: #bcbcbc;
+    display: inline-block;
+    vertical-align: top
+}
+
+.prices .price .list .label {
+    display: none;
+    margin-bottom: 4px;
+    text-decoration: none
+}
+
+.prices .price .list .strike-through {
+    margin-right: 5px
+}
+
+.prices .price .list.d-none~.sales {
+    color: #00080d
+}
+
+.prices .price .list~.sales {
+    color: #98c5e9
+}
+
+.product-content .prices {
+    text-align: left
+}
+
+.product-content .prices .price .list .label {
+    display: block
+}
+
+.product-content .prices .price .list .strike-through {
+    margin-right: 20px
+}
+
+.product-content .prices .price .list~.sales {
+    margin-top: 16px
+}
+
+.cart-and-ipay .pdp-checkout-button,
+.cart-and-ipay .pdp-checkout-button .add-to-cart {
+    padding: 0
+}
+
+@media only screen and (max-width:767px) {
+    .cart-and-ipay .btn {
+        margin-left: 0
+    }
+}
+
+.attribute .size-chart {
+    margin-top: 0
+}
+
+.attribute .size-chart>a {
+    font: 400 13px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 1.71
+}
+
+.product-detail__size-chart-modal.modal {
+    padding-right: 0 !important
+}
+
+.product-detail__size-chart-modal .modal-dialog {
+    height: auto;
+    max-width: 100%;
+    width: 100%
+}
+
+@media only screen and (min-width:768px) {
+    .product-detail__size-chart-modal .modal-dialog {
+        max-width: 860px
+    }
+}
+
+.product-detail__size-chart-modal .modal-content {
+    max-width: 100%;
+    width: 100%
+}
+
+@media only screen and (min-width:768px) {
+    .product-detail__size-chart-modal .modal-content {
+        max-width: 860px
+    }
+}
+
+.product-detail__size-chart-modal .modal-body {
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 0 0 30p;
+    width: 100%
+}
+
+@media only screen and (min-width:768px) {
+    .product-detail__size-chart-modal .modal-body {
+        max-width: 740px;
+        padding: 0 0 50px
+    }
+}
+
+.product-detail__size-chart-modal .modal-body h1 {
+    text-transform: uppercase
+}
+
+.product-detail__size-chart-modal .modal-body .scroll-x-container {
+    overflow-x: auto
+}
+
+.product-detail__size-chart-modal .modal-body table {
+    min-width: 500px
+}
+
+.product-detail__size-chart-modal .modal-body table tr:first-child {
+    color: #98c5e9;
+    font-weight: 700
+}
+
+.product-detail__size-chart-modal .modal-body table td:first-child {
+    font-weight: 700;
+    padding-left: 0;
+    padding-right: 30px
+}
+
+.product-detail__size-chart-modal .modal-body table td {
+    min-width: 100px;
+    padding: 10px
+}
+
+[data-action=Product-Show].modal-open .modal-backdrop.fade.show {
+    display: none !important
+}
+
+.pdp-accordion .product-accordion-title {
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    text-align: left;
+    width: 100%
+}
+
+.pdp-accordion .product-accordion-title:after {
+    background-image: url(../images/chevron-down.svg);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    content: "";
+    display: block;
+    height: 24px;
+    transform: rotate(180deg);
+    transition: transform .3s;
+    width: 24px
+}
+
+.pdp-accordion .product-accordion-title.collapsed:after {
+    transform: rotate(1turn)
+}
+
+.pdp-accordion .accordion-item {
+    border-top: 1px solid #707070
+}
+
+.pdp-accordion .accordion-item .btn {
+    padding-bottom: 13px;
+    padding-top: 13px
+}
+
+.pdp-accordion .accordion-item:last-child {
+    border-bottom: 1px solid #707070
+}
+
+.pdp-accordion .product-accordion-content {
+    padding-bottom: 20px
+}
+
+.pdp-accordion ul li:before {
+    background-image: url(../images/check.svg);
+    content: "";
+    height: 16px;
+    width: 16px
+}
+
+.pdp-accordion ul-primary li:before {
+    background-image: url(../images/check-primary.svg);
+    content: "";
+    height: 16px;
+    width: 16px
+}
+
+.pdp-accordion ul-secondary li:before {
+    background-image: url(../images/check-secondary.svg);
+    content: "";
+    height: 16px;
+    width: 16px
+}
+
+.pdp-accordion ul-success li:before {
+    background-image: url(../images/check-success.svg);
+    content: "";
+    height: 16px;
+    width: 16px
+}
+
+.pdp-accordion ul-info li:before {
+    background-image: url(../images/check-info.svg);
+    content: "";
+    height: 16px;
+    width: 16px
+}
+
+.pdp-accordion ul-warning li:before {
+    background-image: url(../images/check-warning.svg);
+    content: "";
+    height: 16px;
+    width: 16px
+}
+
+.pdp-accordion ul-danger li:before {
+    background-image: url(../images/check-danger.svg);
+    content: "";
+    height: 16px;
+    width: 16px
+}
+
+.pdp-accordion ul-light li:before {
+    background-image: url(../images/check-light.svg);
+    content: "";
+    height: 16px;
+    width: 16px
+}
+
+.pdp-accordion ul-dark li:before {
+    background-image: url(../images/check-dark.svg);
+    content: "";
+    height: 16px;
+    width: 16px
+}
+
+.pdp-accordion ul-city-blue li:before {
+    background-image: url(../images/check-city-blue.svg);
+    content: "";
+    height: 16px;
+    width: 16px
+}
+
+.pdp-accordion ul-dark-grey li:before {
+    background-image: url(../images/check-dark-grey.svg);
+    content: "";
+    height: 16px;
+    width: 16px
+}
+
+.pdp-accordion ul-dark-blue li:before {
+    background-image: url(../images/check-dark-blue.svg);
+    content: "";
+    height: 16px;
+    width: 16px
+}
+
+.pdp-accordion ul-white li:before {
+    background-image: url(../images/check-#fff.svg);
+    content: "";
+    height: 16px;
+    width: 16px
+}
+
+.pdp-accordion ul-leccy-blue li:before {
+    background-image: url(../images/check-leccy-blue.svg);
+    content: "";
+    height: 16px;
+    width: 16px
+}
+
+.easyzoom {
+    *zoom: 1;
+    display: inline-block;
+    *display: inline;
+    position: relative;
+    z-index: 1
+}
+
+.easyzoom img {
+    vertical-align: bottom
+}
+
+.easyzoom .easyzoom-flyout {
+    background: #fff;
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    z-index: 100
+}
+
+@media only screen and (min-width:768px) {
+    .easyzoom .easyzoom-flyout {
+        display: block
+    }
+}
+
+.easyzoom .easyzoom-flyout img {
+    max-width: none;
+    width: auto
+}
+
+.easyzoom.is-loading img {
+    cursor: progress
+}
+
+.easyzoom.is-ready img {
+    cursor: crosshair;
+    display: block;
+    min-width: 100%
+}
+
+.easyzoom.is-error img {
+    cursor: not-allowed
+}
+
+.easyzoom-notice {
+    display: none
+}
+
+.easyzoom--overlay .easyzoom-flyout {
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%
+}
+
+.easyzoom--adjacent .easyzoom-flyout {
+    height: 100%;
+    left: 100%;
+    margin-left: 20px;
+    top: 0;
+    width: 100%
+}
+
+.product-detail {
+    font: 500 33px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .33px;
+    line-height: 1.19;
+    margin-top: 0
+}
+
+.product-detail-brand-logo {
+    background-size: cover;
+    display: inline-block;
+    max-width: 92px;
+    min-height: 24px;
+    width: 100%
+}
+
+@media only screen and (min-width:768px) {
+    .product-detail-brand-logo {
+        max-width: 160px;
+        min-height: 42px
+    }
+}
+
+.product-detail-sticky-information {
+    position: sticky;
+    top: 30px;
+    z-index: 0
+}
+
+.product-detail .primary-images .slick-slider {
+    margin-bottom: 30px
+}
+
+.product-detail .primary-images .slick-dots {
+    bottom: 0;
+    padding: 16px;
+    text-align: right;
+    top: auto
+}
+
+.product-detail .primary-images .slick-dots li {
+    margin: 2px
+}
+
+.product-detail .primary-images .slick-dots button {
+    height: 10px;
+    width: 10px
+}
+
+.product-detail .strike-through {
+    margin-right: .2em
+}
+
+.product-detail .attribute-title {
+    display: flex;
+    justify-content: space-between
+}
+
+.product-detail .laybuy-text {
+    display: block;
+    font-size: 17px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    overflow: hidden
+}
+
+.product-detail .laybuy-text img {
+    height: 1.2em;
+    margin-top: -5px;
+    width: auto
+}
+
+.product-detail .product-promotions {
+    font: 900 27px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .27px;
+    line-height: 1.26;
+    margin-top: 10px;
+    text-transform: uppercase
+}
+
+.product-detail .pdp-category-backlinks {
+    margin-top: 15px
+}
+
+.product-detail .pdp-category-backlinks .btn-pill,
+.product-detail .pdp-category-backlinks .product-category-backlink {
+    background-color: #dee2e6;
+    border-radius: .5em;
+    display: inline-block;
+    font: 900 57px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .57px;
+    line-height: 1.02;
+    line-height: 36px;
+    margin: 5px 8px 0;
+    padding: 0 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .3s ease 0s;
+    vertical-align: baseline
+}
+
+.product-detail .pdp-category-backlinks .btn-pill:active,
+.product-detail .pdp-category-backlinks .btn-pill:focus,
+.product-detail .pdp-category-backlinks .btn-pill:hover,
+.product-detail .pdp-category-backlinks .product-category-backlink:active,
+.product-detail .pdp-category-backlinks .product-category-backlink:focus,
+.product-detail .pdp-category-backlinks .product-category-backlink:hover {
+    background-color: #bcbcbc
+}
+
+@media only screen and (max-width:479px) {
+
+    .product-detail .pdp-category-backlinks .btn-pill,
+    .product-detail .pdp-category-backlinks .product-category-backlink {
+        margin-left: 0;
+        margin-right: 0;
+        min-width: 35%
+    }
+}
+
+.product-detail .pdp-category-backlinks .product-category-backlink {
+    align-items: center;
+    display: inline-flex;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 5px 0;
+    min-height: 30px;
+    padding: 3px 15px
+}
+
+@media only screen and (max-width:479px) {
+    .product-detail .pdp-category-backlinks .product-category-backlink {
+        margin-right: 5px;
+        min-width: 0
+    }
+}
+
+.product-detail .sharing-links {
+    display: flex;
+    margin-top: 30px
+}
+
+.product-detail .social-link {
+    background-color: #ced4da;
+    display: block;
+    margin-right: 15px;
+    padding: 5px;
+    width: 30px
+}
+
+@media only screen and (min-width:768px) {
+    .product-detail .social-link {
+        padding: 10px;
+        width: 50px
+    }
+}
+
+.product-detail .social-link:last-child {
+    margin-right: 0
+}
+
+.product-detail .social-link img {
+    display: block;
+    width: 100%
+}
+
+.product-detail [data-show-model-image="Do not show 'model' images"] {
+    display: none
+}
+
+.product-detail .product-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between
+}
+
+@media only screen and (max-width:767px) {
+    .product-detail .product-images {
+        aspect-ratio: 1
+    }
+}
+
+.product-detail .product-images:not(.slick-slider):not(.slick-dotted) {
+    padding-bottom: 64px
+}
+
+@media (min-width:769px) {
+    .product-detail .product-images:not(.slick-slider):not(.slick-dotted) {
+        padding-bottom: 0
+    }
+}
+
+.product-detail .product-images[data-image-length="1.0"] .product-img-wrapper:first-child,
+.product-detail .product-images[data-image-length="1.0"] .product-img-wrapper:nth-child(2):last-child,
+.product-detail .product-images[data-image-length="2.0"] .product-img-wrapper:first-child,
+.product-detail .product-images[data-image-length="2.0"] .product-img-wrapper:nth-child(2):last-child {
+    max-width: 100%
+}
+
+.product-detail .product-images .product-img-wrapper {
+    display: none
+}
+
+@media (min-width:769px) {
+    .product-detail .product-images .product-img-wrapper {
+        display: block;
+        max-width: calc(50% - 5px);
+        width: 100%
+    }
+
+    .product-detail .product-images .product-img-wrapper .product-img-wrapper {
+        max-width: none
+    }
+}
+
+.product-detail .product-images .product-img-wrapper a img {
+    height: auto;
+    width: 100%
+}
+
+.product-detail .breadcrumb {
+    margin-bottom: 20px
+}
+
+.product-detail .product-breadcrumb .breadcrumb {
+    border: 0;
+    margin-bottom: 15px;
+    margin-left: 0;
+    margin-top: 15px
+}
+
+.product-detail .find-in-store {
+    margin: 0;
+    width: 100%
+}
+
+.product-detail .product-top-wrap {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    margin-bottom: 0;
+    padding-top: 0
+}
+
+.product-detail .product-availability input {
+    border-color: #979797;
+    color: #000
+}
+
+.product-detail .product-availability input::-moz-placeholder {
+    color: #000;
+    opacity: 1
+}
+
+.product-detail .product-availability input::placeholder {
+    color: #000;
+    opacity: 1
+}
+
+.product-detail .js-no-variant {
+    color: #98c5e9
+}
+
+.content-asset--carousel-title {
+    font: 900 77px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    font-weight: 700;
+    letter-spacing: .77px;
+    letter-spacing: normal;
+    line-height: 1.01;
+    text-transform: uppercase
+}
+
+.price {
+    font-size: inherit
+}
+
+.pswp__scroll-wrap iframe {
+    left: 50%;
+    position: relative;
+    top: 50%;
+    transform: translate(-50%, -50%)
+}
+
+@media only screen and (min-width:768px) {
+    .pswp__scroll-wrap iframe {
+        max-width: 70%
+    }
+}
+
+.add-to-cart-messages {
+    display: none
+}
+
+.product-set-detail .product-top-wrap {
+    margin-bottom: 0
+}
+
+:root {
+    --page-title-color: #001838;
+    --image-background-color: #f3f6f9;
+    --color-swatch-background-color: #f3f6f9;
+    --size-swatch-selected-border-color: #000;
+    --flyout-img-bg: #f3f6f9;
+    --customisable-labels: #001838;
+    --size-chart-arrow: url(../images/chevron-down.svg);
+    --shirt-icon-fill: transparent;
+    --shirt-icon-stroke: #001838
+}
+
+.product-detail.product-detail--premium {
+    --image-background-color: transparent;
+    --flyout-img-bg: #001838;
+    --shirt-icon-stroke: #3bd6ff
+}
+
+.product-set-detail.product-detail--premium {
+    --page-title-color: #fff;
+    --color-swatch-background-color: transparent;
+    --size-swatch-selected-border-color: #fff;
+    --customisable-labels: #3bd6ff;
+    --size-chart-arrow: url(../images/chevron-down-city-blue.svg);
+    --shirt-icon-fill: #001838;
+    --shirt-icon-stroke: #3bd6ff
+}
+
+.t-shirt path {
+    fill: transparent !important;
+    fill: var(--shirt-icon-fill) !important;
+    stroke: #001838 !important;
+    stroke: var(--shirt-icon-stroke) !important
+}
+
+.product-detail {
+    padding-top: 27px
+}
+
+.product-detail .select-player {
+    font: 500 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 2.27
+}
+
+.product-detail .select-player option {
+    line-height: 35px
+}
+
+.product-detail-set-size-chart.size-chart .product-accordion-title {
+    color: #001838;
+    font: 700 23px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .23px;
+    line-height: 1.33;
+    text-transform: uppercase
+}
+
+.product-detail-set-size-chart.size-chart .product-accordion-title:after {
+    display: none
+}
+
+.product-detail-set-size-chart.size-chart:after {
+    background-size: 18px;
+    top: 50%;
+    transform: translateY(-50%) rotate(270deg)
+}
+
+.product-detail .pdp-breadcrumbs {
+    color: #6caddf;
+    display: flex;
+    flex-flow: row wrap;
+    list-style-type: none
+}
+
+.product-detail .pdp-breadcrumbs li {
+    align-items: center;
+    display: flex;
+    white-space: nowrap
+}
+
+.product-detail .pdp-breadcrumbs a {
+    text-decoration: none
+}
+
+.product-detail .pdp-breadcrumbs .dark {
+    color: #6caddf
+}
+
+.product-detail .pdp-breadcrumbs .arrow {
+    border: solid #6caddf;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    margin: 0 6px 0 4px;
+    padding: 1.5px;
+    transform: rotate(-45deg)
+}
+
+@media only screen and (min-width:768px) {
+    .product-detail .primary-images {
+        padding-right: 40px
+    }
+}
+
+@media only screen and (min-width:1200px) {
+    .product-detail .primary-images {
+        padding-right: 125px
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .product-detail .primary-images.uneven-length .product-img-wrapper:first-of-type {
+        max-width: 100%;
+        width: 100%
+    }
+}
+
+.product-detail .primary-images .product-img-wrapper {
+    display: block;
+    margin-top: 0;
+    padding: 2px;
+    width: 100%
+}
+
+.product-detail .primary-images .product-img-wrapper:nth-child(2):last-child {
+    max-width: 100%
+}
+
+@media only screen and (max-width:767px) {
+    .product-detail .primary-images .product-img-wrapper {
+        display: none
+    }
+}
+
+.product-detail .primary-images .product-img-wrapper a img {
+    background-color: #f3f6f9;
+    padding: 18px
+}
+
+@media only screen and (min-width:992px) {
+    .product-detail .primary-images .product-img-wrapper a img {
+        padding: 45px
+    }
+}
+
+.product-detail .primary-images .product-img-wrapper .easyzoom-flyout img {
+    background-color: #f3f6f9;
+    background-color: #fff;
+    /* background-color: var(--flyout-img-bg) */
+}
+
+.product-detail .primary-images .img-hidden {
+    visibility: hidden
+}
+
+.product-detail .primary-images .slick-slider {
+    touch-action: auto
+}
+
+.product-detail .primary-images .slick-slider .slick-track {
+    pointer-events: none
+}
+
+.product-detail .primary-images .slick-slider .slick-dots {
+    text-align: center;
+    top: 100%
+}
+
+.product-detail .primary-images .product-images:not(.slick-slider):not(.slick-dotted) {
+    padding-bottom: 56px
+}
+
+.product-detail .alert-primary {
+    background-color: #98c5e9;
+    border: none;
+    border-radius: 8px;
+    color: #001838;
+    line-height: 24px;
+    font: 700 16px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 2;
+    padding: 25px 60px 25px 30px
+}
+
+.product-detail .alert-secondary {
+    background-color: #dde6ed;
+    border: 0;
+    color: #001838
+}
+
+.product-detail .product-name {
+    font: 500 29px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .29px;
+    line-height: 1.19;
+    text-transform: capitalize
+}
+
+.product-detail .tags {
+    margin-left: 10px
+}
+
+.product-detail .product-collapse-wrapper--no-bottom {
+    border-bottom: 0
+}
+
+.product-detail .product-collapse {
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    color: #3bd6ff;
+    cursor: pointer;
+    cursor: text;
+    display: inline-flex;
+    font: 700 14px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    font: 700 21px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    justify-content: center;
+    letter-spacing: .14px;
+    letter-spacing: .21px;
+    line-height: 1.22;
+    margin: 0;
+    outline: none;
+    padding: 20px 10px 20px 0;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .3s ease-in-out;
+    transition-property: color, background-color, border-color;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    vertical-align: top
+}
+
+.product-detail .product-collapse:active,
+.product-detail .product-collapse:focus {
+    outline: none
+}
+
+.product-detail .product-collapse svg:not([class*=a-icon]),
+.product-detail .product-collapse svg:not([class*=a-icon])>* {
+    fill: currentColor;
+    stroke: currentColor
+}
+
+.product-detail .product-collapse circle,
+.product-detail .product-collapse path,
+.product-detail .product-collapse svg {
+    transition-duration: .3s;
+    transition-property: fill, stroke;
+    transition-timing-function: ease-in-out
+}
+
+.product-detail .product-collapse defs circle,
+.product-detail .product-collapse defs path,
+.product-detail .product-collapse defs svg {
+    transition-duration: 0ms
+}
+
+.product-detail .product-collapse.collapsed .line:nth-child(2) {
+    opacity: 1
+}
+
+.product-detail .swatch-text {
+    white-space: nowrap
+}
+
+.product-detail .swatch-color-column,
+.product-detail [data-attr=badge] .swatch-badge-column,
+.product-detail [data-attr=badge] .swatch-font-column,
+[data-attr=badge] .product-detail .swatch-badge-column,
+[data-attr=badge] .product-detail .swatch-font-column {
+    margin-bottom: 16px;
+    margin-right: 16px
+}
+
+.product-detail .product-collapse__indicator {
+    height: 12px;
+    width: 12px
+}
+
+.product-detail .product-collapse__indicator .line {
+    background-color: #3bd6ff;
+    height: 1px;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    width: 100%
+}
+
+.product-detail .product-collapse__indicator .line:nth-child(2) {
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) rotate(90deg);
+    transition: opacity .3s ease-in-out
+}
+
+.product-detail .product-category {
+    color: #001838;
+    font: 700 13px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 14px;
+    line-height: 18px;
+    margin-bottom: 6px;
+    text-transform: uppercase
+}
+
+@media only screen and (min-width:768px) {
+    .product-detail .product-category {
+        margin-bottom: 11px
+    }
+}
+
+.product-detail .product-accordion-content,
+.product-detail .product-click-and-collect-msg,
+.product-detail .product-description {
+    color: #001838;
+    font: 400 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 1.63;
+    margin-top: 25px
+}
+
+.product-detail .product-click-and-collect-msg--premium,
+.product-detail .product-description--premium {
+    color: #999
+}
+
+.product-detail .product-click-and-collect-msg {
+    margin: 32px 0
+}
+
+.product-detail .product-click-and-collect-msg .click-and-collect_available {
+    color: #2fdca5
+}
+
+.product-detail .product-accordion-title {
+    color: #001838;
+    font: 700 23px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .23px;
+    letter-spacing: .46px;
+    line-height: 1.33;
+    text-transform: uppercase
+}
+
+.product-detail .product-accordion-title:after {
+    background-image: url(../images/chevron-down.svg);
+    background-size: auto auto;
+    background-size: initial
+}
+
+.product-detail .pdp-accordion {
+    margin-bottom: 50px
+}
+
+.product-detail .accordion-item,
+.product-detail .accordion-item:last-child {
+    border-color: #dde6ed
+}
+
+.product-detail .pdp-accordion--premium.accordion-item {
+    border-color: hsla(0, 0%, 100%, .2)
+}
+
+.product-detail .pdp-accordion--premium .product-accordion-title {
+    color: #3bd6ff
+}
+
+.product-detail .pdp-accordion--premium .product-accordion-title:after {
+    background-image: url(../images/chevron-down-city-blue.svg)
+}
+
+.product-detail .pdp-accordion--premium .product-accordion-content {
+    color: #999
+}
+
+.product-detail .pdp-accordion--premium .product-accordion-content ul li:before {
+    background-image: url(../images/check-city-blue.svg)
+}
+
+.product-detail .product-preorder-text .product-stock-message {
+    color: #999;
+    font: 400 13px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 1.71;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    text-align: left;
+    text-transform: none
+}
+
+@media only screen and (min-width:992px) {
+    .product-detail .product-preorder-text .product-stock-message {
+        margin-top: 20px
+    }
+}
+
+.product-detail .add-to-cart-global,
+.product-detail .pdp-checkout-button .add-to-cart {
+    font: 700 16px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    height: auto;
+    letter-spacing: normal;
+    line-height: 24px;
+    padding: 10px
+}
+
+.product-detail .swatch-scroll-container {
+    margin: 13px -10px 10px;
+    overflow-y: hidden;
+    width: auto
+}
+
+@media only screen and (min-width:768px) {
+    .product-detail .swatch-scroll-container {
+        margin-top: 16px
+    }
+}
+
+.product-detail .swatch-scroll-container .swatch-color-column .swatch-square.selected,
+.product-detail .swatch-scroll-container [data-attr=badge] .swatch-badge-column .swatch-square.selected,
+.product-detail .swatch-scroll-container [data-attr=badge] .swatch-font-column .swatch-square.selected,
+[data-attr=badge] .product-detail .swatch-scroll-container .swatch-badge-column .swatch-square.selected,
+[data-attr=badge] .product-detail .swatch-scroll-container .swatch-font-column .swatch-square.selected {
+    border-color: #000;
+    border-color: var(--size-swatch-selected-border-color)
+}
+
+.product-detail .swatch-scroll-container .swatch-size-column {
+    flex: 1;
+    flex-grow: 0;
+    font: 700 21px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    height: 40px;
+    letter-spacing: .21px;
+    line-height: 1.22;
+    line-height: 1;
+    margin: 0;
+    min-width: 60px;
+    padding: 0;
+    text-transform: uppercase;
+    width: 100%
+}
+
+.product-detail .swatch-scroll-container .swatch-size-column:last-of-type {
+    margin-right: 0
+}
+
+.product-detail .swatch-scroll-container .swatch-size-column .swatch-square {
+    font: 700 14px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 20px
+}
+
+.product-detail .swatch-scroll-container .swatch-size-column .swatch-square.selectable {
+    border-color: #001838;
+    color: #001838
+}
+
+.product-detail .swatch-scroll-container .swatch-size-column .swatch-square.selected,
+.product-detail .swatch-scroll-container .swatch-size-column .swatch-square:hover {
+    background-color: #001838;
+    color: #fff
+}
+
+.product-detail .swatch-scroll-container .swatch-size-column .swatch-square.unselectable {
+    background: linear-gradient(to bottom left, transparent calc(50% - 1px), #dde6ed calc(50% - 1px), #dde6ed 50%, transparent 0) transparent
+}
+
+.product-detail .swatch-scroll-container .swatch-size-column .swatch-scaler {
+    padding: 19px
+}
+
+.product-detail .swatch-scroll-container .swatch-size-column .swatch-premium {
+    transition: border-color .3s ease-in-out, color .3s ease-in-out
+}
+
+.product-detail .swatch-scroll-container .swatch-size-column .swatch-premium.selectable {
+    background-color: transparent;
+    border-color: hsla(0, 0%, 100%, .2);
+    color: #999
+}
+
+.product-detail .swatch-scroll-container .swatch-size-column .swatch-premium.selected,
+.product-detail .swatch-scroll-container .swatch-size-column .swatch-premium:hover {
+    background-color: transparent;
+    border-color: #fff
+}
+
+.product-detail .swatch-scroll-container .swatch-premium.unselectable {
+    background-color: hsla(0, 0%, 100%, .2);
+    border-color: #dde6ed;
+    cursor: not-allowed;
+    opacity: .2;
+    pointer-events: none
+}
+
+.product-detail .swatch-scroll-container:after,
+.product-detail .swatch-scroll-container:before {
+    display: none
+}
+
+.product-detail .product-detail-shipping-wrap {
+    color: #001838;
+    font: 400 13px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 1.71;
+    list-style: none;
+    margin-top: 30px;
+    padding-left: 0
+}
+
+.product-detail .product-detail-shipping-wrap li {
+    padding-bottom: 10px
+}
+
+.product-detail .product-detail-shipping-usp--premium br {
+    display: none
+}
+
+.product-detail .product-detail-shipping-usp--premium .product-detail-shipping-wrap {
+    color: #999
+}
+
+.product-detail .set-item+.set-item {
+    margin-top: 27px
+}
+
+.product-detail .set-item .swatch-color-column,
+.product-detail .set-item [data-attr=badge] .swatch-badge-column,
+.product-detail .set-item [data-attr=badge] .swatch-font-column,
+[data-attr=badge] .product-detail .set-item .swatch-badge-column,
+[data-attr=badge] .product-detail .set-item .swatch-font-column {
+    padding: 0
+}
+
+.product-detail .set-item.customise-product-collapsed #nameNumber,
+.product-detail .set-item.customise-product-collapsed .product-collapse,
+.product-detail .set-item.customise-product-collapsed [data-attr=badge],
+.product-detail .set-item.customise-product-collapsed [data-attr=font] {
+    display: none
+}
+
+.product-detail .set-item.customise-product:first-child .set-item-top {
+    flex-direction: column
+}
+
+.product-detail .set-item.customise-product:first-child .primary-images {
+    width: 100%
+}
+
+.product-detail .set-item.customise-product .set-item-detail {
+    max-width: none
+}
+
+.product-detail .set-item .flip-button__wrapper {
+    margin-top: 20px !important
+}
+
+.product-detail .set-item-top {
+    display: flex;
+    gap: 20px
+}
+
+.product-detail .set-item-detail>div:last-child {
+    flex-wrap: wrap
+}
+
+.product-detail .set-item-image img {
+    background-color: transparent;
+    padding: 8px
+}
+
+.product-detail .set-item .product-name {
+    font-size: 22px;
+    line-height: 1.3;
+    text-transform: none;
+    white-space: normal
+}
+
+.product-detail .set-item .product-brand {
+    font: 700 21px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .21px;
+    line-height: 1.22
+}
+
+.product-detail .set-item .valid-cart-error {
+    margin-top: 5px
+}
+
+.product-detail .set-item .attribute,
+.product-detail .set-item .prices .price {
+    font: 500 23px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .23px;
+    line-height: 1.33
+}
+
+.product-detail .set-item .attribute__label {
+    display: block;
+    padding-bottom: 5px
+}
+
+.product-detail .set-item .attribute .color,
+.product-detail .set-item .attribute .select-block,
+.product-detail .set-item .attribute .size {
+    display: block
+}
+
+.product-detail .set-item .attribute .select-block {
+    margin: 0
+}
+
+.product-detail .set-item .attribute .select-toggle {
+    height: 48px
+}
+
+.product-detail .set-item .laybuy-text {
+    display: none
+}
+
+.product-detail .set-item [data-attr] {
+    flex: 1 0 100%;
+    margin-top: 5px;
+    max-width: none
+}
+
+.product-detail .set-item [data-attr=size] {
+    margin-top: 20px;
+    order: 1
+}
+
+.product-detail .set-item [data-attr=color] {
+    margin-top: 20px;
+    order: 2
+}
+
+.product-detail .set-item .product-detail-set-col-1 [data-attr=size],
+.product-detail .set-item [data-attr=font] {
+    display: none
+}
+
+.product-detail .set-item .product-detail-set-col-1 [data-attr=color] {
+    padding-left: 0
+}
+
+.product-detail .set-item .product-detail-set-col-1 [data-attr=color] .color {
+    padding-left: 10px
+}
+
+.product-detail .set-item .product-detail-set-col-1 [data-attr=color] .color-value.selected {
+    border-color: #001838
+}
+
+.product-detail .set-item .product-detail-set-col-1 [data-attr=color] .swatch-scroll-container .swatch-color-column,
+.product-detail .set-item .product-detail-set-col-1 [data-attr=color] .swatch-scroll-container [data-attr=badge] .swatch-badge-column,
+.product-detail .set-item .product-detail-set-col-1 [data-attr=color] .swatch-scroll-container [data-attr=badge] .swatch-font-column,
+[data-attr=badge] .product-detail .set-item .product-detail-set-col-1 [data-attr=color] .swatch-scroll-container .swatch-badge-column,
+[data-attr=badge] .product-detail .set-item .product-detail-set-col-1 [data-attr=color] .swatch-scroll-container .swatch-font-column {
+    padding-bottom: 5px
+}
+
+.product-detail .set-item .product-detail-set-col-1 [data-attr=color] .swatch-scroll-container .swatch-color-column:nth-child(3n),
+.product-detail .set-item .product-detail-set-col-1 [data-attr=color] .swatch-scroll-container [data-attr=badge] .swatch-badge-column:nth-child(3n),
+.product-detail .set-item .product-detail-set-col-1 [data-attr=color] .swatch-scroll-container [data-attr=badge] .swatch-font-column:nth-child(3n),
+[data-attr=badge] .product-detail .set-item .product-detail-set-col-1 [data-attr=color] .swatch-scroll-container .swatch-badge-column:nth-child(3n),
+[data-attr=badge] .product-detail .set-item .product-detail-set-col-1 [data-attr=color] .swatch-scroll-container .swatch-font-column:nth-child(3n) {
+    padding-right: 0
+}
+
+.product-detail-set-total {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    margin-top: 75px;
+    text-transform: uppercase
+}
+
+.product-detail-set-total .price {
+    font-weight: 500
+}
+
+.product-detail.product-detail--premium,
+.product-detail.product-detail--premium .flip-btn__text,
+.product-detail.product-detail--premium .prices .price,
+.product-detail.product-detail--premium .prices .sales {
+    color: #fff
+}
+
+.product-detail.product-detail--premium .attribute__label {
+    color: #98c5e9
+}
+
+.product-detail.product-detail--premium .set-item .product-brand,
+.product-detail.product-detail--premium .set-item .product-name {
+    color: #fff
+}
+
+.product-detail.product-set-detail .set-item .enable-customisable-options {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    margin-top: 12px
+}
+
+.product-detail.product-set-detail .set-item .name-number-label {
+    color: #001838;
+    color: var(--customisable-labels);
+    font-size: 18px;
+    padding-bottom: 5px
+}
+
+.product-detail.product-set-detail .set-item .primary-images {
+    padding-right: 0;
+    width: 150px
+}
+
+.product-detail.product-set-detail .set-item .prices .price {
+    display: flex;
+    font-size: 18px
+}
+
+.product-detail.product-set-detail .set-item .attribute__label {
+    font-size: 18px
+}
+
+.product-detail.product-set-detail .set-item .color-value {
+    background-color: #f3f6f9;
+    background-color: var(--color-swatch-background-color)
+}
+
+.product-detail .make-it-yours {
+    border: 1px solid hsla(0, 0%, 100%, .2);
+    box-sizing: border-box;
+    display: flex;
+    font: 700 16px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    height: 60px;
+    letter-spacing: normal;
+    line-height: 2;
+    margin-top: 18px;
+    width: 100%
+}
+
+.product-detail .make-it-yours a {
+    align-items: center;
+    display: flex;
+    font-size: 16px;
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%
+}
+
+.product-detail .make-it-yours .btn__icon {
+    display: flex;
+    flex-direction: row-reverse
+}
+
+.product-detail .make-it-yours .t-shirt {
+    margin-right: 2px;
+    margin-top: -4px
+}
+
+.product-detail--premium .product-click-and-collect-msg--premium,
+.product-detail--premium .product-description--premium {
+    color: #dde6ed
+}
+
+.product-detail--premium .pdp-breadcrumbs .arrow {
+    border: solid #3bd6ff;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    margin: 0 6px 0 4px;
+    padding: 1.5px;
+    transform: rotate(-45deg)
+}
+
+.product-detail--premium .form-group--active .form-label {
+    color: #3bd6ff
+}
+
+.product-detail--premium .pdp-accordion--premium.accordion-item {
+    border-color: hsla(0, 0%, 100%, .2)
+}
+
+.product-detail--premium .pdp-accordion--premium .product-accordion-title {
+    color: #3bd6ff
+}
+
+.product-detail--premium .pdp-accordion--premium .product-accordion-title:after {
+    background-image: url(../images/chevron-down-city-blue.svg)
+}
+
+.product-detail--premium .pdp-accordion--premium .product-accordion-content {
+    color: #dde6ed
+}
+
+.product-detail--premium .pdp-accordion--premium .product-accordion-content ul li:before {
+    background-image: url(../images/check-city-blue.svg)
+}
+
+.product-detail--premium .pdp-accordion--premium .product-accordion-content p a {
+    background-color: #fff;
+    padding-bottom: 6px;
+    padding-top: 6px
+}
+
+@media only screen and (max-width:767px) {
+    .product-detail--premium .pdp-accordion--premium .product-accordion-content p a {
+        padding-bottom: 20px;
+        padding-top: 15px
+    }
+}
+
+.product-detail--premium .pdp-accordion--premium .product-accordion-content p a img {
+    padding: 6px;
+    width: 100%
+}
+
+.product-detail--premium .swatch-scroll-container .swatch-size-column .swatch-premium {
+    transition: color, background-color .3s ease-in-out, color .3s ease-in-out
+}
+
+.product-detail--premium .swatch-scroll-container .swatch-size-column .swatch-premium.selectable {
+    background-color: transparent;
+    border-color: rgba(221, 230, 237, .4);
+    color: #fff
+}
+
+.product-detail--premium .swatch-scroll-container .swatch-size-column .swatch-premium.selected {
+    background-color: #fff;
+    border-color: #fff !important;
+    color: #001838
+}
+
+@media only screen and (min-width:1200px) {
+    .product-detail--premium .swatch-scroll-container .swatch-size-column .swatch-premium:hover {
+        background-color: #fff;
+        border-color: #fff;
+        color: #fff
+    }
+
+    .product-detail--premium .swatch-scroll-container .swatch-size-column .swatch-premium:hover .text-color {
+        color: #001838
+    }
+}
+
+.product-detail--premium .swatch-scroll-container .swatch-premium.unselectable {
+    background: linear-gradient(to bottom left, transparent calc(50% - 1px), #dde6ed calc(50% - 1px), #dde6ed 50%, transparent 0) transparent;
+    border-color: #dde6ed;
+    cursor: not-allowed;
+    opacity: .2;
+    pointer-events: none
+}
+
+.product-detail--premium .product-detail-shipping-usp--premium br {
+    display: none
+}
+
+.product-detail--premium .product-detail-shipping-usp--premium .product-detail-shipping-wrap {
+    color: #fff;
+}
+
+.product-detail--premium .product-detail-shipping-usp--premium svg path {
+    stroke: #3bd6ff
+}
+
+.product-detail--premium.product-detail--premium {
+    color: #fff
+}
+
+.product-detail--premium.product-detail--premium .product-img-wrapper a img {
+    background-color: transparent
+}
+
+.product-detail--premium.product-detail--premium .product-category {
+    color: #3bd6ff
+}
+
+.product-detail--premium.product-detail--premium .dark {
+    opacity: .5
+}
+
+.product-detail--premium.product-detail--premium .alert-primary {
+    background-color: #3bd6ff
+}
+
+.product-detail--premium.product-detail--premium .set-item .prices .price,
+.product-detail--premium.product-detail--premium .set-item .prices .sales,
+.product-detail--premium.product-detail--premium .set-item .product-brand,
+.product-detail--premium.product-detail--premium .set-item .product-name {
+    color: #fff
+}
+
+.product-detail--premium.product-detail--premium .set-item .attribute__label {
+    color: #3bd6ff
+}
+
+.product-detail--premium.product-detail--premium .set-item .color-value {
+    background-color: transparent
+}
+
+.product-detail--premium.product-detail--premium .set-item .color-value.selected {
+    border-color: #fff
+}
+
+.product-detail--premium .icon--flip {
+    margin-top: 8px
+}
+
+.product-detail--premium .flip-btn__text {
+    font: 700 16px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 2;
+    line-height: 225%
+}
+
+.product-set-image-container {
+    flex-grow: 1
+}
+
+.product-set-image-container .primary-images {
+    padding-right: 0
+}
+
+@media only screen and (min-width:768px) {
+    .product-set-image-container {
+        flex-direction: row;
+        padding-left: 10px;
+        padding-right: 10px
+    }
+}
+
+.product-set-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1280px;
+    padding-top: 60px;
+    width: 100%
+}
+
+@media only screen and (min-width:768px) {
+    .product-set-container {
+        flex-direction: row;
+        gap: 35px
+    }
+}
+
+.product-set-container .swatch-square.color-value {
+    border: 1px solid transparent
+}
+
+.product-set-container .premium-product-carousel__canvas {
+    display: block;
+    height: auto;
+    width: 100%
+}
+
+.product-set-container .product-patches {
+    grid-column-gap: 20px;
+    -moz-column-gap: 20px;
+    column-gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr
+}
+
+.product-set-container .badge {
+    padding: 0
+}
+
+.product-set-container .swatch-scroll-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 0;
+    overflow-x: visible;
+    overflow-x: initial;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: calc(100% + 20px)
+}
+
+.product-set-container .swatch-scroll-container:after,
+.product-set-container .swatch-scroll-container:before {
+    display: none
+}
+
+.product-set-container .swatch-scroll-container .swatch-size-column {
+    margin: 0
+}
+
+.product-set-container [data-attr=size] .swatch-scroll-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr)
+}
+
+@media only screen and (min-width:768px) {
+    .product-set-container [data-attr=size] .swatch-scroll-container {
+        grid-template-columns: repeat(5, 1fr)
+    }
+}
+
+.product-set-container [data-attr=size] .swatch-size-column {
+    width: 100%
+}
+
+.product-set-products-container {
+    padding-left: 10px;
+    padding-right: 10px
+}
+
+@media only screen and (min-width:768px) {
+    .product-set-products-container {
+        width: 400px
+    }
+}
+
+.product-detail #personalizationCanvas,
+.product-detail .product-images .product-img-wrapper a img,
+.product-detail .set-item-image img {
+    background-color: #fff;
+    background-color: #fff;
+    /* background-color: var(--image-background-color) */
+}
+
+.product-set-detail.product-detail--premium .product-detail-set-size-chart {
+    border-top-color: #dde6ed;
+    padding-bottom: 0;
+    padding-top: 0
+}
+
+.product-set-detail.product-detail--premium .product-detail-set-size-chart .product-accordion-title {
+    color: black;
+    font: 700 23px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .23px;
+    letter-spacing: .46px;
+    line-height: 1.33;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    text-transform: uppercase
+}
+
+.product-set-detail.product-detail--premium .product-detail-set-size-chart .product-accordion-title:after {
+    display: none
+}
+
+.product-set-detail.product-detail--premium .product-detail-set-size-chart:after {
+    background-image: url(../images/chevron-down.svg);
+    background-image: var(--size-chart-arrow);
+    background-size: 18px;
+    top: 50%;
+    transform: translateY(-50%) rotate(270deg)
+}
+
+.product-set-detail.product-detail--premium .product-detail-set-size-chart .nav-tabs {
+    margin: 0
+}
+
+.product-set-detail.product-detail--premium .product-detail-set-size-chart .nav-tabs .nav-item {
+    margin-bottom: 0;
+    padding: 0;
+    position: inherit
+}
+
+.set-top-info-mobile {
+    padding-left: 10px;
+    padding-right: 10px
+}
+
+.attribute .size-chart {
+    font: 400 13px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 1.71;
+    text-transform: none
+}
+
+.attribute .size-chart>a {
+    color: #69738c;
+    text-decoration: none
+}
+
+.attribute .size-chart .product-detail__size-chart-modal {
+    color: #001838
+}
+
+.attribute .size-chart .table-striped tbody tr:nth-of-type(odd) {
+    background: #dde6ed
+}
+
+.attribute .size-chart .table td,
+.attribute .size-chart .table th {
+    border-top: 1px solid rgba(105, 115, 140, .5)
+}
+
+.attribute .select-size {
+    background: url(../images/chevron-down.svg) no-repeat right 22px center/18px 10px;
+    border-color: #001838;
+    border-radius: 0;
+    color: #001838;
+    font: 700 23px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    height: 60px;
+    letter-spacing: .23px;
+    line-height: 1.33;
+    text-align: center;
+    -moz-text-align-last: center;
+    text-align-last: center;
+    text-transform: uppercase
+}
+
+.attribute .premium-attributes .select-size {
+    background: url(../images/chevron-down-white.svg) no-repeat right 22px center/18px 10px;
+    border-color: #fff;
+    color: #fff
+}
+
+.attribute .badge,
+.attribute .size {
+    display: inline-block;
+    font: 700 21px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .21px;
+    line-height: 1.22;
+    padding-bottom: 0;
+    padding-top: 0;
+    text-align: left;
+    text-transform: uppercase
+}
+
+.attribute .swatch-items-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start
+}
+
+.attribute__label {
+    color: #001838;
+    font: 700 21px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .21px;
+    line-height: 1.22;
+    text-transform: uppercase;
+    vertical-align: sub
+}
+
+.product__attributes .order-font {
+    order: 0
+}
+
+.product__attributes .order-badge {
+    order: 1
+}
+
+.product__attributes .order-size {
+    order: 2
+}
+
+.product__attributes .order-color {
+    order: 3
+}
+
+[data-attr=font] .swatch-font-column .swatch-font {
+    align-items: center;
+    border: 1px solid rgba(221, 230, 237, .4);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font: 700 13px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    justify-content: center;
+    letter-spacing: normal;
+    line-height: 14px;
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color .3s ease-in-out;
+    width: 100%
+}
+
+@media only screen and (max-width:991px) {
+    [data-attr=font] .swatch-font-column .swatch-font {
+        padding-bottom: 10px;
+        padding-top: 10px
+    }
+}
+
+[data-attr=font] .swatch-font-column .swatch-font .badge__text {
+    align-items: center;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    min-height: 28px;
+    transition: color .3s ease-in-out
+}
+
+@media only screen and (min-width:1200px) {
+    [data-attr=font] .swatch-font-column .swatch-font .badge__text {
+        min-height: 42px
+    }
+}
+
+[data-attr=font] .swatch-font-column .swatch-font.selected:not(.unselectable),
+[data-attr=font] .swatch-font-column .swatch-font:hover:not(.unselectable) {
+    background-color: #fff;
+    border-color: #fff
+}
+
+[data-attr=font] .swatch-font-column .swatch-font.selected:not(.unselectable) .badge__text,
+[data-attr=font] .swatch-font-column .swatch-font:hover:not(.unselectable) .badge__text {
+    color: #001838
+}
+
+[data-attr=size] .swatch-items-container {
+    grid-gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr))
+}
+
+[data-attr=badge] .swatch-badge-column .swatch-square,
+[data-attr=badge] .swatch-font-column .swatch-square {
+    border: 1px solid #00080d;
+    font: 400 21px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .21px;
+    line-height: 1.29
+}
+
+[data-attr=badge] .swatch-badge-column .swatch-square.selectable,
+[data-attr=badge] .swatch-font-column .swatch-square.selectable {
+    border-color: #001838;
+    color: #001838
+}
+
+[data-attr=badge] .swatch-badge-column .swatch-square.selected,
+[data-attr=badge] .swatch-font-column .swatch-square.selected {
+    background-color: #001838;
+    color: #fff
+}
+
+[data-attr=badge] .radio-badge__label {
+    padding: 16px 20px
+}
+
+@media only screen and (max-width:991px) {
+    [data-attr=badge] .radio-badge__label {
+        padding: 10px
+    }
+}
+
+[data-attr=badge] .radio-badge__label .badge__text {
+    min-height: 28px
+}
+
+@media only screen and (min-width:1200px) {
+    [data-attr=badge] .radio-badge__label .badge__text {
+        min-height: 42px
+    }
+}
+
+.product-detail--premium [data-attr=badge] .swatch-badge-column .swatch-premium.selectable,
+.product-detail--premium [data-attr=badge] .swatch-font-column .swatch-premium.selectable {
+    background-color: transparent;
+    border-color: hsla(0, 0%, 100%, .2);
+    color: #999
+}
+
+.product-detail--premium [data-attr=badge] .swatch-badge-column .swatch-premium.selected,
+.product-detail--premium [data-attr=badge] .swatch-badge-column .swatch-premium:hover,
+.product-detail--premium [data-attr=badge] .swatch-font-column .swatch-premium.selected,
+.product-detail--premium [data-attr=badge] .swatch-font-column .swatch-premium:hover {
+    background-color: transparent;
+    border-color: #fff
+}
+
+.product-detail--premium .attribute .size-chart>a {
+    color: #dde6ed
+}
+
+.prices .price {
+    font: 500 23px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .23px;
+    line-height: 1.06
+}
+
+.prices .price .sales {
+    color: #000824;
+    vertical-align: middle
+}
+
+.prices .price .strike-through {
+    color: #69738c;
+    font: 400 13px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 1.71
+}
+
+.prices--premium .price,
+.prices--premium .price .sales {
+    color: #fff
+}
+
+.quantity-buttons {
+    border: 1px solid #001838
+}
+
+.quantity-buttons .btn {
+    min-height: 0;
+    min-height: auto;
+    min-width: 0;
+    min-width: auto
+}
+
+.quantity-buttons .selected-quantity {
+    width: 34px
+}
+
+.quantity-buttons .quantity-change {
+    padding: 23px
+}
+
+.quantity-buttons-premium {
+    border-color: #fff
+}
+
+.quantity-buttons-premium .quantity-change svg path {
+    stroke: #fff
+}
+
+.premium-product-carousel__image {
+    margin: 0 auto
+}
+
+@media only screen and (max-width:1199px) {
+    .premium-product-carousel__canvas {
+        width: 100%
+    }
+}
+
+.premium-product-carousel__slide.set-item-image {
+    max-width: 100%
+}
+
+.product-detail__size-chart-modal .modal-body h1,
+.product-detail__size-chart-modal .modal-body h2,
+.product-detail__size-chart-modal .modal-body h3,
+.product-detail__size-chart-modal .modal-body h4,
+.product-detail__size-chart-modal .modal-body h5,
+.product-detail__size-chart-modal .modal-body h6 {
+    color: #001838;
+    margin-bottom: 30px
+}
+
+@media only screen and (min-width:992px) {
+
+    .product-detail__size-chart-modal .modal-body h1,
+    .product-detail__size-chart-modal .modal-body h2,
+    .product-detail__size-chart-modal .modal-body h3,
+    .product-detail__size-chart-modal .modal-body h4,
+    .product-detail__size-chart-modal .modal-body h5,
+    .product-detail__size-chart-modal .modal-body h6 {
+        margin-bottom: 60px
+    }
+}
+
+.product-detail__size-chart-modal .modal-body h1+p,
+.product-detail__size-chart-modal .modal-body h2+p,
+.product-detail__size-chart-modal .modal-body h3+p,
+.product-detail__size-chart-modal .modal-body h4+p,
+.product-detail__size-chart-modal .modal-body h5+p,
+.product-detail__size-chart-modal .modal-body h6+p {
+    margin-top: 10px
+}
+
+.product-detail__size-chart-modal .modal-body h1,
+.product-detail__size-chart-modal .modal-body h2,
+.product-detail__size-chart-modal .modal-body h3,
+.product-detail__size-chart-modal .modal-body h4,
+.product-detail__size-chart-modal .modal-body h5,
+.product-detail__size-chart-modal .modal-body h6 {
+    font: 500 33px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .33px;
+    line-height: 1.19;
+    margin-bottom: 25px;
+    text-transform: none
+}
+
+.product-detail__size-chart-modal .modal-body h1:not(:first-of-type),
+.product-detail__size-chart-modal .modal-body h2:not(:first-of-type),
+.product-detail__size-chart-modal .modal-body h3:not(:first-of-type),
+.product-detail__size-chart-modal .modal-body h4:not(:first-of-type),
+.product-detail__size-chart-modal .modal-body h5:not(:first-of-type),
+.product-detail__size-chart-modal .modal-body h6:not(:first-of-type) {
+    margin-top: 50px
+}
+
+@media only screen and (min-width:992px) {
+
+    .product-detail__size-chart-modal .modal-body h1,
+    .product-detail__size-chart-modal .modal-body h2,
+    .product-detail__size-chart-modal .modal-body h3,
+    .product-detail__size-chart-modal .modal-body h4,
+    .product-detail__size-chart-modal .modal-body h5,
+    .product-detail__size-chart-modal .modal-body h6 {
+        font: 500 33px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+        letter-spacing: .33px;
+        line-height: 1.19;
+        margin-bottom: 25px;
+        text-transform: none
+    }
+
+    .product-detail__size-chart-modal .modal-body h1:not(:first-of-type),
+    .product-detail__size-chart-modal .modal-body h2:not(:first-of-type),
+    .product-detail__size-chart-modal .modal-body h3:not(:first-of-type),
+    .product-detail__size-chart-modal .modal-body h4:not(:first-of-type),
+    .product-detail__size-chart-modal .modal-body h5:not(:first-of-type),
+    .product-detail__size-chart-modal .modal-body h6:not(:first-of-type) {
+        margin-top: 85px
+    }
+}
+
+.product-detail__size-chart-modal .modal-body .nav-tabs .nav-link {
+    color: #001838;
+    text-decoration: none
+}
+
+.product-detail__size-chart-modal .modal-body .nav-tabs .nav-link.active {
+    border-bottom-color: #001838
+}
+
+.product-detail__size-chart-modal .modal-body .sizechart {
+    overflow: auto
+}
+
+.product-detail__size-chart-modal .modal-body table tbody tr th,
+.s-rich-text {
+    color: #001838
+}
+
+.s-rich-text {
+    font: 400 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 1.63
+}
+
+@media only screen and (min-width:992px) {
+    .s-rich-text {
+        font: 400 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+        letter-spacing: normal;
+        line-height: 1.63
+    }
+}
+
+.s-rich-text ul {
+    font: 400 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 1.63;
+    list-style: none;
+    margin: 0;
+    padding-left: 20px
+}
+
+@media only screen and (min-width:992px) {
+    .s-rich-text ul {
+        font: 400 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+        letter-spacing: normal;
+        line-height: 1.63
+    }
+}
+
+.s-rich-text ul.arrow>li:before {
+    content: "";
+    position: inherit
+}
+
+.s-rich-text ul>li:before {
+    color: #001838;
+    content: "\2022";
+    display: inline-block;
+    margin-left: -20px;
+    width: 15px
+}
+
+.s-rich-text li {
+    position: relative
+}
+
+.s-rich-text li+li {
+    margin-top: 10px
+}
+
+.s-rich-text strong {
+    font-weight: 700
+}
+
+@media only screen and (min-width:992px) {
+    .s-rich-text strong {
+        font-weight: 700
+    }
+}
+
+.s-rich-text p+ul {
+    margin-top: 10px
+}
+
+.s-rich-text p+h1,
+.s-rich-text p+h2,
+.s-rich-text p+h3,
+.s-rich-text p+h4,
+.s-rich-text p+h5,
+.s-rich-text p+h6 {
+    margin-top: 12px
+}
+
+.s-rich-text h1,
+.s-rich-text h2,
+.s-rich-text h3 {
+    margin-top: 30px
+}
+
+@media only screen and (min-width:992px) {
+
+    .s-rich-text h1,
+    .s-rich-text h2,
+    .s-rich-text h3 {
+        margin-top: 48px
+    }
+}
+
+.s-rich-text h1,
+.s-rich-text h2,
+.s-rich-text h3,
+.s-rich-text h4,
+.s-rich-text h5,
+.s-rich-text h6 {
+    color: #001838;
+    margin-bottom: 30px
+}
+
+@media only screen and (min-width:992px) {
+
+    .s-rich-text h1,
+    .s-rich-text h2,
+    .s-rich-text h3,
+    .s-rich-text h4,
+    .s-rich-text h5,
+    .s-rich-text h6 {
+        margin-bottom: 48px
+    }
+}
+
+.s-rich-text h1+p,
+.s-rich-text h2+p,
+.s-rich-text h3+p,
+.s-rich-text h4+p,
+.s-rich-text h5+p,
+.s-rich-text h6+p {
+    margin-top: 10px
+}
+
+.s-rich-text h1 {
+    font: 900 77px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .77px;
+    line-height: 1.01;
+    text-transform: uppercase
+}
+
+@media only screen and (min-width:992px) {
+    .s-rich-text h1 {
+        font: 900 177px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+        letter-spacing: 1.77px;
+        line-height: 1.01;
+        text-transform: uppercase
+    }
+}
+
+.s-rich-text h2 {
+    font: 900 57px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .57px;
+    line-height: 1.02;
+    text-transform: uppercase
+}
+
+@media only screen and (min-width:992px) {
+    .s-rich-text h2 {
+        font: 900 147px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+        letter-spacing: 1.47px;
+        line-height: 1.01;
+        text-transform: uppercase
+    }
+}
+
+.s-rich-text h3 {
+    font: 700 46px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: normal;
+    text-transform: uppercase
+}
+
+@media only screen and (min-width:992px) {
+    .s-rich-text h3 {
+        font: 700 56px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif
+    }
+}
+
+@media only screen and (min-width:1200px) {
+    .s-rich-text h3 {
+        font: 700 60px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif
+    }
+}
+
+.s-rich-text h4,
+.s-rich-text h5,
+.s-rich-text h6 {
+    font: 500 33px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .33px;
+    line-height: 1.19;
+    margin-bottom: 25px;
+    text-transform: none
+}
+
+.s-rich-text h4:not(:first-of-type),
+.s-rich-text h5:not(:first-of-type),
+.s-rich-text h6:not(:first-of-type) {
+    margin-top: 50px
+}
+
+@media only screen and (min-width:992px) {
+
+    .s-rich-text h4,
+    .s-rich-text h5,
+    .s-rich-text h6 {
+        font: 500 33px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+        letter-spacing: .33px;
+        line-height: 1.19;
+        margin-bottom: 25px;
+        text-transform: none
+    }
+
+    .s-rich-text h4:not(:first-of-type),
+    .s-rich-text h5:not(:first-of-type),
+    .s-rich-text h6:not(:first-of-type) {
+        margin-top: 85px
+    }
+}
+
+.s-rich-text img {
+    height: auto;
+    max-width: 100%
+}
+
+.s-rich-text h4 {
+    text-transform: uppercase
+}

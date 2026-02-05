@@ -1,0 +1,806 @@
+/* ===================================
+   Custom Styles for Apexto Mining Clone
+   =================================== */
+
+:root {
+    --primary-color: #25c385;
+    --primary-dark: #1a9768;
+    --secondary-color: #2c3e50;
+    --light-bg: #f7f7f7;
+    --light-green: #dff5e9;
+    --text-dark: #242424;
+    --text-muted: #767676;
+    --border-color: #e5e5e5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ===================================
+   Custom Grid - 5 Columns Layout
+   =================================== */
+.col-lg-20p {
+    flex: 0 0 auto;
+    width: 20%;
+}
+
+@media (max-width: 992px) {
+    .col-lg-20p {
+        width: 33.333333%;
+    }
+}
+
+@media (max-width: 768px) {
+    .col-lg-20p {
+        width: 50%;
+    }
+}
+
+/* ===================================
+   Promotional Banner
+   =================================== */
+.promo-banner {
+    background: var(--primary-color) !important;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* ===================================
+   Header Styles
+   =================================== */
+.main-header {
+    transition: all 0.3s ease;
+}
+
+.main-header .logo h3 {
+    font-size: 1.75rem;
+    letter-spacing: -0.5px;
+}
+
+.search-form input {
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+}
+
+.search-form input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(37, 195, 133, 0.15);
+}
+
+.header-icons a {
+    transition: all 0.3s ease;
+}
+
+.header-icons a:hover {
+    color: var(--primary-color) !important;
+}
+
+/* ===================================
+   Navigation Menu
+   =================================== */
+.main-nav {
+    background: #f9f9f9 !important;
+}
+
+.main-nav .nav-link {
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+    color: var(--text-dark) !important;
+}
+
+.main-nav .nav-link:hover {
+    color: var(--primary-color) !important;
+    background-color: rgba(37, 195, 133, 0.1);
+    border-radius: 6px;
+}
+
+.mega-menu {
+    min-width: 600px;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.mega-menu .dropdown-item {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.mega-menu .dropdown-item:hover {
+    background-color: var(--light-green);
+    color: var(--primary-color);
+    padding-left: 1.25rem;
+}
+
+/* ===================================
+   Hero Section
+   =================================== */
+.hero-section {
+    margin-top: 0;
+}
+
+.hero-slide {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+}
+
+.hero-content .btn {
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.hero-content .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ===================================
+   Product Cards
+   =================================== */
+.product-card {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+.product-card .product-image {
+    transition: all 0.3s ease;
+    border-radius: 12px 12px 0 0;
+}
+
+.product-card:hover .product-image {
+    background-color: var(--light-green) !important;
+}
+
+.product-card .badge {
+    font-weight: 600;
+    padding: 0.4rem 0.8rem;
+}
+
+.product-card .card-title {
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.product-specs div {
+    margin-bottom: 0.25rem;
+    color: var(--text-muted);
+}
+
+.product-card .price {
+    font-family: 'Poppins', sans-serif;
+}
+
+.product-card .btn {
+    font-size: 0.875rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.product-card .btn:hover {
+    transform: scale(1.05);
+}
+
+/* ===================================
+   Brand Cards
+   =================================== */
+.brand-card {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.brand-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
+    background-color: var(--light-green);
+}
+
+.brand-card .brand-logo i {
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.brand-card:hover .brand-logo i {
+    transform: scale(1.1);
+}
+
+/* ===================================
+   Benefit Cards
+   =================================== */
+.benefit-card {
+    transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+}
+
+.benefit-card .icon-circle {
+    transition: all 0.3s ease;
+}
+
+.benefit-card:hover .icon-circle {
+    transform: scale(1.1);
+}
+
+/* ===================================
+   Solution Cards
+   =================================== */
+.solution-card {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+}
+
+.solution-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+.solution-image {
+    transition: all 0.3s ease;
+}
+
+.solution-card:hover .solution-image i {
+    transform: scale(1.1);
+}
+
+/* ===================================
+   Section Headers
+   =================================== */
+.section-header h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+}
+
+/* ===================================
+   Footer Styles
+   =================================== */
+.footer {
+    margin-top: 5rem;
+}
+
+.footer h5,
+.footer h6 {
+    color: var(--text-dark);
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
+}
+
+.newsletter-form input {
+    border: 2px solid var(--border-color);
+}
+
+.newsletter-form input:focus {
+    border-color: var(--primary-color);
+    box-shadow: none;
+}
+
+.social-links .btn {
+    transition: all 0.3s ease;
+}
+
+.social-links .btn:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white !important;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--border-color);
+}
+
+/* ===================================
+   Newsletter Section
+   =================================== */
+.newsletter-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+}
+
+.newsletter-section input {
+    border: none;
+    padding: 1rem 1.5rem;
+}
+
+.newsletter-section .btn-light {
+    border: none;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.newsletter-section .btn-light:hover {
+    background-color: white;
+    color: var(--primary-dark);
+}
+
+/* ===================================
+   Utilities
+   =================================== */
+.hover-lift {
+    transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+}
+
+.bg-gradient {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+}
+
+/* ===================================
+   Bootstrap Overrides
+   =================================== */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.border-primary {
+    border-color: var(--primary-color) !important;
+}
+
+/* ===================================
+   Responsive Styles
+   =================================== */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .main-nav .nav {
+        flex-direction: column;
+    }
+
+    .product-card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* ===================================
+   Animations
+   =================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ===================================
+   Carousel Custom Styles
+   =================================== */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 20px;
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.carousel-indicators button.active {
+    background-color: white;
+}
+
+/* ===================================
+   Header - Promotional Banner
+   =================================== */
+.promo-banner {
+    background: #242424 !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.promo-text-slider {
+    overflow: hidden;
+    max-width: 600px;
+}
+
+.promo-slide a {
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+}
+
+.promo-slide a:hover {
+    color: var(--primary-color) !important;
+}
+
+.language-selector .dropdown-toggle {
+    font-size: 0.875rem;
+    padding: 0.25rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.language-selector .dropdown-menu {
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: none;
+}
+
+.language-selector .dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.language-selector .dropdown-item:hover {
+    background-color: var(--light-green);
+    color: var(--primary-color);
+}
+
+.language-selector .dropdown-item.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* ===================================
+   Header - Main Header
+   =================================== */
+.main-header {
+    z-index: 1000;
+}
+
+.main-header.sticky-top {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0;
+    align-items: center;
+}
+
+.navbar-nav .nav-item {
+    white-space: nowrap;
+    flex: 0 0 auto;
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 0.5rem 0.6rem;
+    transition: all 0.3s ease;
+    position: relative;
+    line-height: 1.2;
+    display: inline-block;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--primary-color);
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 80%;
+}
+
+/* Header Actions */
+.header-actions .btn-link {
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.header-actions .btn-link:hover {
+    color: var(--primary-color) !important;
+    transform: scale(1.1);
+}
+
+.cart-widget .badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.4rem;
+    font-weight: 600;
+}
+
+.cart-total {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+/* ===================================
+   Header - Mega Menu
+   =================================== */
+.mega-menu .dropdown-menu {
+    width: auto;
+    min-width: 900px;
+    max-width: 1200px;
+    border: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    padding: 0;
+}
+
+.mega-dropdown {
+    background-color: #fff;
+}
+
+.mega-dropdown h6 {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.mega-dropdown .dropdown-item {
+    font-size: 0.875rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.mega-dropdown .dropdown-item:hover {
+    background-color: var(--light-green);
+    color: var(--primary-color);
+    padding-left: 1rem;
+}
+
+.mega-dropdown .text-success {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.mega-dropdown .text-success:hover {
+    color: var(--primary-dark) !important;
+    padding-left: 0.5rem;
+}
+
+/* ===================================
+   Header - Offcanvas Drawers
+   =================================== */
+.offcanvas {
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.offcanvas-top {
+    height: auto !important;
+    max-height: 300px;
+}
+
+.offcanvas-header {
+    padding: 1.5rem;
+}
+
+.offcanvas-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.offcanvas-body {
+    padding: 1.5rem;
+}
+
+.offcanvas-footer {
+    background-color: #f9f9f9;
+}
+
+/* Search Offcanvas */
+#searchOffcanvas .input-group input {
+    border: 2px solid var(--border-color);
+    border-radius: 8px 0 0 8px;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+}
+
+#searchOffcanvas .input-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: none;
+}
+
+#searchOffcanvas .btn-primary {
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 2rem;
+}
+
+/* Account Offcanvas */
+#accountOffcanvas .account-menu a {
+    padding: 0.75rem 0;
+    display: block;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    padding-left: 0.5rem;
+}
+
+#accountOffcanvas .account-menu a:hover {
+    background-color: var(--light-green);
+    color: var(--primary-color) !important;
+    padding-left: 1rem;
+}
+
+#accountOffcanvas .account-login p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* Cart Offcanvas */
+#cartOffcanvas .cart-items {
+    min-height: 200px;
+}
+
+#cartOffcanvas .offcanvas-footer {
+    position: sticky;
+    bottom: 0;
+}
+
+/* Mobile Menu */
+#mobileMenu a {
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#mobileMenu a:hover {
+    color: var(--primary-color) !important;
+    padding-left: 0.5rem;
+}
+
+#mobileMenu .collapse a {
+    font-size: 0.9rem;
+}
+
+/* ===================================
+   Header - Responsive
+   =================================== */
+@media (max-width: 991px) {
+    .mega-menu .dropdown-menu {
+        min-width: 100%;
+    }
+
+    .navbar-nav {
+        padding: 1rem 0;
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .promo-banner {
+        font-size: 0.8rem;
+        padding: 0.5rem 0;
+    }
+
+    .cart-total {
+        display: none !important;
+    }
+
+    .header-actions {
+        gap: 1rem !important;
+    }
+}

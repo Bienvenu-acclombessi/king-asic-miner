@@ -1,0 +1,2649 @@
+@use "sass:map";
+
+.btn.filter-results:after,
+.filter-bar .filter-bar__active-filters .filter-value>a:after,
+.refinement-bar .filter-content .card-handle:after,
+.refinement-bar .filter-content .card-header:after,
+.refinement-bar .filter-content .filter-label:after,
+.search-results .breadcrumb-item:before,
+.search-results .refinement-bar .filter-content .card .card-header:after,
+.search-results .search-sort .select-toggle:after,
+[data-action=Search-Show] .breadcrumb-item:before {
+    background: transparent no-repeat 50%;
+    background-size: contain;
+    box-sizing: border-box;
+    display: inline-block;
+    transition: .2s ease 0s;
+    vertical-align: top
+}
+
+.swatch-circle-beige {
+    background: beige;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-beige.disabled {
+    opacity: .2
+}
+
+.swatch-filter-beige {
+    background: beige;
+    background-color: beige;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-beige.disabled {
+    opacity: .2
+}
+
+.swatch-circle-black {
+    background: #000;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-black.disabled {
+    opacity: .2
+}
+
+.swatch-filter-black {
+    background: #000;
+    background-color: #000;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-black.disabled {
+    opacity: .2
+}
+
+.swatch-circle-blue {
+    background: #0070d2;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-blue.disabled {
+    opacity: .2
+}
+
+.swatch-filter-blue {
+    background: #0070d2;
+    background-color: #0070d2;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-blue.disabled {
+    opacity: .2
+}
+
+.swatch-circle-brown {
+    background: brown;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-brown.disabled {
+    opacity: .2
+}
+
+.swatch-filter-brown {
+    background: brown;
+    background-color: brown;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-brown.disabled {
+    opacity: .2
+}
+
+.swatch-circle-green {
+    background: #00b67b;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-green.disabled {
+    opacity: .2
+}
+
+.swatch-filter-green {
+    background: #00b67b;
+    background-color: #00b67b;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-green.disabled {
+    opacity: .2
+}
+
+.swatch-circle-grey {
+    background: #8f979d;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-grey.disabled {
+    opacity: .2
+}
+
+.swatch-filter-grey {
+    background: #8f979d;
+    background-color: #8f979d;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-grey.disabled {
+    opacity: .2
+}
+
+.swatch-circle-navy {
+    background: navy;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-navy.disabled {
+    opacity: .2
+}
+
+.swatch-filter-navy {
+    background: navy;
+    background-color: navy;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-navy.disabled {
+    opacity: .2
+}
+
+.swatch-circle-orange {
+    background: orange;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-orange.disabled {
+    opacity: .2
+}
+
+.swatch-filter-orange {
+    background: orange;
+    background-color: orange;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-orange.disabled {
+    opacity: .2
+}
+
+.swatch-circle-pink {
+    background: #fe249a;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-pink.disabled {
+    opacity: .2
+}
+
+.swatch-filter-pink {
+    background: #fe249a;
+    background-color: #fe249a;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-pink.disabled {
+    opacity: .2
+}
+
+.swatch-circle-purple {
+    background: purple;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-purple.disabled {
+    opacity: .2
+}
+
+.swatch-filter-purple {
+    background: purple;
+    background-color: purple;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-purple.disabled {
+    opacity: .2
+}
+
+.swatch-circle-red {
+    background: red;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-red.disabled {
+    opacity: .2
+}
+
+.swatch-filter-red {
+    background: red;
+    background-color: red;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-red.disabled {
+    opacity: .2
+}
+
+.swatch-circle-white {
+    background: #fff;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-white.disabled {
+    opacity: .2
+}
+
+.swatch-filter-white {
+    background: #fff;
+    background-color: #fff;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-white.disabled {
+    opacity: .2
+}
+
+.swatch-circle-yellow {
+    background: #ff0;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    width: 2.5em
+}
+
+.swatch-circle-yellow.disabled {
+    opacity: .2
+}
+
+.swatch-filter-yellow {
+    background: #ff0;
+    background-color: #ff0;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: .69em;
+    display: block;
+    height: 1.38em;
+    position: relative;
+    width: 1.38em
+}
+
+.swatch-filter-yellow.disabled {
+    opacity: .2
+}
+
+.swatch-circle-miscellaneous {
+    background: linear-gradient(0deg, #821e91, #821e91 25%, #edd134 0, #ff0 50%, #edd134 0, #59ba00 0, #59ba00 76%, #111 0, #111), linear-gradient(0deg, #0e5cd1, #0e5cd1 50%, #e20b0b 0, #e20b0b);
+    background-repeat: repeat-y, repeat;
+    background-size: 50% 100%, 100% 100%;
+    border: .063em solid rgba(0, 0, 0, .3);
+    border-radius: 1.25em;
+    display: block;
+    height: 2.5em;
+    position: relative;
+    transform: rotate(35deg);
+    width: 2.5em
+}
+
+.swatch-circle-miscellaneous.disabled {
+    opacity: .2
+}
+
+.swatch-circle-miscellaneous.selected:after {
+    transform: rotate(-35deg)
+}
+
+.category-tile {
+    position: relative
+}
+
+.category-tile h1,
+.category-tile h2 {
+    bottom: 1.875rem;
+    color: #fff;
+    font-size: 1.75rem;
+    left: 1.875rem;
+    position: absolute
+}
+
+.category-tile:before {
+    background-image: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, .5));
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 100%
+}
+
+.refinement-bar {
+    overflow: auto
+}
+
+.refinement-bar ul {
+    padding-left: 0
+}
+
+@media (max-width:767.98px) {
+    .refinement-bar {
+        background-color: #fff;
+        box-shadow: 0 .313em .938em rgba(0, 0, 0, .5);
+        display: none;
+        left: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+}
+
+@media (max-width:575.98px) {
+    .refinement-bar {
+        height: 100%;
+        position: fixed
+    }
+}
+
+@media (min-width:768px) {
+    .refinement-bar {
+        display: block !important
+    }
+}
+
+.filter-header {
+    margin-left: -10px;
+    margin-right: -10px
+}
+
+.header-bar {
+    background-color: #e9ecef;
+    border-bottom: .063em solid #e9ecef
+}
+
+.header-bar button.close {
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 1
+}
+
+.header-bar .fa.fa-close:before {
+    font-size: 1.25em
+}
+
+@media (min-width:576px) and (max-width:767.98px) {
+    .header-bar {
+        padding: .938em 2.813em
+    }
+}
+
+@media (max-width:575.98px) {
+    .header-bar {
+        padding: .938em
+    }
+}
+
+.refinements .header,
+.refinements .values {
+    padding: .313em 0
+}
+
+@media (min-width:576px) and (max-width:767.98px) {
+
+    .refinements .header li,
+    .refinements .values li {
+        display: inline-block
+    }
+}
+
+.refinements .header {
+    color: #707070;
+    font-size: 1.125em
+}
+
+.refinements ul {
+    overflow: auto
+}
+
+.refinements ul li {
+    padding-left: 1px
+}
+
+.refinements ul li button {
+    background-color: transparent;
+    border: none;
+    color: #0070d2
+}
+
+.refinements li {
+    list-style-type: none;
+    padding-left: 0
+}
+
+.refinements li.color-attribute {
+    display: inline-block;
+    padding-left: 0
+}
+
+.refinements li.color-attribute button {
+    padding: 0
+}
+
+.refinements li.disabled {
+    opacity: .5
+}
+
+@media (max-width:575.98px) {
+    .refinements {
+        padding: 0
+    }
+}
+
+.refinements .card-header h2 {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    margin-bottom: 0
+}
+
+.secondary-bar {
+    overflow: auto;
+    padding-bottom: 1em;
+    padding-left: 0;
+    padding-right: 0
+}
+
+@media (max-width:767.98px) {
+    .secondary-bar button.reset {
+        float: right
+    }
+}
+
+@media (min-width:576px) and (max-width:767.98px) {
+    .secondary-bar {
+        padding: .938em 2.813em
+    }
+}
+
+@media (max-width:575.98px) {
+    .secondary-bar {
+        padding: .938em
+    }
+}
+
+.refinement-header {
+    overflow: auto
+}
+
+.disabled {
+    pointer-events: none
+}
+
+.content-grid-header,
+.grid-header {
+    margin-bottom: 1em;
+    margin-top: 1em
+}
+
+@media (max-width:575.98px) {
+
+    .content-grid-header .result-count,
+    .grid-header .result-count {
+        padding-bottom: .938em
+    }
+
+    .content-grid-header .filter-results,
+    .grid-header .filter-results {
+        display: block;
+        width: 100%
+    }
+}
+
+.content-grid-header select,
+.grid-header select {
+    width: 100%
+}
+
+.result-count {
+    font-size: .875rem
+}
+
+.refinement {
+    margin-bottom: 1em
+}
+
+@media (max-width:767.98px) {
+    .refinement.card {
+        border-left: 0;
+        border-radius: 0;
+        border-right: 0;
+        border-top: 0;
+        margin-bottom: 0
+    }
+
+    .refinement .card-header {
+        border-bottom: 0;
+        padding: .25rem 1rem
+    }
+
+    .refinement .card-body {
+        padding: 0 1rem
+    }
+}
+
+.refinement a {
+    text-decoration: none
+}
+
+.refinement.refinement-category li {
+    display: block;
+    margin-left: .938em
+}
+
+.refinement.refinement-category>ul>li {
+    margin-left: 0
+}
+
+.search-banner {
+    background-image: url(../images/search.jpg);
+    background-position-y: 40%
+}
+
+.search-keywords {
+    font-weight: 700
+}
+
+.filter-bar ul {
+    padding-left: 10px
+}
+
+.filter-bar li {
+    float: left;
+    margin-left: .3125em;
+    margin-right: .3125em
+}
+
+.filter-bar li:first-child {
+    margin-left: 0
+}
+
+.filter-bar li.filter-value {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: .3125em;
+    position: relative
+}
+
+.filter-bar li.filter-value button {
+    border: none;
+    color: #000;
+    padding: 0 2rem 0 .5rem
+}
+
+.filter-bar li.filter-value button:after {
+    content: "\f00d";
+    font: normal normal normal 14px/1 FontAwesome;
+    position: absolute;
+    right: 10px;
+    text-rendering: auto;
+    top: 11px
+}
+
+.filter-bar li.swatch-filter {
+    font-size: 1.38em;
+    margin-top: 4px;
+    position: relative
+}
+
+.filter-bar li.swatch-filter button {
+    border: none;
+    display: block;
+    height: 100%;
+    width: 100%
+}
+
+.filter-bar li.swatch-filter button:before {
+    background-color: #fff;
+    border-radius: .4em;
+    content: "";
+    height: .8em;
+    left: .5em;
+    position: absolute;
+    top: .5em;
+    width: .8em
+}
+
+.filter-bar li.swatch-filter button:after {
+    content: "\f057";
+    display: inline;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 1.5em;
+    left: .18em;
+    position: absolute;
+    text-rendering: auto;
+    top: .12em
+}
+
+@media (max-width:575.98px) {
+    .tab-content {
+        padding-left: 0;
+        padding-right: 0
+    }
+
+    .product-grid {
+        padding-top: .938em
+    }
+
+    .product-grid .col-6 {
+        padding-left: 5px;
+        padding-right: 5px
+    }
+}
+
+.search-tips {
+    margin-top: 1.875rem;
+    text-align: left
+}
+
+.category-item {
+    margin-bottom: .938rem
+}
+
+.show-more,
+.show-more-content {
+    clear: both;
+    padding: .938em
+}
+
+.swatch-mark.color-value[data-selected=true]:after {
+    left: .295em
+}
+
+.swatch-mark.color-value.selected:after,
+.swatch-mark.color-value[data-selected=true]:after {
+    color: #000;
+    content: "\f058";
+    display: table-caption;
+    font-family: FontAwesome;
+    font-size: 1.625em;
+    position: absolute
+}
+
+.swatch-mark.color-value.selected:after {
+    background: #fff;
+    border-radius: 50%;
+    height: .75em;
+    left: .31em;
+    line-height: .8em;
+    top: .35em;
+    width: .8em
+}
+
+.search-nav {
+    border-bottom: .063em solid #dee2e6;
+    margin-bottom: 1em
+}
+
+.search-nav .nav-tabs-wrapper {
+    padding: 0
+}
+
+@media (max-width:575.98px) {
+    .search-nav .nav-tabs-wrapper {
+        width: 100%
+    }
+}
+
+.search-nav .nav-tabs-wrapper .nav-tabs {
+    border-bottom: 0
+}
+
+.search-nav .nav-link:focus {
+    background-color: #f6f6f6
+}
+
+.product-options .quantity {
+    bottom: 0;
+    position: absolute;
+    right: 0
+}
+
+.search-results-banner {
+    margin-bottom: 20px
+}
+
+.search-results-header {
+    margin: 0 auto 20px
+}
+
+@media (min-width:576px) {
+    .search-results-header {
+        margin: 20px auto
+    }
+}
+
+.search-results-title {
+    color: #00080d;
+    font: 900 57px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .57px;
+    line-height: 1.02;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase
+}
+
+@media only screen and (min-width:992px) {
+    .search-results-title {
+        font: 900 77px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+        letter-spacing: .77px;
+        line-height: 1.01;
+        text-transform: uppercase
+    }
+}
+
+.search-results-description {
+    margin: 20px auto;
+    max-width: 1000px;
+    text-align: center
+}
+
+.search-results-description-content {
+    min-height: 1.5em
+}
+
+.search-results-description-content:not(.show):not(.collapsing) {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.search-results-description-content:not(.show):not(.collapsing) * {
+    display: inline
+}
+
+.search-results-description-content.show~.search-results-description-toggle-more,
+.search-results-description-toggle-less {
+    display: none
+}
+
+.search-results-description-content.show~.search-results-description-toggle-less {
+    display: block
+}
+
+.search-results-buttons {
+    text-align: center
+}
+
+.search-results-buttons p {
+    display: inline-block;
+    margin: 0
+}
+
+.search-results-buttons .btn-pill,
+.search-results-buttons a {
+    background-color: #dee2e6;
+    border-radius: .5em;
+    display: inline-block;
+    font: 900 57px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .57px;
+    line-height: 1.02;
+    line-height: 36px;
+    margin: 5px 8px 0;
+    padding: 0 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .3s ease 0s;
+    vertical-align: baseline
+}
+
+.search-results-buttons .btn-pill:active,
+.search-results-buttons .btn-pill:focus,
+.search-results-buttons .btn-pill:hover,
+.search-results-buttons a:active,
+.search-results-buttons a:focus,
+.search-results-buttons a:hover {
+    background-color: #bcbcbc
+}
+
+@media only screen and (max-width:479px) {
+
+    .search-results-buttons .btn-pill,
+    .search-results-buttons a {
+        margin-left: 0;
+        margin-right: 0;
+        min-width: 35%
+    }
+}
+
+@media (max-width:767.98px) {
+    .search-results-buttons {
+        margin: 0 -20px;
+        overflow: auto;
+        white-space: nowrap
+    }
+
+    .search-results-buttons:after,
+    .search-results-buttons:before {
+        content: "";
+        display: inline-block;
+        height: 36px;
+        width: 5px
+    }
+
+    .search-results-buttons a {
+        margin-left: 0;
+        margin-right: 0
+    }
+}
+
+.search-results .breadcrumb,
+[data-action=Search-Show] .breadcrumb {
+    margin: 20px 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: -1
+}
+
+.search-results .breadcrumb-item:before,
+[data-action=Search-Show] .breadcrumb-item:before {
+    background-image: url(https://shop.mancity.com/on/demandware.static/Sites-MAN-Site/-/fr/v1710648211633/images/arrow-dark.svg);
+    height: 8px;
+    margin-top: 3px;
+    width: 8px
+}
+
+@media only screen and (min-width:768px) {
+
+    .search-results .breadcrumb,
+    [data-action=Search-Show] .breadcrumb {
+        opacity: 1;
+        pointer-events: auto;
+        position: static;
+        z-index: auto
+    }
+}
+
+.search-results figure figcaption,
+[data-action=Search-Show] figure figcaption {
+    pointer-events: auto
+}
+
+.search-results-tile {
+    order: 13
+}
+
+.search-results-tile:first-child {
+    order: 0
+}
+
+.search-results-tile:nth-child(2) {
+    order: 1
+}
+
+.search-results-tile:nth-child(3) {
+    order: 2
+}
+
+.search-results-tile:nth-child(4) {
+    order: 3
+}
+
+.search-results-tile:nth-child(5) {
+    order: 4
+}
+
+.search-results-tile:nth-child(6) {
+    order: 5
+}
+
+.search-results-tile:nth-child(7) {
+    order: 6
+}
+
+.search-results-tile:nth-child(8) {
+    order: 7
+}
+
+.search-results-tile:nth-child(9) {
+    order: 8
+}
+
+.search-results-tile:nth-child(10) {
+    order: 9
+}
+
+.search-results-tile:nth-child(11) {
+    order: 10
+}
+
+.search-results-tile:nth-child(12) {
+    order: 11
+}
+
+.search-results-tile-banner {
+    display: block;
+    order: 6
+}
+
+@media only screen and (min-width:576px) {
+
+    .search-results-tile-banner~.search-results-tile:nth-last-child(2),
+    .search-results-tile-banner~.search-results-tile:nth-last-child(3) {
+        display: none
+    }
+}
+
+.search-results-tile-banner figure {
+    height: auto
+}
+
+.search-results-tile-banner figure picture {
+    padding-bottom: 100%
+}
+
+@media only screen and (min-width:425px) {
+    .search-results-tile-banner figure picture {
+        padding-bottom: 70%
+    }
+}
+
+@media only screen and (min-width:576px) {
+    .search-results-tile-banner figure picture {
+        padding-bottom: 49.1%
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .search-results-tile-banner figure picture {
+        padding-bottom: 48%
+    }
+}
+
+.search-results-tile-banner figure figcaption h1 {
+    font: 900 177px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: 1.77px;
+    line-height: 1.01;
+    text-transform: uppercase
+}
+
+.search-results-footer {
+    order: 14
+}
+
+.product-tile .laybuy-text {
+    font-size: 12px;
+    margin-top: 10px
+}
+
+.product-tile .laybuy-text img {
+    height: 1.2em;
+    margin-top: -3px;
+    width: auto
+}
+
+.search-results-count {
+    color: #bcbcbc
+}
+
+@media (max-width:767.98px) {
+    .search-filter-button {
+        padding-right: 3px
+    }
+
+    .search-sort-button {
+        padding-left: 3px
+    }
+}
+
+@media (max-width:575.98px) {
+    .tab-content {
+        padding: 0 8px
+    }
+}
+
+.product-grid__text,
+.product-grid__wrapper {
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 0 18px
+}
+
+@media only screen and (min-width:768px) {
+
+    .product-grid__text,
+    .product-grid__wrapper {
+        padding: 0 20px
+    }
+}
+
+.product-grid {
+    padding-top: 10px
+}
+
+@media only screen and (min-width:768px) {
+    .product-grid {
+        padding-top: 0
+    }
+}
+
+.product-grid .col-6 {
+    padding: 0 2px
+}
+
+@media only screen and (min-width:768px) {
+    .product-grid .col-6 {
+        padding: 0 10px
+    }
+}
+
+.product-grid .search-results-tile-banner {
+    padding: 1px 2px
+}
+
+@media only screen and (min-width:768px) {
+    .product-grid .search-results-tile-banner {
+        padding: 1px 10px
+    }
+}
+
+.product-grid .grid-col-sm {
+    transition: .3s ease;
+    transition-property: max-width, flex-basis
+}
+
+.load-products-btns .show-more {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%
+}
+
+@media only screen and (min-width:576px) {
+    .load-products-btns .show-more {
+        flex-direction: row
+    }
+}
+
+.load-products-btns .show-more .btn {
+    margin-right: 0;
+    max-width: 375px;
+    width: 100%
+}
+
+@media only screen and (min-width:576px) {
+    .load-products-btns .show-more .btn+.btn {
+        margin-left: 15px
+    }
+}
+
+.search-results .search-sort {
+    border: 1px solid #00080d;
+    color: #00080d;
+    font: 400 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    font-weight: 700;
+    letter-spacing: normal;
+    line-height: 1.63;
+    text-transform: uppercase;
+    width: 100%
+}
+
+@media only screen and (min-width:768px) {
+    .search-results .search-sort {
+        border-color: transparent
+    }
+}
+
+.search-results .search-sort .select-toggle {
+    color: #00080d;
+    height: 44px;
+    line-height: 1.5;
+    margin-bottom: 0;
+    overflow: visible
+}
+
+@media only screen and (max-width:575px) {
+    .search-results .search-sort .select-toggle {
+        background: transparent
+    }
+}
+
+.search-results .search-sort .select-toggle:after {
+    background-image: url(https://shop.mancity.com/on/demandware.static/Sites-MAN-Site/-/fr/v1710648211633/images/arrow-dark.svg);
+    height: 14px;
+    width: 14px
+}
+
+.search-results .search-sort .select-toggle span {
+    padding-left: 2px
+}
+
+.search-results .search-sort .select-menu-title {
+    color: #00080d;
+    font: 900 57px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    font-weight: 700;
+    letter-spacing: .57px;
+    line-height: 1.02;
+    text-transform: uppercase
+}
+
+@media only screen and (min-width:576px) {
+    .search-results[data-grid-size=small] .grid-col-sm {
+        flex: 0 0 25%;
+        max-width: 25%
+    }
+
+    .search-results[data-grid-size=large] .grid-col-sm {
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%
+    }
+}
+
+@media only screen and (max-width:575px) {
+    .search-results[data-grid-size=small] .grid-col-sm {
+        flex: 0 0 50%;
+        margin: 0 auto;
+        max-width: 50%
+    }
+
+    .search-results[data-grid-size=large] .grid-col-sm {
+        flex: 0 0 66.66666%;
+        margin: 0 auto;
+        max-width: 66.66666%
+    }
+}
+
+.mobile-grid {
+    display: block
+}
+
+@media only screen and (min-width:576px) {
+    .mobile-grid {
+        display: none
+    }
+}
+
+.desktop-grid {
+    display: none
+}
+
+@media only screen and (min-width:576px) {
+    .desktop-grid {
+        display: block
+    }
+}
+
+.btn.filter-results {
+    background: transparent;
+    border: 1px solid #00080d;
+    color: #00080d;
+    display: inline-block;
+    font: 400 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    font-weight: 700;
+    height: 46px;
+    letter-spacing: normal;
+    line-height: 1.63;
+    padding-left: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%
+}
+
+.btn.filter-results:after {
+    background-image: url(https://shop.mancity.com/on/demandware.static/Sites-MAN-Site/-/fr/v1710648211633/images/arrow-dark.svg);
+    height: 14px;
+    width: 14px
+}
+
+@media only screen and (min-width:992px) {
+    .refinement {
+        width: 100%
+    }
+}
+
+.refinement .card-header,
+.refinement .checkbox {
+    text-align: left
+}
+
+@media only screen and (min-width:768px) {
+    .refinement .checkbox {
+        margin-left: 12px;
+        margin-right: 12px
+    }
+}
+
+.refinement .size-attribute .checkbox {
+    text-align: left
+}
+
+@media only screen and (max-width:767px) {
+    .refinement .values.content {
+        border-top: 1px solid rgba(0, 8, 13, .15)
+    }
+}
+
+.refinement-bar {
+    overflow: visible
+}
+
+@media (max-width:767.98px) {
+    .refinement-bar {
+        z-index: 100
+    }
+}
+
+.refinement-bar .filter-header {
+    border-bottom: 2px solid #00080d;
+    font: 900 57px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    font-weight: 700;
+    letter-spacing: .57px;
+    line-height: 1.02;
+    text-transform: uppercase
+}
+
+.refinement-bar .filter-header .close {
+    opacity: 1
+}
+
+.refinement-bar .filter-header .close:active img,
+.refinement-bar .filter-header .close:focus img,
+.refinement-bar .filter-header .close:hover img {
+    transform: rotate(90deg)
+}
+
+.refinement-bar .filter-header .close>span {
+    vertical-align: middle
+}
+
+.refinement-bar .filter-header .close img {
+    transition: .2s ease 0s;
+    width: 17px
+}
+
+.refinement-bar .filter-content {
+    max-height: calc(100% - 50px);
+    overflow: auto
+}
+
+@media (min-width:768px) {
+    .refinement-bar .filter-content {
+        height: auto;
+        overflow: visible
+    }
+}
+
+.refinement-bar .filter-content__bar {
+    margin: 0 auto
+}
+
+.refinement-bar .filter-content .filter-label {
+    background: #fff;
+    cursor: pointer;
+    font: 400 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    font-weight: 700;
+    letter-spacing: normal;
+    line-height: 1.63;
+    margin: 0;
+    padding-right: 10px;
+    position: relative;
+    text-transform: uppercase;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    z-index: 1
+}
+
+@media (min-width:768px) {
+    .refinement-bar .filter-content .filter-label {
+        color: #00080d;
+        font: 400 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+        font-weight: 700;
+        letter-spacing: normal;
+        line-height: 1.63;
+        text-align: center;
+        text-transform: uppercase
+    }
+}
+
+.refinement-bar .filter-content .filter-label:after {
+    background-image: url(https://shop.mancity.com/on/demandware.static/Sites-MAN-Site/-/fr/v1710648211633/images/arrow-dark.svg);
+    content: "";
+    height: 14px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    width: 14px
+}
+
+.refinement-bar .filter-content .filter-label.active:after {
+    transform: translateY(-50%) rotate(270deg)
+}
+
+.refinement-bar .filter-content .reset,
+.refinement-bar .filter-content .reset:active,
+.refinement-bar .filter-content .reset:hover {
+    background: transparent;
+    border: 0;
+    color: inherit
+}
+
+.refinement-bar .filter-content .card {
+    background: transparent;
+    border: 0;
+    margin: 0
+}
+
+@media only screen and (max-width:767px) {
+    .refinement-bar .filter-content .card {
+        border-bottom: 1px solid rgba(0, 8, 13, .15)
+    }
+}
+
+.refinement-bar .filter-content .card-handle,
+.refinement-bar .filter-content .card-header {
+    border: 0;
+    color: inherit !important;
+    font: 400 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 1.63;
+    line-height: 14px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    z-index: 1
+}
+
+@media (min-width:768px) {
+
+    .refinement-bar .filter-content .card-handle,
+    .refinement-bar .filter-content .card-header {
+        font: 900 57px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+        letter-spacing: .57px;
+        line-height: 1.02;
+        line-height: 14px;
+        text-transform: uppercase;
+        text-transform: none
+    }
+}
+
+.refinement-bar .filter-content .card-handle:after,
+.refinement-bar .filter-content .card-header:after {
+    background-image: url(/assets/img/arrow-dark.svg);
+    content: "";
+    height: 14px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    width: 14px
+}
+
+.refinement-bar .filter-content .card-handle {
+    display: none
+}
+
+@media (min-width:768px) {
+    .refinement-bar .filter-content .card-handle {
+        display: inline-block
+    }
+}
+
+.refinement-bar .filter-content .card-body {
+    display: block;
+    margin: -50px 0 0;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    visibility: hidden;
+    width: 100%;
+    z-index: 0
+}
+
+.refinement-bar .filter-content .card-handle.active:after,
+.refinement-bar .filter-content .card.active .card-header:after {
+    content: "";
+    transform: translateY(-50%) rotate(270deg)
+}
+
+@media only screen and (min-width:768px) {
+    .refinement-bar .filter-content .card-handle {
+        overflow: hidden;
+        position: relative
+    }
+
+    .refinement-bar .filter-content .card-handle:after {
+        background: #000000;
+        bottom: 0;
+        content: "";
+        height: 1px;
+        left: -110%;
+        position: absolute;
+        top: auto;
+        transform: none;
+        transition: left .2s ease-in-out;
+        width: calc(100% - 30px)
+    }
+
+    .refinement-bar .filter-content .card-handle.active {
+        font-weight: 700;
+        letter-spacing: .4px
+    }
+
+    .refinement-bar .filter-content .card-handle.active:after {
+        left: 10px;
+        transform: none
+    }
+
+    .refinement-bar .filter-content .card-handle.active:after,
+    .refinement-bar .filter-content .card-handle:after {
+        background-image: none
+    }
+}
+
+.refinement-bar .filter-content .card.active .card-body {
+    background: transparent;
+    margin: 0;
+    opacity: 1;
+    position: relative;
+    transition: .3s ease 0s;
+    visibility: visible
+}
+
+@media only screen and (min-width:768px) {
+    .refinement-bar .filter-content .refinements {
+        background: #f6f6f6;
+        display: block;
+        opacity: 0;
+        padding: 25px 0;
+        position: absolute;
+        transition: .3s ease 0s;
+        visibility: hidden
+    }
+}
+
+.refinement-bar .filter-content .refinements.active {
+    margin: 0;
+    opacity: 1;
+    position: relative;
+    visibility: visible
+}
+
+.refinement-bar .filter-content .refinements .card-body>.values {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    overflow: visible;
+    padding: 0
+}
+
+@media only screen and (min-width:768px) {
+    .refinement-bar .filter-content .refinements .card-body>.values {
+        justify-content: flex-start;
+        margin: 0 0 0 5%;
+        padding: 10px 0
+    }
+}
+
+.refinement-bar .filter-content .refinements .card-body>.values li {
+    box-sizing: border-box;
+    flex: 0 0 100%;
+    margin: 0
+}
+
+@media only screen and (max-width:767px) {
+    .refinement-bar .filter-content .refinements .card-body>.values li {
+        padding: 10px 0
+    }
+
+    .refinement-bar .filter-content .refinements .card-body>.values li:first-child {
+        padding-top: 20px
+    }
+
+    .refinement-bar .filter-content .refinements .card-body>.values li:last-child {
+        padding-bottom: 20px
+    }
+}
+
+@media (min-width:768px) {
+    .refinement-bar .filter-content .refinements .card-body>.values li {
+        flex-basis: auto;
+        padding: 0
+    }
+}
+
+.refinement-bar .filter-content .refinements .card-body>.values li a {
+    color: inherit;
+    display: block
+}
+
+.refinement-bar .filter-content .refinements .card-body>.values li a em {
+    color: #adb5bd;
+    font-style: normal
+}
+
+.refinement-bar .filter-content .refinements .card-body>.values li.color-attribute {
+    flex-basis: auto
+}
+
+@media only screen and (min-width:425px) {
+    .refinement-bar .filter-content .refinements .card-body>.values li.color-attribute {
+        flex-basis: 25%
+    }
+}
+
+@media only screen and (min-width:992px) {
+    .refinement-bar .filter-content .refinements .card-body>.values li.color-attribute {
+        flex-basis: 12.5%
+    }
+}
+
+.refinement-bar .filter-content .refinements .card-body>.values li.color-attribute a {
+    font-size: .74285714em
+}
+
+.refinement-bar .filter-content .refinements .card-body>.values li.color-attribute .swatch-mark.color-value.selected:after {
+    background: none;
+    border-bottom: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-radius: 0;
+    content: "";
+    height: 8px;
+    left: 50%;
+    margin-top: -1px;
+    opacity: 1;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(.85) rotate(-45deg);
+    transform-origin: center;
+    width: 16px
+}
+
+.refinement-bar .filter-content .refinements .card-body>.values li.size-attribute {
+    flex: 0 0 50%;
+    text-align: left;
+    white-space: nowrap
+}
+
+@media only screen and (min-width:425px) {
+    .refinement-bar .filter-content .refinements .card-body>.values li.size-attribute {
+        flex-basis: 25%
+    }
+}
+
+@media only screen and (min-width:992px) {
+    .refinement-bar .filter-content .refinements .card-body>.values li.size-attribute {
+        flex-basis: 12.5%
+    }
+}
+
+.refinement-bar .filter-content .refinements .card-body>.values li.boolean-attribute {
+    flex-basis: 100%
+}
+
+@media only screen and (min-width:425px) {
+    .refinement-bar .filter-content .refinements .card-body>.values li.boolean-attribute {
+        flex-basis: 25%
+    }
+}
+
+@media only screen and (min-width:992px) {
+    .refinement-bar .filter-content .refinements .card-body>.values li.boolean-attribute {
+        flex-basis: 20%
+    }
+}
+
+.refinement-bar .filter-content .refinements .card-body>.values li.price-attribute label {
+    font: 900 57px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .57px;
+    line-height: 1.02;
+    text-transform: uppercase
+}
+
+@media only screen and (min-width:768px) {
+    .refinement-bar .filter-content .refinements .card-body>.values li.price-attribute label {
+        font: 400 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+        letter-spacing: normal;
+        line-height: 1.63
+    }
+}
+
+.refinement-bar .filter-content .refinements .card-body>.values li.price-attribute em {
+    font: 900 57px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .57px;
+    line-height: 1.02;
+    text-transform: uppercase
+}
+
+.refinement-bar .filter-content .refinements .card-body>.values li.price-attribute a.selected {
+    text-decoration: underline
+}
+
+.refinement-bar .filter-content .refinements .card-body>.values li.category-attribute {
+    flex: 0 0 50%;
+    text-align: left;
+    white-space: nowrap
+}
+
+@media only screen and (min-width:425px) {
+    .refinement-bar .filter-content .refinements .card-body>.values li.category-attribute {
+        flex-basis: 25%
+    }
+}
+
+@media only screen and (min-width:992px) {
+    .refinement-bar .filter-content .refinements .card-body>.values li.category-attribute {
+        flex-basis: 12.5%
+    }
+}
+
+.refinement-bar .filter-content li.category-attribute a.selected {
+    text-decoration: underline
+}
+
+@media only screen and (max-width:767px) {
+    .refinement-bar .filter-content li.category-attribute .checkbox {
+        flex: 0 0 50%;
+        margin-right: 0;
+        white-space: nowrap
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .refinement-bar .filter-content .checkbox {
+        margin-bottom: 12px
+    }
+}
+
+.refinement-bar .filter-content .checkbox label {
+    font: 900 57px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .57px;
+    line-height: 1.02;
+    text-transform: uppercase
+}
+
+@media only screen and (min-width:768px) {
+    .refinement-bar .filter-content .checkbox label {
+        font: 400 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+        letter-spacing: normal;
+        line-height: 1.63
+    }
+}
+
+.refinement-bar .filter-content .checkbox label em {
+    font: 900 57px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .57px;
+    line-height: 1.02;
+    text-transform: uppercase
+}
+
+.refinement-bar .filter-content .refinements .card-body#refinement-category>.values,
+.refinement-bar .filter-content .refinements .card-body#refinement-size>.values {
+    justify-content: flex-start
+}
+
+.filter-bar {
+    position: relative
+}
+
+.filter-bar:before {
+    content: "";
+    display: block;
+    height: 1px;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100%
+}
+
+.filter-bar__active-filters {
+    background: #f6f6f6;
+    display: flex;
+    justify-content: center
+}
+
+.filter-bar ul {
+    align-items: center;
+    display: flex;
+    flex-grow: 0;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 5px 5px 5px 0
+}
+
+.filter-bar ul:after {
+    clear: both;
+    content: "";
+    display: block
+}
+
+.filter-bar ul .reset a {
+    font: 400 21px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .21px;
+    line-height: 1.83;
+    text-transform: uppercase
+}
+
+.filter-bar li {
+    float: none;
+    list-style: none;
+    margin: 5px;
+    text-align: center
+}
+
+.filter-bar li.filter-value,
+.filter-bar li.swatch-filter {
+    border: 0;
+    border-radius: 0;
+    font: inherit;
+    height: auto;
+    line-height: 22px;
+    margin: 5px;
+    padding: 0;
+    width: auto
+}
+
+.filter-bar li.filter-value:first-child,
+.filter-bar li.swatch-filter:first-child {
+    margin-left: 0
+}
+
+.filter-bar li.filter-value:first-child a,
+.filter-bar li.swatch-filter:first-child a {
+    padding-left: 0
+}
+
+.filter-bar li.filter-value:after,
+.filter-bar li.filter-value:before,
+.filter-bar li.swatch-filter:after,
+.filter-bar li.swatch-filter:before {
+    display: none
+}
+
+.filter-bar li.filter-value a,
+.filter-bar li.swatch-filter a {
+    color: inherit !important;
+    display: block;
+    margin: 0;
+    min-height: 21px;
+    min-width: 11px;
+    padding: 0 20px 0 5px;
+    text-decoration: none
+}
+
+.filter-bar li.filter-value a:active:after,
+.filter-bar li.filter-value a:focus:after,
+.filter-bar li.filter-value a:hover:after,
+.filter-bar li.swatch-filter a:active:after,
+.filter-bar li.swatch-filter a:focus:after,
+.filter-bar li.swatch-filter a:hover:after {
+    transform: translateY(-50%) rotate(90deg)
+}
+
+.filter-bar li.filter-value a:after,
+.filter-bar li.swatch-filter a:after {
+    background: transparent url(https://shop.mancity.com/on/demandware.static/Sites-MAN-Site/-/fr/v1710648211633/images/close.svg) no-repeat 50%;
+    background-size: contain;
+    content: "";
+    height: 11px;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: .2s ease 0s;
+    width: 11px
+}
+
+.filter-bar li.swatch-filter,
+.filter-bar li.swatch-filter a {
+    border-radius: 2px
+}
+
+.filter-bar li.swatch-filter a:after {
+    margin-right: -5.5px;
+    right: 50%
+}
+
+.search-nav {
+    border-bottom: none;
+    margin: 0 0 20px
+}
+
+@media only screen and (min-width:992px) {
+    .search-nav {
+        margin: 0 0 50px
+    }
+}
+
+.search-nav .nav-item {
+    flex: 1 1 50%
+}
+
+.search-nav .nav-item .nav-link {
+    background: #fff;
+    color: #000;
+    font: 400 15px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    font-weight: 700;
+    height: 100%;
+    letter-spacing: normal;
+    line-height: 1.63;
+    padding-bottom: 15px;
+    padding-right: 2em;
+    padding-top: 15px;
+    position: relative;
+    text-decoration: none
+}
+
+.search-nav .nav-item .nav-link.active {
+    background-color: #fff;
+    border: none
+}
+
+.search-nav .nav-item .nav-link.active:before {
+    background: #98c5e9;
+    bottom: 5px;
+    content: "";
+    display: block;
+    position: absolute;
+    right: 28px;
+    width: 4.5em
+}
+
+.search-nav .nav-item .nav-link.active:after {
+    background: #fff;
+    border-right: 1px solid #fff;
+    content: "";
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 18px;
+    z-index: 1
+}
+
+.search-nav .nav-item:nth-of-type(2) .nav-link {
+    padding-left: 2em
+}
+
+.search-nav .nav-item:nth-of-type(2) .nav-link.active:before {
+    background: #98c5e9;
+    bottom: 5px;
+    content: "";
+    display: block;
+    left: 27px;
+    position: absolute;
+    width: 4em
+}
+
+.search-nav .nav-item:nth-of-type(2) .nav-link.active:after {
+    border-left: 1px solid #fff;
+    border-right: none
+}
+
+.search-tips h5 {
+    font-weight: 700
+}
+
+[dir=ltr] .search-tips ol {
+    padding-left: 15px
+}
+
+[dir=rtl] .search-tips ol {
+    padding-right: 15px
+}
+
+.content-search-container .content-search-body h4 {
+    font: 900 57px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .57px;
+    line-height: 1.02;
+    text-transform: uppercase
+}
+
+@media only screen and (min-width:992px) {
+    .content-search-container .content-search-body h4 {
+        font: 900 147px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+        letter-spacing: 1.47px;
+        line-height: 1.01;
+        text-transform: uppercase
+    }
+}
+
+.content-search-container .content-search-body.card {
+    border: none;
+    flex-direction: row;
+    margin-bottom: 50px
+}
+
+@media only screen and (min-width:768px) {
+    .content-search-container .content-search-body.card {
+        margin-bottom: 70px
+    }
+}
+
+.content-search-container .content-search-body.card .card-header {
+    border: none
+}
+
+.content-search-container .content-search-body.card a {
+    font-weight: 700;
+    text-decoration: none
+}
+
+.content-search-container .content-search-body.card .content-search-image img {
+    height: 200px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 200px
+}
+
+.search-results-tile-banner {
+    order: 5
+}
+
+@media only screen and (min-width:576px) {
+
+    .search-results-tile-banner.col-md-8~.search-results-tile:nth-last-child(2),
+    .search-results-tile-banner.col-md-8~.search-results-tile:nth-last-child(3) {
+        display: none
+    }
+}
+
+@media only screen and (max-width:991px) {
+    .search-results-tile-banner {
+        order: 5
+    }
+}
+
+@media only screen and (max-width:575px) {
+    .search-results-tile-banner {
+        order: 3;
+        padding-bottom: 20px
+    }
+}
+
+.search-results-tile-banner figure picture {
+    padding-bottom: 60%
+}
+
+@media only screen and (min-width:576px) {
+    .search-results-tile-banner figure picture {
+        padding-bottom: 50%
+    }
+}
+
+.search-results-tile-banner.col-md-4~.search-results-tile:nth-last-child(3) {
+    display: block
+}
+
+.search-results-tile-banner.col-md-4~.search-results-tile:nth-last-child(2) {
+    display: none
+}
+
+.search-results-tile-banner.col-md-4 figure picture {
+    padding-bottom: 100%
+}
+
+.product-grid {
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+.product-grid .col-6 {
+    padding: 0 5px
+}
+
+.product-grid__text,
+.product-grid__wrapper {
+    padding: 0 20px
+}
+
+.select .select-toggle {
+    border-radius: 0;
+    border-radius: initial;
+    color: #001838;
+    font: 700 13px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    justify-content: center;
+    letter-spacing: normal;
+    line-height: 30px;
+    min-height: 0;
+    min-height: auto;
+    min-width: 0;
+    min-width: auto;
+    padding: 10px 18px;
+    position: relative;
+    text-transform: uppercase
+}
+
+@media only screen and (min-width:768px) {
+    .select .select-toggle {
+        font: 700 23px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+        letter-spacing: .23px;
+        line-height: 1.33;
+        padding-right: 0
+    }
+}
+
+.select .select-toggle.filter-results {
+    border-color: inherit
+}
+
+@media only screen and (max-width:767px) {
+    .select .select-toggle.filter-results:after {
+        content: none
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .select .select-toggle {
+        background-color: transparent;
+        color: #001838
+    }
+
+    .select .select-toggle:active,
+    .select .select-toggle:focus {
+        background-color: transparent !important;
+        color: #fff !important
+    }
+}
+
+.select .select-toggle:before {
+    font-weight: 700;
+    margin-right: 12px
+}
+
+.select .select-toggle:after {
+    content: none
+}
+
+.select.active .select-toggle {
+    color: #e8772b !important
+}
+
+.select.active .select-toggle .chevron-down__svg {
+    transform: rotateX(180deg)
+}
+
+.select.active .select-toggle .chevron-down__svg path {
+    fill: #3bd6ff
+}
+
+.filter-bar:before {
+    content: none
+}
+
+.filter-bar .filter-bar__active-filters {
+    padding: 10px 30px
+}
+
+.filter-bar .filter-bar__active-filters .container {
+    padding: 0
+}
+
+.filter-bar .filter-bar__active-filters .filter-value>a:after {
+    background-image: url(https://shop.mancity.com/on/demandware.static/Sites-MAN-Site/-/fr/v1710648211633/images/close-small.svg);
+    height: 20px;
+    right: 0;
+    width: 20px
+}
+
+.filter-bar .select-toggle[data-prefix]:before {
+    content: attr(data-prefix)
+}
+
+.search-nav .nav-item .nav-link {
+    color: #001838;
+    display: inline-block;
+    font: 700 23px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .23px;
+    line-height: 1.33;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-transform: uppercase
+}
+
+.search-nav .nav-item .nav-link.active:before {
+    background-color: #001838;
+    bottom: 0;
+    height: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%
+}
+
+.search-nav .nav-item .nav-link.active:after {
+    content: none
+}
+
+.search-nav .nav-item:nth-of-type(2) .nav-link {
+    padding-left: 10px
+}
+
+.search-nav .nav-item:nth-of-type(2) .nav-link.active:before {
+    background-color: #001838;
+    bottom: 0;
+    height: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%
+}
+
+.search-nav .nav-item:nth-of-type(2) .nav-link.active:after {
+    content: none
+}
+
+@media only screen and (min-width:992px) {
+    .search-results .select-layover .select-menu {
+        box-shadow: 0 4px 54px rgba(0, 0, 0, .1);
+        min-width: 208px;
+        top: calc(100% + 14px)
+    }
+}
+
+.search-results .select-layover .select-menu-title {
+    font: 700 23px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: .23px;
+    line-height: 1.33;
+    line-height: 1.75;
+    padding-left: 8px;
+    text-transform: uppercase
+}
+
+.search-results .select-layover .select-menu-close {
+    cursor: pointer;
+    font: 700 16px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    height: 32px;
+    letter-spacing: normal;
+    line-height: 24px;
+    padding: 5px
+}
+
+.search-results .select-layover .select-menu-header {
+    padding: 16px 20px
+}
+
+.search-results .select-layover .select-menu-content .select-item {
+    font: 700 16px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 2
+}
+
+@media only screen and (max-width:991px) {
+    .search-results .select-layover .select-toggle span {
+        display: inline
+    }
+
+    .search-results .select-layover .select-toggle[data-prefix-mobile]:before {
+        content: attr(data-prefix)
+    }
+}
+
+.search-results .load-products-btns .show-more {
+    flex-direction: row
+}
+
+@media only screen and (min-width:768px) {
+    .search-results .load-products-btns .show-more__btn {
+        max-width: 190px
+    }
+}
+
+.search-results .search-result-product-count {
+    color: #69738c;
+    font: 400 16px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    line-height: 1.31
+}
+
+@media only screen and (min-width:768px) {
+    .search-results .refinement-bar {
+        background-color: rgb(77, 77, 77)
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .search-results .refinement-bar {
+        height: 100%
+    }
+}
+
+.search-results .refinement-bar .filter-header {
+    padding: 16px 20px
+}
+
+.search-results .refinement-bar .filter-header .close {
+    color: inherit;
+    cursor: pointer;
+    font: 700 16px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 24px;
+    margin-top: 7px;
+    text-shadow: none;
+    text-transform: none
+}
+
+.search-results .refinement-bar .filter-header__title {
+    font: 700 23px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .23px;
+    line-height: 1.33;
+    line-height: 1.75
+}
+
+.search-results .refinement-bar .filter-header__title .search-results-count {
+    color: inherit;
+    font: 400 13px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 1.71;
+    text-transform: none
+}
+
+@media only screen and (min-width:768px) {
+    .search-results .refinement-bar .filter-content .refinements {
+        display: none;
+        padding-bottom: 5px
+    }
+}
+
+.search-results .refinement-bar .filter-content .refinements.active {
+    display: block
+}
+
+.search-results .refinement-bar .filter-content .refinements .refinement {
+    border-color: #dde6ed
+}
+
+@media only screen and (min-width:768px) {
+    .search-results .refinement-bar .filter-content .refinements .refinement {
+        height: 0
+    }
+}
+
+.search-results .refinement-bar .filter-content .refinements .refinement.active {
+    height: 100%
+}
+
+.search-results .refinement-bar .filter-content .refinements .card-body>.values li.size-attribute {
+    flex-basis: 50%;
+    margin-bottom: 10px
+}
+
+@media only screen and (min-width:480px) {
+    .search-results .refinement-bar .filter-content .refinements .card-body>.values li.size-attribute {
+        flex-basis: 33%
+    }
+}
+
+@media only screen and (min-width:992px) {
+    .search-results .refinement-bar .filter-content .refinements .card-body>.values li.size-attribute {
+        flex-basis: 20%
+    }
+}
+
+.search-results .refinement-bar .filter-content .refinements .card-body>.values li.boolean-attribute {
+    flex-basis: 100%;
+    margin-bottom: 10px
+}
+
+@media only screen and (min-width:480px) {
+    .search-results .refinement-bar .filter-content .refinements .card-body>.values li.boolean-attribute {
+        flex-basis: 50%
+    }
+}
+
+@media only screen and (min-width:992px) {
+    .search-results .refinement-bar .filter-content .refinements .card-body>.values li.boolean-attribute {
+        flex-basis: 33%
+    }
+}
+
+.search-results .refinement-bar .filter-content .refinements .card-body>.values li a em {
+    color: #000000
+}
+
+.search-results .refinement-bar .filter-content .filter-label {
+    color: #000000;
+    font: 700 23px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .23px;
+    line-height: 1.33;
+    padding-right: 0
+}
+
+@media only screen and (min-width:768px) {
+    .search-results .refinement-bar .filter-content .filter-label {
+        background-color: transparent;
+        color: #fff;
+        margin-right: 75px
+    }
+}
+
+.search-results .refinement-bar .filter-content .filter-label:after {
+    content: none
+}
+
+.search-results .refinement-bar .filter-content .filter-label.active {
+    color: #3bd6ff
+}
+
+.search-results .refinement-bar .filter-content .filter-label.active:after {
+    content: none
+}
+
+.search-results .refinement-bar .filter-content .filter-label.active .chevron-down__svg {
+    transform: rotateX(180deg)
+}
+
+.search-results .refinement-bar .filter-content .filter-label.active .chevron-down__svg path {
+    fill: #3bd6ff
+}
+
+.search-results .refinement-bar .filter-content .checkbox label,
+.search-results .refinement-bar .filter-content .checkbox label em {
+    font: 700 13px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    line-height: 2;
+    text-transform: none
+}
+
+@media only screen and (min-width:768px) {
+    .search-results .refinement-bar .filter-content .card {
+        margin: -10px
+    }
+}
+
+.search-results .refinement-bar .filter-content .card.active .card-header:after {
+    transform: translate3d(0, -50%, 0) rotateX(180deg)
+}
+
+.search-results .refinement-bar .filter-content .card .card-header:after {
+    background-image: url(https://shop.mancity.com/on/demandware.static/Sites-MAN-Site/-/fr/v1710648211633/images/chevron-down.svg);
+    height: 18px;
+    transform: translate3d(0, -50%, 0);
+    width: 18px
+}
+
+.search-results .refinement-bar .filter-content .card .card-body .values.content {
+    border-top: 0
+}
+
+.search-results .refinement-bar .filter-content .card .card-body .values.content li:first-child {
+    padding-top: 10px
+}
+
+.search-results .refinement-bar .filter-content .card .card-body .values.content li:last-child {
+    padding-bottom: 10px
+}
+
+@media only screen and (min-width:425px) {
+    .search-results .refinement-bar .filter-content .card .card-body .values.content li:last-child {
+        padding-bottom: 10px
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .search-results .refinement-bar .filter-content .card .card-body .values.content {
+        margin-left: 0;
+        padding-bottom: 0;
+        padding-top: 18px
+    }
+
+    .search-results .refinement-bar .filter-content .card .card-body .values.content li:first-child,
+    .search-results .refinement-bar .filter-content .card .card-body .values.content li:last-child {
+        padding: 0
+    }
+
+    .search-results .refinement-bar .filter-content .card .card-body .values.content .checkbox {
+        margin-bottom: 0;
+        margin-left: 0
+    }
+}
+
+.search-results .refinement-bar .filter-content .card-handle,
+.search-results .refinement-bar .filter-content .card-header {
+    font: 700 16px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 2;
+    text-transform: none
+}
+
+.search-results .refinement-bar .filter-content .card-handle {
+    font: 700 16px KippaxModern, Arial, Roboto, Helvetica Neue, Noto Sans, sans-serif, Segoe UI, -apple-system, BlinkMacSystemFont;
+    letter-spacing: normal;
+    line-height: 2;
+    margin-bottom: 20px
+}
+
+.search-results .refinement-bar .filter-content .card-handle.active:after {
+    background: #001838;
+    height: 2px;
+    left: 0;
+    width: 100%
+}
+
+@media only screen and (min-width:768px) {
+    .search-results .refinement-bar .filter-content__row {
+        padding: 7px 0
+    }
+}
+
+.search-results .refinement-bar .filter-content__row .subcategory-nav .subcategory-item {
+    padding-right: 30px
+}
+
+@media only screen and (min-width:992px) {
+    .search-results .refinement-bar .filter-content__row .subcategory-nav .subcategory-item {
+        padding-right: 60px
+    }
+}
+
+.search-results .chevron-down__svg {
+    margin-top: 7px;
+    transition: transform .2s ease 0s;
+    vertical-align: top
+}
+
+@media only screen and (min-width:768px) {
+    .search-results .chevron-down__svg path {
+        fill: #fff
+    }
+}
+
+.search-results-title {
+    text-align: left;
+    text-align: initial
+}
+
+.search-results-subtitle {
+    text-transform: none
+}
+
+.search-results-description-toggle-less,
+.search-results-description-toggle-more {
+    color: #fff;
+    font: 700 23px KippaxModernCnd, Gotham Narrow, GothamNarrow, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    letter-spacing: .23px;
+    line-height: 1.33;
+    opacity: .5;
+    text-decoration: none;
+    text-transform: uppercase
+}
+
+.search-results-description-toggle-less:hover,
+.search-results-description-toggle-more:hover {
+    color: #fff
+}
+
+.search-results-description-toggle-less svg path,
+.search-results-description-toggle-more svg path {
+    stroke: #fff
+}
+
+.search-page .search-results-header .player-tile__image-wrapper {
+    justify-content: flex-end;
+    min-height: 258px
+}
+
+@media only screen and (min-width:992px) {
+    .search-page .search-results-header .player-tile__image-wrapper {
+        min-height: 490px
+    }
+}
+
+.search-page .search-results-header .player-tile__image {
+    -o-object-fit: contain;
+    object-fit: contain;
+    -o-object-position: bottom right;
+    object-position: bottom right;
+    z-index: 1
+}
+
+@media only screen and (max-width:767px) {
+    .search-page .search-results-header .player-tile__image {
+        bottom: 0;
+        position: absolute
+    }
+}
+
+.search-page .search-results-header .player-tile__number {
+    right: 0
+}
+
+.search-page .search-results-header .player-tile__info-wrapper {
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 30px
+}
+
+@media only screen and (min-width:768px) {
+    .search-page .search-results-header .player-tile__info-wrapper {
+        margin-bottom: 60px
+    }
+}
+
+.search-page .search-results-header .player-tile__name {
+    margin-bottom: 10px
+}
+
+.search-results-banner img {
+    height: auto
+}
