@@ -10,6 +10,13 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\TaxClassController;
 use App\Http\Controllers\Admin\TaxRateAmountController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\AttributeController;
+use App\Http\Controllers\Admin\CouponController;
+use App\Http\Controllers\Admin\PromotionController;
+use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\EmailCampaignController;
 use Illuminate\Support\Facades\Route;
 
 // Admin Routes
@@ -44,4 +51,25 @@ Route::prefix('/admin')->name('admin.')->middleware('admin')->group(function () 
 
     // Tax Rate Amounts Management (nested under tax classes)
     Route::resource('tax-rate-amounts', TaxRateAmountController::class)->only(['store', 'edit', 'update', 'destroy']);
+
+    // Orders Management
+    Route::resource('orders', OrderController::class)->except(['create', 'store', 'destroy']);
+
+    // Customers Management
+    Route::resource('customers', CustomerController::class);
+
+    // Attributes Management
+    Route::resource('attributes', AttributeController::class);
+
+    // Coupons Management
+    Route::resource('coupons', CouponController::class)->except(['show']);
+
+    // Promotions Management
+    Route::resource('promotions', PromotionController::class);
+
+    // Reviews Management
+    Route::resource('reviews', ReviewController::class)->only(['index', 'edit', 'update', 'destroy']);
+
+    // Email Campaigns Management
+    Route::resource('email-campaigns', EmailCampaignController::class)->except(['show']);
 });
