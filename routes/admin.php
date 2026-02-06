@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 // Admin Routes
 
-Route::prefix('/admin')->name('admin.')->middleware('admin')->group(function () {
+Route::prefix('/king-admin')->name('admin.')->middleware('admin')->group(function () {
     // Dashboard
     Route::get('/',[DashboardController::class,'index'])->name('dashboard');
 
