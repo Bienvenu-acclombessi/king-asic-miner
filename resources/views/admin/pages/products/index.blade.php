@@ -17,7 +17,12 @@
                     </nav>
                 </div>
                 <div>
-                    <a href="{{ route('admin.products.create') }}" class="btn btn-primary">Add New Product</a>
+                    <a href="{{ route('admin.products.wizard') }}" class="btn btn-primary me-2">
+                        <i class="bi bi-magic"></i> Create Product (Wizard)
+                    </a>
+                    <a href="{{ route('admin.products.create') }}" class="btn btn-outline-secondary">
+                        <i class="bi bi-plus-circle"></i> Create Product (Classic)
+                    </a>
                 </div>
             </div>
         </div>

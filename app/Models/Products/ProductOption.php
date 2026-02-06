@@ -15,14 +15,24 @@ class ProductOption extends Model
         'name',
         'label',
         'handle',
+        'display_type',
+        'required',
         'shared',
+        'affects_price',
+        'affects_stock',
+        'help_text',
+        'position',
         'meta',
     ];
 
     protected $casts = [
         'name' => 'array',
         'label' => 'array',
+        'required' => 'boolean',
         'shared' => 'boolean',
+        'affects_price' => 'boolean',
+        'affects_stock' => 'boolean',
+        'position' => 'integer',
         'meta' => 'array',
     ];
 
@@ -41,6 +51,32 @@ class ProductOption extends Model
      */
     public function values(): HasMany
     {
-        return $this->hasMany(ProductOptionValue::class);
+        return $this->hasMany(ProductOptionValue::class)->orderBy('position');
+    }
+
+    /**
+     * Vérifie si cette option crée des variants
+     */
+    public function createsVariants(): bool
+    {
+        return $this->affects_price || $this->affects_stock;
+    }
+
+    /**
+     * Récupère le nom traduit
+     */
+    public function getTranslatedName(?string $locale = null): string
+    {
+        $locale = $locale ?? app()->getLocale();
+        return $this->name[$locale] ?? $this->name['en'] ?? '';
+    }
+
+    /**
+     * Récupère le label traduit
+     */
+    public function getTranslatedLabel(?string $locale = null): string
+    {
+        $locale = $locale ?? app()->getLocale();
+        return $this->label[$locale] ?? $this->label['en'] ?? $this->getTranslatedName($locale);
     }
 }

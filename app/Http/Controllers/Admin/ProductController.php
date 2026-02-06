@@ -370,4 +370,238 @@ class ProductController extends Controller
                 ->with('error', 'Error deleting product: ' . $e->getMessage());
         }
     }
+
+    /**
+     * Show the wizard form for creating a new product.
+     */
+    public function wizard()
+    {
+        // Get all dependencies
+        $productTypes = ProductType::all();
+        $brands = Brand::all();
+        $collections = Collection::whereNull('parent_id')
+            ->with('children')
+            ->orderBy('_lft')
+            ->get();
+        $tags = Tag::all();
+        $customerGroups = CustomerGroup::all();
+        $productOptions = ProductOption::with('values')->get();
+
+        return view('admin.pages.products.wizard', compact(
+            'productTypes',
+            'brands',
+            'collections',
+            'tags',
+            'customerGroups',
+            'productOptions'
+        ));
+    }
+
+    /**
+     * Store a newly created product from wizard.
+     */
+    public function storeWizard(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            // Step 1: Basics
+            'name.en' => 'required|string|max:255',
+            'name.fr' => 'nullable|string|max:255',
+            'slug' => 'required|string|max:255|unique:products,attribute_data->slug',
+            'product_type_id' => 'required|exists:product_types,id',
+            'brand_id' => 'nullable|exists:brands,id',
+            'status' => 'required|in:draft,published,archived,out_of_stock',
+            'short_description.en' => 'nullable|string',
+            'short_description.fr' => 'nullable|string',
+            'description.en' => 'nullable|string',
+            'description.fr' => 'nullable|string',
+
+            // Step 2: Options
+            'product_options' => 'nullable|array',
+            'product_options.*.option_id' => 'required|exists:product_options,id',
+            'product_options.*.display_type' => 'required|string',
+            'product_options.*.required' => 'required|boolean',
+            'product_options.*.affects_price' => 'required|boolean',
+            'product_options.*.affects_stock' => 'required|boolean',
+            'product_options.*.position' => 'required|integer',
+
+            // Step 3: Variants
+            'variants' => 'required|array|min:1',
+            'variants.*.sku' => 'required|string|unique:product_variants,sku',
+            'variants.*.option_values' => 'nullable|array',
+            'variants.*.option_values.*' => 'exists:product_option_values,id',
+            'variants.*.stock' => 'required|integer|min:0',
+            'variants.*.enabled' => 'required|boolean',
+
+            // Step 4: Prices (embedded in variants)
+            'variants.*.prices' => 'required|array|min:1',
+            'variants.*.prices.*.customer_group_id' => 'required|exists:customer_groups,id',
+            'variants.*.prices.*.price' => 'required|integer|min:0',
+            'variants.*.prices.*.compare_price' => 'nullable|integer|min:0',
+            'variants.*.prices.*.min_quantity' => 'required|integer|min:1',
+
+            // Step 5: Images
+            'images.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+
+            // Step 6: Finalization
+            'collections' => 'nullable|array',
+            'collections.*' => 'exists:collections,id',
+            'tags' => 'nullable|array',
+            'tags.*' => 'exists:tags,id',
+            'customer_groups' => 'nullable|array',
+            'customer_groups.*' => 'exists:customer_groups,id',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string',
+            'meta_keywords' => 'nullable|string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        try {
+            DB::beginTransaction();
+
+            // Prepare attribute data
+            $attributeData = [
+                'name' => $request->name,
+                'slug' => $request->slug,
+            ];
+
+            if ($request->filled('short_description')) {
+                $attributeData['short_description'] = $request->short_description;
+            }
+
+            if ($request->filled('description')) {
+                $attributeData['description'] = $request->description;
+            }
+
+            // SEO data
+            if ($request->filled('meta_title') || $request->filled('meta_description') || $request->filled('meta_keywords')) {
+                $attributeData['seo'] = [
+                    'title' => $request->meta_title,
+                    'description' => $request->meta_description,
+                    'keywords' => $request->meta_keywords,
+                ];
+            }
+
+            // Create product
+            $product = Product::create([
+                'product_type_id' => $request->product_type_id,
+                'brand_id' => $request->brand_id,
+                'status' => $request->status,
+                'attribute_data' => $attributeData,
+            ]);
+
+            // Attach collections
+            if ($request->filled('collections')) {
+                $collectionsData = [];
+                foreach ($request->collections as $index => $collectionId) {
+                    $collectionsData[$collectionId] = ['position' => $index + 1];
+                }
+                $product->collections()->attach($collectionsData);
+            }
+
+            // Attach tags
+            if ($request->filled('tags')) {
+                foreach ($request->tags as $tagId) {
+                    DB::table('taggables')->insert([
+                        'tag_id' => $tagId,
+                        'taggable_type' => 'product',
+                        'taggable_id' => $product->id,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+                }
+            }
+
+            // Attach customer groups
+            if ($request->filled('customer_groups')) {
+                $customerGroupsData = [];
+                foreach ($request->customer_groups as $groupId) {
+                    $customerGroupsData[$groupId] = [
+                        'purchasable' => true,
+                        'visible' => true,
+                        'enabled' => true,
+                    ];
+                }
+                $product->customerGroups()->attach($customerGroupsData);
+            }
+
+            // Attach product options with configuration
+            if ($request->filled('product_options')) {
+                foreach ($request->product_options as $optionData) {
+                    $product->productOptions()->attach($optionData['option_id'], [
+                        'position' => $optionData['position'],
+                        'display_type' => $optionData['display_type'],
+                        'required' => $optionData['required'],
+                        'affects_price' => $optionData['affects_price'],
+                        'affects_stock' => $optionData['affects_stock'],
+                    ]);
+                }
+            }
+
+            // Create variants with prices
+            if ($request->filled('variants')) {
+                foreach ($request->variants as $variantData) {
+                    $variant = ProductVariant::create([
+                        'product_id' => $product->id,
+                        'sku' => $variantData['sku'],
+                        'stock' => $variantData['stock'],
+                        'purchasable' => $variantData['enabled'] ? 'always' : 'never',
+                        'min_quantity' => 1,
+                        'quantity_increment' => 1,
+                        'backorder' => 0,
+                        'shippable' => true,
+                        'attribute_data' => [],
+                    ]);
+
+                    // Attach option values to variant
+                    if (isset($variantData['option_values']) && is_array($variantData['option_values'])) {
+                        $variant->values()->attach($variantData['option_values']);
+                    }
+
+                    // Create prices for variant
+                    if (isset($variantData['prices']) && is_array($variantData['prices'])) {
+                        foreach ($variantData['prices'] as $priceData) {
+                            Price::create([
+                                'customer_group_id' => $priceData['customer_group_id'],
+                                'priceable_type' => 'product_variant',
+                                'priceable_id' => $variant->id,
+                                'price' => $priceData['price'],
+                                'compare_price' => $priceData['compare_price'] ?? null,
+                                'min_quantity' => $priceData['min_quantity'],
+                            ]);
+                        }
+                    }
+                }
+            }
+
+            // Handle image uploads
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $index => $image) {
+                    $product->addMedia($image)
+                        ->withCustomProperties(['position' => $index + 1])
+                        ->toMediaCollection($index === 0 ? 'thumbnail' : 'images');
+                }
+            }
+
+            DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Product created successfully!',
+                'redirect' => route('admin.products.index')
+            ]);
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => 'Error creating product: ' . $e->getMessage()
+            ], 500);
+        }
+    }
 }

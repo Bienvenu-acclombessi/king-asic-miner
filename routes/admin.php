@@ -44,6 +44,8 @@ Route::prefix('/king-admin')->name('admin.')->middleware('admin')->group(functio
     Route::resource('brands', BrandController::class)->except(['show', 'create']);
 
     // Products Management
+    Route::get('/products/wizard', [ProductController::class, 'wizard'])->name('products.wizard');
+    Route::post('/products/wizard', [ProductController::class, 'storeWizard'])->name('products.wizard.store');
     Route::resource('products', ProductController::class);
 
     // Tax Classes Management

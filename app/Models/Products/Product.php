@@ -12,10 +12,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Product extends Model
+class Product extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, InteractsWithMedia;
 
     protected $fillable = [
         'product_type_id',
@@ -66,7 +68,7 @@ class Product extends Model
     public function productOptions(): BelongsToMany
     {
         return $this->belongsToMany(ProductOption::class, 'product_product_option')
-            ->withPivot('position')
+            ->withPivot('position', 'display_type', 'required', 'affects_price', 'affects_stock')
             ->orderByPivot('position');
     }
 
