@@ -4,13 +4,13 @@
 class ProductWizard {
     constructor() {
         this.formData = {
-            name: { en: '', fr: '' },
+            name: '',
             slug: '',
             product_type_id: null,
             brand_id: null,
             status: 'draft',
-            short_description: { en: '', fr: '' },
-            description: { en: '', fr: '' },
+            short_description: '',
+            description: '',
             product_options: [],
             variants: [],
             collections: [],
@@ -19,7 +19,8 @@ class ProductWizard {
             meta_title: '',
             meta_description: '',
             meta_keywords: '',
-            images: []
+            thumbnail: null,
+            gallery_images: []
         };
 
         // Initialize managers
@@ -86,10 +87,10 @@ class ProductWizard {
      */
     setupStep1Listeners() {
         // Auto-generate slug from name
-        const nameEn = document.getElementById('name_en');
+        const name = document.getElementById('name');
         const slug = document.getElementById('slug');
 
-        nameEn.addEventListener('input', (e) => {
+        name.addEventListener('input', (e) => {
             if (!slug.dataset.manuallyEdited) {
                 slug.value = this.slugify(e.target.value);
             }
@@ -159,33 +160,41 @@ class ProductWizard {
      * Setup Step 5 listeners
      */
     setupStep5Listeners() {
-        const uploadArea = document.getElementById('uploadArea');
-        const imageInput = document.getElementById('imageInput');
-        const browseBtn = document.getElementById('browseImagesBtn');
+        const thumbnailInput = document.getElementById('thumbnailInput');
+        const galleryInput = document.getElementById('galleryInput');
 
-        // Click to browse
-        browseBtn.addEventListener('click', () => imageInput.click());
-        uploadArea.addEventListener('click', () => imageInput.click());
+        // Thumbnail upload
+        const browseThumbnailBtn = document.getElementById('browseThumbnailBtn');
+        if (browseThumbnailBtn) {
+            browseThumbnailBtn.addEventListener('click', () => {
+                thumbnailInput.click();
+            });
+        }
 
-        // File selection
-        imageInput.addEventListener('change', (e) => {
-            this.handleImageUpload(e.target.files);
+        thumbnailInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                this.handleThumbnailUpload(e.target.files[0]);
+            }
+            // Reset input pour permettre de sélectionner la même image
+            e.target.value = '';
         });
 
-        // Drag and drop
-        uploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadArea.classList.add('drag-over');
-        });
+        // Gallery upload
+        const browseGalleryBtn = document.getElementById('browseGalleryBtn');
+        if (browseGalleryBtn) {
+            browseGalleryBtn.addEventListener('click', () => {
+                console.log('Gallery button clicked');
+                galleryInput.click();
+            });
+        }
 
-        uploadArea.addEventListener('dragleave', () => {
-            uploadArea.classList.remove('drag-over');
-        });
-
-        uploadArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadArea.classList.remove('drag-over');
-            this.handleImageUpload(e.dataTransfer.files);
+        galleryInput.addEventListener('change', (e) => {
+            console.log('Gallery files selected:', e.target.files.length);
+            if (e.target.files.length > 0) {
+                this.handleGalleryUpload(e.target.files);
+            }
+            // Reset input pour permettre de sélectionner les mêmes images
+            e.target.value = '';
         });
     }
 
@@ -254,16 +263,13 @@ class ProductWizard {
         const step = this.stepManager.currentStep;
 
         if (step === 1) {
-            this.formData.name.en = document.getElementById('name_en').value;
-            this.formData.name.fr = document.getElementById('name_fr').value;
+            this.formData.name = document.getElementById('name').value;
             this.formData.slug = document.getElementById('slug').value;
             this.formData.product_type_id = parseInt(document.getElementById('product_type_id').value) || null;
             this.formData.brand_id = parseInt(document.getElementById('brand_id').value) || null;
             this.formData.status = document.getElementById('status').value;
-            this.formData.short_description.en = document.getElementById('short_description_en').value;
-            this.formData.short_description.fr = document.getElementById('short_description_fr').value;
-            this.formData.description.en = document.getElementById('description_en').value;
-            this.formData.description.fr = document.getElementById('description_fr').value;
+            this.formData.short_description = document.getElementById('short_description').value;
+            this.formData.description = document.getElementById('description').value;
         } else if (step === 6) {
             const collectionsSelect = document.getElementById('collections');
             this.formData.collections = Array.from(collectionsSelect.selectedOptions).map(opt => parseInt(opt.value));
@@ -295,20 +301,28 @@ class ProductWizard {
         if (step === 3) {
             // Auto-generate default variant if needed
             if (this.formData.variants.length === 0) {
-                const isSimple = this.isSimpleProduct();
-                if (isSimple) {
-                    this.formData.variants = [{
-                        sku: this.variantGenerator.generateSku(),
-                        option_values: [],
-                        stock: 0,
-                        enabled: true
-                    }];
-                }
+                // Always create at least one default variant
+                this.formData.variants = [{
+                    sku: this.variantGenerator.generateSku(),
+                    option_values: [],
+                    stock: 0,
+                    enabled: true
+                }];
             }
             this.renderVariants();
         } else if (step === 4) {
+            // Ensure variants exist before pricing
+            if (this.formData.variants.length === 0) {
+                alert('Please add at least one variant before setting prices.');
+                this.stepManager.prevStep();
+                return;
+            }
             this.priceCalculator.initializePrices();
             this.renderPricing();
+        } else if (step === 5) {
+            // Render existing images if any
+            this.renderThumbnail();
+            this.renderGallery();
         } else if (step === 6) {
             this.renderSummary();
         }
@@ -415,10 +429,12 @@ class ProductWizard {
             const option = window.wizardData.productOptions.find(opt => opt.id === optConfig.option_id);
             if (!option) return;
 
+            const optionName = option.label || option.name || option.attribute_data?.name || 'Option #' + option.id;
+
             html += `
                 <div class="option-card" data-option-id="${option.id}">
                     <div class="option-card-header">
-                        <h6 class="option-card-title">${option.attribute_data.name}</h6>
+                        <h6 class="option-card-title">${optionName}</h6>
                         <button type="button" class="btn btn-sm btn-danger" onclick="wizard.removeOption(${option.id})">
                             <i class="bi bi-trash"></i>
                         </button>
@@ -457,9 +473,10 @@ class ProductWizard {
                         </div>
                     </div>
                     <div class="option-values-grid">
-                        ${option.values.map(val => `
-                            <span class="option-value-badge">${val.attribute_data.name}</span>
-                        `).join('')}
+                        ${option.values.map(val => {
+                            const valName = val.name || val.attribute_data?.name || 'Value #' + val.id;
+                            return `<span class="option-value-badge">${valName}</span>`;
+                        }).join('')}
                     </div>
                 </div>
             `;
@@ -586,54 +603,41 @@ class ProductWizard {
 
         this.formData.variants.forEach((variant, vIndex) => {
             const displayName = this.variantGenerator.getVariantDisplayName(variant);
+            const priceValue = variant.price ? (variant.price / 100).toFixed(2) : '0.00';
+            const compareValue = variant.compare_price ? (variant.compare_price / 100).toFixed(2) : '';
+            const minQty = variant.min_quantity || 1;
 
             html += `
                 <div class="pricing-variant-section">
-                    <div class="pricing-variant-header">${displayName} (${variant.sku})</div>
-                    <div class="table-responsive">
-                        <table class="table table-sm">
-                            <thead>
-                                <tr>
-                                    <th>Customer Group</th>
-                                    <th>Price ($)</th>
-                                    <th>Compare Price ($)</th>
-                                    <th>Min Quantity</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-            `;
-
-            window.wizardData.customerGroups.forEach(group => {
-                const price = variant.prices?.find(p => p.customer_group_id === group.id);
-                const priceValue = price ? (price.price / 100).toFixed(2) : '0.00';
-                const compareValue = price?.compare_price ? (price.compare_price / 100).toFixed(2) : '';
-                const minQty = price?.min_quantity || 1;
-
-                html += `
-                    <tr>
-                        <td>${group.attribute_data.name}</td>
-                        <td>
-                            <input type="number" class="form-control form-control-sm" step="0.01" min="0"
-                                   value="${priceValue}"
-                                   onchange="wizard.updatePrice(${vIndex}, ${group.id}, 'price', this.value)">
-                        </td>
-                        <td>
-                            <input type="number" class="form-control form-control-sm" step="0.01" min="0"
-                                   value="${compareValue}"
-                                   onchange="wizard.updatePrice(${vIndex}, ${group.id}, 'compare_price', this.value)">
-                        </td>
-                        <td>
-                            <input type="number" class="form-control form-control-sm" min="1"
-                                   value="${minQty}"
-                                   onchange="wizard.updatePrice(${vIndex}, ${group.id}, 'min_quantity', this.value)">
-                        </td>
-                    </tr>
-                `;
-            });
-
-            html += `
-                            </tbody>
-                        </table>
+                    <div class="pricing-variant-header">
+                        <i class="bi bi-tag me-2"></i>${displayName} (${variant.sku})
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Price ($) <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" step="0.01" min="0"
+                                       placeholder="0.00" value="${priceValue}" required
+                                       onchange="wizard.updateVariantPrice(${vIndex}, 'price', this.value)">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Compare Price ($)</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" step="0.01" min="0"
+                                       placeholder="0.00" value="${compareValue}"
+                                       onchange="wizard.updateVariantPrice(${vIndex}, 'compare_price', this.value)">
+                            </div>
+                            <small class="text-muted">Original price for sales</small>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Min Quantity</label>
+                            <input type="number" class="form-control" min="1" value="${minQty}"
+                                   onchange="wizard.updateVariantPrice(${vIndex}, 'min_quantity', this.value)">
+                            <small class="text-muted">Minimum order quantity</small>
+                        </div>
                     </div>
                 </div>
             `;
@@ -643,15 +647,10 @@ class ProductWizard {
     }
 
     /**
-     * Update price
+     * Update variant price (simplified without customer groups)
      */
-    updatePrice(variantIndex, groupId, field, value) {
-        const currentPrice = this.priceCalculator.getVariantPrice(variantIndex, groupId) || {
-            customer_group_id: groupId,
-            price: 0,
-            compare_price: null,
-            min_quantity: 1
-        };
+    updateVariantPrice(variantIndex, field, value) {
+        if (!this.formData.variants[variantIndex]) return;
 
         if (field === 'price' || field === 'compare_price') {
             value = this.priceCalculator.parsePrice(value);
@@ -659,16 +658,42 @@ class ProductWizard {
             value = parseInt(value) || 1;
         }
 
-        this.priceCalculator.updateVariantPrice(variantIndex, groupId, {
-            ...currentPrice,
-            [field]: value
-        });
+        this.formData.variants[variantIndex][field] = value;
+    }
+
+
+    /**
+     * Handle thumbnail upload
+     */
+    handleThumbnailUpload(file) {
+        const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+        const maxSize = 5 * 1024 * 1024; // 5MB
+
+        if (!validTypes.includes(file.type)) {
+            alert(`${file.name} is not a valid image format`);
+            return;
+        }
+
+        if (file.size > maxSize) {
+            alert(`${file.name} is too large (max 5MB)`);
+            return;
+        }
+
+        this.formData.thumbnail = file;
+        this.renderThumbnail();
     }
 
     /**
-     * Handle image upload
+     * Handle gallery upload
      */
-    handleImageUpload(files) {
+    handleGalleryUpload(files) {
+        console.log('handleGalleryUpload called with files:', files);
+
+        // Ensure gallery_images is initialized
+        if (!this.formData.gallery_images) {
+            this.formData.gallery_images = [];
+        }
+
         const validFiles = Array.from(files).filter(file => {
             const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
             const maxSize = 5 * 1024 * 1024; // 5MB
@@ -686,57 +711,112 @@ class ProductWizard {
             return true;
         });
 
+        console.log('Valid files:', validFiles.length);
+
         validFiles.forEach(file => {
-            this.formData.images.push(file);
+            this.formData.gallery_images.push(file);
         });
 
-        this.renderImages();
+        console.log('Total gallery images now:', this.formData.gallery_images.length);
+
+        this.renderGallery();
     }
 
     /**
-     * Render images
+     * Render thumbnail
      */
-    renderImages() {
-        const grid = document.getElementById('imagePreviewGrid');
+    renderThumbnail() {
+        const preview = document.getElementById('thumbnailPreview');
 
-        if (this.formData.images.length === 0) {
-            grid.style.display = 'none';
+        if (!this.formData.thumbnail) {
+            preview.innerHTML = `
+                <i class="bi bi-image" style="font-size: 3rem; color: #6c757d;"></i>
+                <p class="text-muted mt-2 mb-2">No image selected</p>
+                <button type="button" class="btn btn-primary btn-sm" id="browseThumbnailBtn">
+                    <i class="bi bi-folder2-open"></i> Select Main Image
+                </button>
+            `;
+            document.getElementById('browseThumbnailBtn').addEventListener('click', () => {
+                document.getElementById('thumbnailInput').click();
+            });
             return;
         }
 
-        grid.style.display = 'flex';
+        const url = URL.createObjectURL(this.formData.thumbnail);
+
+        preview.innerHTML = `
+            <div class="position-relative d-inline-block">
+                <img src="${url}" alt="Thumbnail" style="max-width: 300px; max-height: 300px; border-radius: 0.375rem;">
+                <button type="button" class="btn btn-sm btn-danger position-absolute top-0 end-0 m-2" onclick="wizard.removeThumbnail()">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+            <p class="text-muted small mt-2 mb-0">${this.formData.thumbnail.name}</p>
+        `;
+    }
+
+    /**
+     * Render gallery
+     */
+    renderGallery() {
+        // Ensure gallery_images is initialized
+        if (!this.formData.gallery_images) {
+            this.formData.gallery_images = [];
+        }
+
+        console.log('renderGallery called, gallery_images count:', this.formData.gallery_images.length);
+
+        const gallery = document.getElementById('galleryPreview');
+
+        if (!gallery) {
+            console.error('Gallery preview element not found!');
+            return;
+        }
+
+        if (this.formData.gallery_images.length === 0) {
+            gallery.innerHTML = '<div class="col-12"><p class="text-muted text-center mb-0">No gallery images added yet</p></div>';
+            return;
+        }
 
         let html = '';
 
-        this.formData.images.forEach((file, index) => {
+        this.formData.gallery_images.forEach((file, index) => {
             const url = URL.createObjectURL(file);
 
             html += `
-                <div class="col-md-4 col-lg-3">
-                    <div class="image-preview-card">
-                        ${index === 0 ? '<span class="image-thumbnail-badge">Thumbnail</span>' : ''}
-                        <img src="${url}" alt="${file.name}">
-                        <div class="image-preview-overlay">
-                            <div class="image-preview-actions">
-                                <button type="button" class="btn btn-sm btn-danger" onclick="wizard.removeImage(${index})">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </div>
-                        </div>
+                <div class="col-md-3 col-lg-2">
+                    <div class="position-relative">
+                        <img src="${url}" alt="${file.name}" class="img-fluid rounded" style="width: 100%; height: 120px; object-fit: cover;">
+                        <button type="button" class="btn btn-sm btn-danger position-absolute top-0 end-0 m-1" onclick="wizard.removeGalleryImage(${index})">
+                            <i class="bi bi-x"></i>
+                        </button>
                     </div>
+                    <small class="text-muted d-block text-truncate mt-1">${file.name}</small>
                 </div>
             `;
         });
 
-        grid.innerHTML = html;
+        gallery.innerHTML = html;
+        console.log('Gallery rendered with', this.formData.gallery_images.length, 'images');
     }
 
     /**
-     * Remove image
+     * Remove thumbnail
      */
-    removeImage(index) {
-        this.formData.images.splice(index, 1);
-        this.renderImages();
+    removeThumbnail() {
+        this.formData.thumbnail = null;
+        this.renderThumbnail();
+    }
+
+    /**
+     * Remove gallery image
+     */
+    removeGalleryImage(index) {
+        if (!this.formData.gallery_images) {
+            this.formData.gallery_images = [];
+        }
+        this.formData.gallery_images.splice(index, 1);
+        this.renderGallery();
     }
 
     /**
@@ -752,18 +832,35 @@ class ProductWizard {
             b => b.id === this.formData.brand_id
         );
 
+        const productTypeName = productType?.name || productType?.attribute_data?.name || 'N/A';
+        const brandName = brand?.name || brand?.attribute_data?.name || 'N/A';
+
+        // Get collection names
+        const collections = this.formData.collections || [];
+        const collectionNames = collections.map(collId => {
+            const selectOption = document.querySelector(`#collections option[value="${collId}"]`);
+            return selectOption ? selectOption.textContent.trim() : `Collection #${collId}`;
+        });
+
+        // Get tag names
+        const tags = this.formData.tags || [];
+        const tagNames = tags.map(tagId => {
+            const selectOption = document.querySelector(`#tags option[value="${tagId}"]`);
+            return selectOption ? selectOption.textContent.trim() : `Tag #${tagId}`;
+        });
+
         let html = `
             <div class="summary-item">
                 <div class="summary-label">Product Name</div>
-                <div class="summary-value">${this.formData.name.en || 'N/A'}</div>
+                <div class="summary-value">${this.formData.name || 'N/A'}</div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">Product Type</div>
-                <div class="summary-value">${productType?.attribute_data.name || 'N/A'}</div>
+                <div class="summary-value">${productTypeName}</div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">Brand</div>
-                <div class="summary-value">${brand?.attribute_data.name || 'N/A'}</div>
+                <div class="summary-value">${brandName || 'N/A'}</div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">Status</div>
@@ -771,19 +868,30 @@ class ProductWizard {
             </div>
             <div class="summary-item">
                 <div class="summary-label">Options</div>
-                <div class="summary-value">${this.formData.product_options.length} option(s)</div>
+                <div class="summary-value">${(this.formData.product_options || []).length} option(s)</div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">Variants</div>
-                <div class="summary-value">${this.formData.variants.length} variant(s)</div>
+                <div class="summary-value">${(this.formData.variants || []).length} variant(s)</div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">Images</div>
-                <div class="summary-value">${this.formData.images.length} image(s)</div>
+                <div class="summary-value">
+                    ${this.formData.thumbnail ? '1 thumbnail' : 'No thumbnail'}
+                    ${(this.formData.gallery_images && this.formData.gallery_images.length > 0) ? `<br>+ ${this.formData.gallery_images.length} gallery image(s)` : ''}
+                </div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">Collections</div>
-                <div class="summary-value">${this.formData.collections.length} collection(s)</div>
+                <div class="summary-value">
+                    ${collections.length > 0 ? collectionNames.join(', ') : 'None selected'}
+                </div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-label">Tags</div>
+                <div class="summary-value">
+                    ${tags.length > 0 ? tagNames.join(', ') : 'None selected'}
+                </div>
             </div>
         `;
 
@@ -804,18 +912,15 @@ class ProductWizard {
         const formData = new FormData();
 
         // Add all data
-        formData.append('name[en]', this.formData.name.en);
-        formData.append('name[fr]', this.formData.name.fr || '');
+        formData.append('name', this.formData.name);
         formData.append('slug', this.formData.slug);
         formData.append('product_type_id', this.formData.product_type_id);
         if (this.formData.brand_id) {
             formData.append('brand_id', this.formData.brand_id);
         }
         formData.append('status', this.formData.status);
-        formData.append('short_description[en]', this.formData.short_description.en || '');
-        formData.append('short_description[fr]', this.formData.short_description.fr || '');
-        formData.append('description[en]', this.formData.description.en || '');
-        formData.append('description[fr]', this.formData.description.fr || '');
+        formData.append('short_description', this.formData.short_description || '');
+        formData.append('description', this.formData.description || '');
 
         // Product options
         this.formData.product_options.forEach((opt, i) => {
@@ -829,22 +934,25 @@ class ProductWizard {
             formData.append(`variants[${i}][sku]`, variant.sku);
             formData.append(`variants[${i}][stock]`, variant.stock);
             formData.append(`variants[${i}][enabled]`, variant.enabled ? 1 : 0);
+            formData.append(`variants[${i}][price]`, variant.price || 0);
+            formData.append(`variants[${i}][compare_price]`, variant.compare_price || '');
+            formData.append(`variants[${i}][min_quantity]`, variant.min_quantity || 1);
 
             variant.option_values?.forEach((valId, j) => {
                 formData.append(`variants[${i}][option_values][${j}]`, valId);
             });
-
-            variant.prices?.forEach((price, j) => {
-                Object.keys(price).forEach(key => {
-                    formData.append(`variants[${i}][prices][${j}][${key}]`, price[key]);
-                });
-            });
         });
 
         // Images
-        this.formData.images.forEach(file => {
-            formData.append('images[]', file);
-        });
+        if (this.formData.thumbnail) {
+            formData.append('thumbnail', this.formData.thumbnail);
+        }
+
+        if (this.formData.gallery_images && this.formData.gallery_images.length > 0) {
+            this.formData.gallery_images.forEach(file => {
+                formData.append('gallery[]', file);
+            });
+        }
 
         // Collections
         this.formData.collections.forEach(id => {

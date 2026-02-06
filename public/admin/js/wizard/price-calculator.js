@@ -11,16 +11,12 @@ class PriceCalculator {
      */
     initializePrices() {
         const variants = this.wizard.formData.variants || [];
-        const customerGroups = window.wizardData.customerGroups;
 
         variants.forEach(variant => {
-            if (!variant.prices) {
-                variant.prices = customerGroups.map(group => ({
-                    customer_group_id: group.id,
-                    price: 0,
-                    compare_price: null,
-                    min_quantity: 1
-                }));
+            if (!variant.price) {
+                variant.price = 0;
+                variant.compare_price = null;
+                variant.min_quantity = 1;
             }
         });
 

@@ -92,39 +92,60 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($products->load('images') as $product)
+                                @forelse($products as $product)
                                     <tr>
                                         <td>
-                                            @if($product->hasMedia('thumbnail'))
-                                                <img src="{{ $product->getFirstMediaUrl('thumbnail') }}" alt="{{ $product->name }}" class="rounded" style="width: 50px; height: 50px; object-fit: cover;">
-                                            @elseif($product->hasMedia('images'))
-                                                <img src="{{ $product->getFirstMediaUrl('images') }}" alt="{{ $product->name }}" class="rounded" style="width: 50px; height: 50px; object-fit: cover;">
+                                            @php
+                                                $images = $product->attribute_data['images'] ?? null;
+                                                $thumbnailPath = $images['thumbnail'] ?? null;
+                                                $thumbnailUrl = $thumbnailPath ? asset('storage/' . $thumbnailPath) : null;
+                                            @endphp
+                                            @if($thumbnailUrl)
+                                                <img src="{{ $thumbnailUrl }}" alt="{{ $product->attribute_data['name']['en'] ?? 'Product' }}" class="rounded" style="width: 50px; height: 50px; object-fit: cover;">
                                             @else
-                                                <div class="icon-shape icon-md bg-light rounded">
+                                                <div class="icon-shape icon-md bg-light rounded d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
                                                     <i class="bi bi-image"></i>
                                                 </div>
                                             @endif
                                         </td>
                                         <td>
+                                            @php
+                                                $productName = $product->attribute_data['name']['en'] ?? $product->attribute_data['name'] ?? 'N/A';
+                                                $firstVariant = $product->variants->first();
+                                                $sku = $firstVariant ? $firstVariant->sku : 'N/A';
+                                                $stock = $firstVariant ? $firstVariant->stock : 0;
+                                                $firstPrice = $firstVariant ? $firstVariant->prices->first() : null;
+                                                $price = $firstPrice ? $firstPrice->price / 100 : 0;
+                                                $firstCollection = $product->collections->first();
+                                                $categoryName = $firstCollection ? ($firstCollection->name ?? $firstCollection->attribute_data['name'] ?? 'N/A') : 'N/A';
+
+                                                $statusColors = [
+                                                    'draft' => 'secondary',
+                                                    'published' => 'success',
+                                                    'archived' => 'warning',
+                                                    'out_of_stock' => 'danger'
+                                                ];
+                                                $statusColor = $statusColors[$product->status] ?? 'secondary';
+                                            @endphp
                                             <div>
                                                 <h5 class="mb-0 text-primary-hover">
-                                                    <a href="{{ route('admin.products.edit', $product) }}">{{ $product->name }}</a>
+                                                    <a href="{{ route('admin.products.edit', $product) }}">{{ $productName }}</a>
                                                 </h5>
-                                                <small class="text-muted">SKU: {{ $product->sku }}</small>
+                                                <small class="text-muted">SKU: {{ $sku }}</small>
                                             </div>
                                         </td>
-                                        <td>{{ $product->category->name ?? 'N/A' }}</td>
+                                        <td>{{ $categoryName }}</td>
                                         <td>
-                                            @if($product->stock_quantity > 0)
-                                                <span class="badge bg-light-success text-dark-success">{{ $product->stock_quantity }}</span>
+                                            @if($stock > 0)
+                                                <span class="badge bg-success">{{ $stock }}</span>
                                             @else
-                                                <span class="badge bg-light-danger text-dark-danger">Out of Stock</span>
+                                                <span class="badge bg-danger">Out of Stock</span>
                                             @endif
                                         </td>
-                                        <td>${{ number_format($product->price, 2) }}</td>
+                                        <td>${{ number_format($price, 2) }}</td>
                                         <td>
-                                            <span class="badge bg-light-{{ $product->status->color ?? 'secondary' }} text-dark-{{ $product->status->color ?? 'secondary' }}">
-                                                {{ $product->status->name ?? 'N/A' }}
+                                            <span class="badge bg-{{ $statusColor }}">
+                                                {{ ucfirst($product->status) }}
                                             </span>
                                         </td>
                                         <td>
@@ -137,19 +158,6 @@
                                                         <a class="dropdown-item" href="{{ route('admin.products.edit', $product) }}">
                                                             <i class="bi bi-pencil-square me-2"></i>Edit
                                                         </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="{{ route('admin.products.show', $product) }}">
-                                                            <i class="bi bi-eye me-2"></i>View
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <form action="{{ route('admin.products.duplicate', $product) }}" method="POST">
-                                                            @csrf
-                                                            <button type="submit" class="dropdown-item">
-                                                                <i class="bi bi-files me-2"></i>Duplicate
-                                                            </button>
-                                                        </form>
                                                     </li>
                                                     <li><hr class="dropdown-divider"></li>
                                                     <li>

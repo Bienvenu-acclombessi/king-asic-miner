@@ -8,12 +8,20 @@
             <label class="form-label">Collections (Categories)</label>
             <select class="form-select" name="collections[]" id="collections" multiple size="8">
                 @foreach($collections as $collection)
+                    @php
+                        $collectionName = $collection->name ?? (is_array($collection->attribute_data) ? ($collection->attribute_data['name'] ?? '') : '');
+                        $collectionName = is_array($collectionName) ? ($collectionName['en'] ?? $collectionName[0] ?? '') : $collectionName;
+                    @endphp
                     <option value="{{ $collection->id }}">
-                        {{ $collection->attribute_data['name'] ?? $collection->id }}
+                        {{ $collectionName ?: 'Collection #' . $collection->id }}
                     </option>
                     @foreach($collection->children as $child)
+                        @php
+                            $childName = $child->name ?? (is_array($child->attribute_data) ? ($child->attribute_data['name'] ?? '') : '');
+                            $childName = is_array($childName) ? ($childName['en'] ?? $childName[0] ?? '') : $childName;
+                        @endphp
                         <option value="{{ $child->id }}">
-                            &nbsp;&nbsp;&nbsp;↳ {{ $child->attribute_data['name'] ?? $child->id }}
+                            &nbsp;&nbsp;&nbsp;↳ {{ $childName ?: 'Collection #' . $child->id }}
                         </option>
                     @endforeach
                 @endforeach
@@ -26,7 +34,11 @@
             <label class="form-label">Tags</label>
             <select class="form-select" name="tags[]" id="tags" multiple size="8">
                 @foreach($tags as $tag)
-                    <option value="{{ $tag->id }}">{{ $tag->attribute_data['name'] ?? $tag->id }}</option>
+                    @php
+                        $tagName = $tag->name ?? (is_array($tag->attribute_data) ? ($tag->attribute_data['name'] ?? '') : '');
+                        $tagName = is_array($tagName) ? ($tagName['en'] ?? $tagName[0] ?? '') : $tagName;
+                    @endphp
+                    <option value="{{ $tag->id }}">{{ $tagName ?: 'Tag #' . $tag->id }}</option>
                 @endforeach
             </select>
             <small class="form-text text-muted">Hold Ctrl/Cmd to select multiple</small>
@@ -37,12 +49,16 @@
             <label class="form-label">Visible to Customer Groups</label>
             <div class="row">
                 @foreach($customerGroups as $group)
+                    @php
+                        $groupName = $group->name ?? (is_array($group->attribute_data) ? ($group->attribute_data['name'] ?? '') : '');
+                        $groupName = is_array($groupName) ? ($groupName['en'] ?? $groupName[0] ?? '') : $groupName;
+                    @endphp
                     <div class="col-md-4 mb-2">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="customer_groups[]"
                                    value="{{ $group->id }}" id="cg_{{ $group->id }}" checked>
                             <label class="form-check-label" for="cg_{{ $group->id }}">
-                                {{ $group->attribute_data['name'] ?? $group->id }}
+                                {{ $groupName ?: 'Group #' . $group->id }}
                             </label>
                         </div>
                     </div>

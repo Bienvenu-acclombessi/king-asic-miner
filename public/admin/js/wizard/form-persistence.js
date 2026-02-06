@@ -138,8 +138,7 @@ class FormPersistence {
 
         // Step 1: Basics
         if (data.name) {
-            document.getElementById('name_en').value = data.name.en || '';
-            document.getElementById('name_fr').value = data.name.fr || '';
+            document.getElementById('name').value = data.name;
         }
         if (data.slug) {
             document.getElementById('slug').value = data.slug;
@@ -154,12 +153,10 @@ class FormPersistence {
             document.getElementById('status').value = data.status;
         }
         if (data.short_description) {
-            document.getElementById('short_description_en').value = data.short_description.en || '';
-            document.getElementById('short_description_fr').value = data.short_description.fr || '';
+            document.getElementById('short_description').value = data.short_description;
         }
         if (data.description) {
-            document.getElementById('description_en').value = data.description.en || '';
-            document.getElementById('description_fr').value = data.description.fr || '';
+            document.getElementById('description').value = data.description;
         }
 
         // Step 6: Finalize

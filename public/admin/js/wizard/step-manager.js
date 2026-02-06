@@ -176,18 +176,18 @@ class StepManager {
      * Validate Step 1: Basics
      */
     validateStep1() {
-        const nameEn = document.getElementById('name_en');
+        const name = document.getElementById('name');
         const slug = document.getElementById('slug');
         const productTypeId = document.getElementById('product_type_id');
 
         let isValid = true;
 
         // Validate name
-        if (!nameEn.value.trim()) {
-            this.showFieldError(nameEn, 'Product name is required');
+        if (!name.value.trim()) {
+            this.showFieldError(name, 'Product name is required');
             isValid = false;
         } else {
-            this.clearFieldError(nameEn);
+            this.clearFieldError(name);
         }
 
         // Validate slug
@@ -265,19 +265,17 @@ class StepManager {
     validateStep4() {
         const variants = this.wizard.formData.variants || [];
 
-        // Check if all variants have at least one price
+        // Check if all variants have a price
         for (const variant of variants) {
-            if (!variant.prices || variant.prices.length === 0) {
-                alert(`Variant "${variant.sku}" must have at least one price`);
+            if (!variant.price || variant.price <= 0) {
+                alert(`Please enter a valid price for variant "${variant.sku}"`);
                 return false;
             }
 
-            // Check if all prices are valid
-            for (const price of variant.prices) {
-                if (!price.price || price.price < 0) {
-                    alert(`Invalid price for variant "${variant.sku}"`);
-                    return false;
-                }
+            // Check compare price if set
+            if (variant.compare_price && variant.compare_price < variant.price) {
+                alert(`Compare price must be higher than regular price for "${variant.sku}"`);
+                return false;
             }
         }
 
@@ -288,11 +286,11 @@ class StepManager {
      * Validate Step 5: Media
      */
     validateStep5() {
-        // Images are optional, but show warning if none
-        const images = this.wizard.formData.images || [];
+        // Images are optional, but show warning if no thumbnail
+        const thumbnail = this.wizard.formData.thumbnail;
 
-        if (images.length === 0) {
-            if (!confirm('No images uploaded. Continue anyway?')) {
+        if (!thumbnail) {
+            if (!confirm('No main image uploaded. Continue anyway?')) {
                 return false;
             }
         }

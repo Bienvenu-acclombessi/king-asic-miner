@@ -8,8 +8,12 @@
         <select class="form-select" id="optionSelector">
             <option value="">Choose an option to add...</option>
             @foreach($productOptions as $option)
+                @php
+                    $optionName = $option->label ?? $option->name ?? (is_array($option->attribute_data) ? ($option->attribute_data['name'] ?? '') : '');
+                    $optionName = is_array($optionName) ? ($optionName['en'] ?? $optionName[0] ?? '') : $optionName;
+                @endphp
                 <option value="{{ $option->id }}" data-option="{{ json_encode($option) }}">
-                    {{ $option->attribute_data['name'] ?? $option->id }}
+                    {{ $optionName ?: 'Option #' . $option->id }}
                 </option>
             @endforeach
         </select>

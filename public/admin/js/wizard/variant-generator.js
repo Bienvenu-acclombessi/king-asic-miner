@@ -64,9 +64,9 @@ class VariantGenerator {
             const option = window.wizardData.productOptions.find(po => po.id === opt.option_id);
             return option.values.map(value => ({
                 optionId: option.id,
-                optionName: option.attribute_data.name,
+                optionName: option.label || option.name || option.attribute_data?.name || 'Option',
                 valueId: value.id,
-                valueName: value.attribute_data.name
+                valueName: value.name || value.attribute_data?.name || 'Value #' + value.id
             }));
         });
 
@@ -226,7 +226,7 @@ class VariantGenerator {
                 for (const option of window.wizardData.productOptions) {
                     const value = option.values.find(v => v.id === valueId);
                     if (value) {
-                        return value.attribute_data.name;
+                        return value.name || value.attribute_data?.name || 'Value';
                     }
                 }
                 return '';

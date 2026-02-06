@@ -5,14 +5,9 @@
     <div class="row">
         <!-- Product Name -->
         <div class="col-md-6 mb-3">
-            <label class="form-label">Product Name (English) <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" name="name_en" id="name_en" required>
+            <label class="form-label">Product Name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" name="name" id="name" required>
             <div class="invalid-feedback"></div>
-        </div>
-
-        <div class="col-md-6 mb-3">
-            <label class="form-label">Product Name (French)</label>
-            <input type="text" class="form-control" name="name_fr" id="name_fr">
         </div>
 
         <!-- Slug -->
@@ -29,8 +24,12 @@
             <select class="form-select" name="product_type_id" id="product_type_id" required>
                 <option value="">Select Product Type</option>
                 @foreach($productTypes as $type)
-                    <option value="{{ $type->id }}" data-type="{{ strtolower($type->attribute_data['name'] ?? '') }}">
-                        {{ $type->attribute_data['name'] ?? $type->id }}
+                    @php
+                        $typeName = $type->name ?? (is_array($type->attribute_data) ? ($type->attribute_data['name'] ?? '') : '');
+                        $typeName = is_array($typeName) ? ($typeName['en'] ?? $typeName[0] ?? '') : $typeName;
+                    @endphp
+                    <option value="{{ $type->id }}" data-type="{{ strtolower($typeName) }}">
+                        {{ $typeName ?: 'Type #' . $type->id }}
                     </option>
                 @endforeach
             </select>
@@ -43,7 +42,11 @@
             <select class="form-select" name="brand_id" id="brand_id">
                 <option value="">Select Brand</option>
                 @foreach($brands as $brand)
-                    <option value="{{ $brand->id }}">{{ $brand->attribute_data['name'] ?? $brand->id }}</option>
+                    @php
+                        $brandName = $brand->name ?? (is_array($brand->attribute_data) ? ($brand->attribute_data['name'] ?? '') : '');
+                        $brandName = is_array($brandName) ? ($brandName['en'] ?? $brandName[0] ?? '') : $brandName;
+                    @endphp
+                    <option value="{{ $brand->id }}">{{ $brandName ?: 'Brand #' . $brand->id }}</option>
                 @endforeach
             </select>
         </div>
@@ -61,24 +64,14 @@
 
         <!-- Short Description -->
         <div class="col-12 mb-3">
-            <label class="form-label">Short Description (English)</label>
-            <textarea class="form-control" name="short_description_en" id="short_description_en" rows="2"></textarea>
-        </div>
-
-        <div class="col-12 mb-3">
-            <label class="form-label">Short Description (French)</label>
-            <textarea class="form-control" name="short_description_fr" id="short_description_fr" rows="2"></textarea>
+            <label class="form-label">Short Description</label>
+            <textarea class="form-control" name="short_description" id="short_description" rows="2"></textarea>
         </div>
 
         <!-- Description -->
         <div class="col-12 mb-3">
-            <label class="form-label">Description (English)</label>
-            <textarea class="form-control" name="description_en" id="description_en" rows="4"></textarea>
-        </div>
-
-        <div class="col-12 mb-3">
-            <label class="form-label">Description (French)</label>
-            <textarea class="form-control" name="description_fr" id="description_fr" rows="4"></textarea>
+            <label class="form-label">Description</label>
+            <textarea class="form-control" name="description" id="description" rows="4"></textarea>
         </div>
     </div>
 

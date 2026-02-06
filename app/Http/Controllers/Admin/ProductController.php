@@ -404,16 +404,13 @@ class ProductController extends Controller
     {
         $validator = Validator::make($request->all(), [
             // Step 1: Basics
-            'name.en' => 'required|string|max:255',
-            'name.fr' => 'nullable|string|max:255',
+            'name' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:products,attribute_data->slug',
             'product_type_id' => 'required|exists:product_types,id',
             'brand_id' => 'nullable|exists:brands,id',
             'status' => 'required|in:draft,published,archived,out_of_stock',
-            'short_description.en' => 'nullable|string',
-            'short_description.fr' => 'nullable|string',
-            'description.en' => 'nullable|string',
-            'description.fr' => 'nullable|string',
+            'short_description' => 'nullable|string',
+            'description' => 'nullable|string',
 
             // Step 2: Options
             'product_options' => 'nullable|array',
@@ -432,15 +429,14 @@ class ProductController extends Controller
             'variants.*.stock' => 'required|integer|min:0',
             'variants.*.enabled' => 'required|boolean',
 
-            // Step 4: Prices (embedded in variants)
-            'variants.*.prices' => 'required|array|min:1',
-            'variants.*.prices.*.customer_group_id' => 'required|exists:customer_groups,id',
-            'variants.*.prices.*.price' => 'required|integer|min:0',
-            'variants.*.prices.*.compare_price' => 'nullable|integer|min:0',
-            'variants.*.prices.*.min_quantity' => 'required|integer|min:1',
+            // Step 4: Price (simplified without customer groups)
+            'variants.*.price' => 'required|integer|min:0',
+            'variants.*.compare_price' => 'nullable|integer|min:0',
+            'variants.*.min_quantity' => 'required|integer|min:1',
 
             // Step 5: Images
-            'images.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'thumbnail' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'gallery.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
 
             // Step 6: Finalization
             'collections' => 'nullable|array',
@@ -466,16 +462,16 @@ class ProductController extends Controller
 
             // Prepare attribute data
             $attributeData = [
-                'name' => $request->name,
+                'name' => ['en' => $request->name],
                 'slug' => $request->slug,
             ];
 
             if ($request->filled('short_description')) {
-                $attributeData['short_description'] = $request->short_description;
+                $attributeData['short_description'] = ['en' => $request->short_description];
             }
 
             if ($request->filled('description')) {
-                $attributeData['description'] = $request->description;
+                $attributeData['description'] = ['en' => $request->description];
             }
 
             // SEO data
@@ -563,29 +559,45 @@ class ProductController extends Controller
                         $variant->values()->attach($variantData['option_values']);
                     }
 
-                    // Create prices for variant
-                    if (isset($variantData['prices']) && is_array($variantData['prices'])) {
-                        foreach ($variantData['prices'] as $priceData) {
-                            Price::create([
-                                'customer_group_id' => $priceData['customer_group_id'],
-                                'priceable_type' => 'product_variant',
-                                'priceable_id' => $variant->id,
-                                'price' => $priceData['price'],
-                                'compare_price' => $priceData['compare_price'] ?? null,
-                                'min_quantity' => $priceData['min_quantity'],
-                            ]);
-                        }
-                    }
+                    // Create default price for variant (no customer group)
+                    Price::create([
+                        'customer_group_id' => null,
+                        'priceable_type' => 'product_variant',
+                        'priceable_id' => $variant->id,
+                        'price' => $variantData['price'],
+                        'compare_price' => $variantData['compare_price'] ?? null,
+                        'min_quantity' => $variantData['min_quantity'] ?? 1,
+                    ]);
                 }
             }
 
             // Handle image uploads
-            if ($request->hasFile('images')) {
-                foreach ($request->file('images') as $index => $image) {
-                    $product->addMedia($image)
-                        ->withCustomProperties(['position' => $index + 1])
-                        ->toMediaCollection($index === 0 ? 'thumbnail' : 'images');
+            $imagePaths = [];
+
+            // Main thumbnail
+            if ($request->hasFile('thumbnail')) {
+                $path = $request->file('thumbnail')->store('products/thumbnails', 'public');
+                $imagePaths['thumbnail'] = $path;
+            }
+
+            // Gallery images
+            if ($request->hasFile('gallery')) {
+                $galleryPaths = [];
+                foreach ($request->file('gallery') as $index => $image) {
+                    $path = $image->store('products/gallery', 'public');
+                    $galleryPaths[] = [
+                        'path' => $path,
+                        'position' => $index + 1
+                    ];
                 }
+                $imagePaths['gallery'] = $galleryPaths;
+            }
+
+            // Store image paths in product attribute_data
+            if (!empty($imagePaths)) {
+                $attributeData = $product->attribute_data;
+                $attributeData['images'] = $imagePaths;
+                $product->update(['attribute_data' => $attributeData]);
             }
 
             DB::commit();
