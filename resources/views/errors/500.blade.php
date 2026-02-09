@@ -5,7 +5,7 @@ Erreur 500
 @section('page_css')
 
 @endsection
-@section('main_content')
+@section('content')
 <div role="main" id="maincontent">
     <div class="experience"><div class="experience-component experience-man_layouts-1rowGenericCol"><div class="s-rich-text ">
     <div class="container">
