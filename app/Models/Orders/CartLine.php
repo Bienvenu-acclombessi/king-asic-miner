@@ -5,6 +5,7 @@ namespace App\Models\Orders;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class CartLine extends Model
@@ -38,5 +39,13 @@ class CartLine extends Model
     public function purchasable(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    /**
+     * Get selected option values for this cart line
+     */
+    public function optionValues(): HasMany
+    {
+        return $this->hasMany(CartLineOptionValue::class);
     }
 }

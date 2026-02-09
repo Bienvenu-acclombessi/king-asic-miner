@@ -30,7 +30,7 @@
                                 <line x1="3" y1="6" x2="21" y2="6"></line>
                                 <path d="M16 10a4 4 0 0 1-8 0"></path>
                             </svg>
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">1</span>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success cart-count">0</span>
                         </a>
 
                         <!-- Search Icon -->
@@ -55,7 +55,7 @@
                         <!-- Navigation -->
                         <ul class="navbar-nav flex-wrap align-items-lg-center" style="flex: 1 1 55%; min-width: 400px;">
                             <li class="nav-item">
-                                <a class="nav-link px-2 px-xl-3" href="dashboard/index.html">Accueil</a>
+                                <a class="nav-link px-2 px-xl-3" href="{{ route('public.home') }}">Accueil</a>
                             </li>
                             <li class="nav-item dropdown dropdown-fullwidth">
                                 <a class="nav-link dropdown-toggle px-2 px-xl-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -160,22 +160,22 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-2 px-xl-3" href="dashboard/index.html">Hebergement</a>
+                                <a class="nav-link px-2 px-xl-3" href="{{ route('public.hosting.index') }}">Hebergement</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle px-2 px-xl-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Société
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="pages/shop-list.html">À propos de nous</a></li>
-                                    <li><a class="dropdown-item" href="pages/shop-filter.html">Authentification du personnel</a></li>
-                                    <li><a class="dropdown-item" href="pages/shop-fullwidth.html">Prévention de la fraude</a></li>
-                                    <li><a class="dropdown-item" href="pages/shop-single.html">Questions fréquentes</a></li>
-                                    <li><a class="dropdown-item" href="pages/shop-single-2.html">Actualités et Événements</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('public.company.about') }}">À propos de nous</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('public.company.staff-authentification') }}">Authentification du personnel</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('public.company.fraud-prevention') }}">Prévention de la fraude</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('public.company.faq') }}">Questions fréquentes</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('public.company.blog') }}">Actualités et Événements</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-2 px-xl-3" href="dashboard/index.html">Commande en vrac</a>
+                                <a class="nav-link px-2 px-xl-3" href="{{ route('public.bulk-order.index') }}">Commande en vrac</a>
                             </li>
                         </ul>
 
@@ -202,16 +202,18 @@
                                     <circle cx="12" cy="7" r="4"></circle>
                                 </svg>
                             </a>
-                            <a class="btn btn-primary d-flex align-items-center position-relative px-2 py-1"
+                            <a class="d-flex align-items-center text-muted text-decoration-none"
                                data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" href="#!" aria-controls="offcanvasRight" style="white-space: nowrap;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-1">
-                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
-                                </svg>
-                                <span class="fw-semibold small">$1,250.00</span>
-                                <span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-success" style="font-size: 0.65rem;">1</span>
+                                <div class="position-relative me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                    </svg>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success cart-count" style="font-size: 0.65rem;">0</span>
+                                </div>
+                                <span class="fw-semibold small cart-total">$0.00</span>
                             </a>
                         </div>
                     </div>
@@ -247,7 +249,7 @@
             <!-- Mobile Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard/index.html">Accueil</a>
+                    <a class="nav-link" href="{{ route('public.home') }}">Accueil</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -269,22 +271,22 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard/index.html">Hebergement</a>
+                    <a class="nav-link" href="{{ route('public.hosting.index') }}">Hebergement</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Société
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="pages/shop-list.html">À propos de nous</a></li>
-                        <li><a class="dropdown-item" href="pages/shop-filter.html">Authentification du personnel</a></li>
-                        <li><a class="dropdown-item" href="pages/shop-fullwidth.html">Prévention de la fraude</a></li>
-                        <li><a class="dropdown-item" href="pages/shop-single.html">Questions fréquentes</a></li>
-                        <li><a class="dropdown-item" href="pages/shop-single-2.html">Actualités et Événements</a></li>
+                        <li><a class="dropdown-item" href="{{ route('public.company.about') }}">À propos de nous</a></li>
+                        <li><a class="dropdown-item" href="{{ route('public.company.staff-authentification') }}">Authentification du personnel</a></li>
+                        <li><a class="dropdown-item" href="{{ route('public.company.fraud-prevention') }}">Prévention de la fraude</a></li>
+                        <li><a class="dropdown-item" href="{{ route('public.company.faq') }}">Questions fréquentes</a></li>
+                        <li><a class="dropdown-item" href="{{ route('public.company.blog') }}">Actualités et Événements</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard/index.html">Commande en vrac</a>
+                    <a class="nav-link" href="{{ route('public.bulk-order.index') }}">Commande en vrac</a>
                 </li>
             </ul>
         </div>
@@ -297,46 +299,106 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <div class="text-center mb-4">
-                <div class="mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-muted">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
+            @guest
+                <!-- Non connecté -->
+                <div class="text-center mb-4">
+                    <div class="mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-muted">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h5 class="mb-1">Bienvenue!</h5>
+                    <p class="text-muted small">Connectez-vous pour accéder à votre compte</p>
                 </div>
-                <h5 class="mb-1">Bienvenue!</h5>
-                <p class="text-muted small">Connectez-vous pour accéder à votre compte</p>
-            </div>
-            <div class="d-grid gap-2">
-                <a href="#" class="btn btn-primary">Se connecter</a>
-                <a href="#" class="btn btn-outline-primary">Créer un compte</a>
-            </div>
-            <hr class="my-4">
-            <ul class="list-unstyled">
-                <li class="mb-2"><a href="#" class="text-decoration-none text-dark d-flex align-items-center py-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                    Mon Profil
-                </a></li>
-                <li class="mb-2"><a href="#" class="text-decoration-none text-dark d-flex align-items-center py-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
-                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                    </svg>
-                    Mes Commandes
-                </a></li>
-                <li class="mb-2"><a href="#" class="text-decoration-none text-dark d-flex align-items-center py-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M12 16v-4"></path>
-                        <path d="M12 8h.01"></path>
-                    </svg>
-                    Aide & Support
-                </a></li>
-            </ul>
+                <div class="d-grid gap-2">
+                    <a href="{{ route('auth.login.view') }}" class="btn btn-primary">Se connecter</a>
+                    <a href="{{ route('auth.register.view') }}" class="btn btn-outline-primary">Créer un compte</a>
+                </div>
+                <hr class="my-4">
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="{{ route('public.company.faq') }}" class="text-decoration-none text-dark d-flex align-items-center py-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 16v-4"></path>
+                            <path d="M12 8h.01"></path>
+                        </svg>
+                        Aide & Support
+                    </a></li>
+                </ul>
+            @else
+                <!-- Connecté -->
+                <div class="text-center mb-4">
+                    <div class="mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h5 class="mb-1">Bonjour, {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}!</h5>
+                    <p class="text-muted small">{{ Auth::user()->email }}</p>
+                </div>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="{{ route('customer.dashboard') }}" class="text-decoration-none text-dark d-flex align-items-center py-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                        Tableau de bord
+                    </a></li>
+                    <li class="mb-2"><a href="{{ route('customer.orders.index') }}" class="text-decoration-none text-dark d-flex align-items-center py-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                        Mes Commandes
+                    </a></li>
+                    <li class="mb-2"><a href="{{ route('customer.address.index') }}" class="text-decoration-none text-dark d-flex align-items-center py-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Mes Adresses
+                    </a></li>
+                    <li class="mb-2"><a href="{{ route('customer.profil.index') }}" class="text-decoration-none text-dark d-flex align-items-center py-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        Mon Profil
+                    </a></li>
+                    <li class="mb-2"><a href="{{ route('customer.password.edit') }}" class="text-decoration-none text-dark d-flex align-items-center py-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6m6.36-15.36l-4.24 4.24m-4.24 4.24l-4.24 4.24m15.84-4.24l-4.24-4.24m-4.24-4.24l-4.24-4.24"></path>
+                        </svg>
+                        Paramètres
+                    </a></li>
+                    <li class="mb-2"><a href="{{ route('public.company.faq') }}" class="text-decoration-none text-dark d-flex align-items-center py-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 16v-4"></path>
+                            <path d="M12 8h.01"></path>
+                        </svg>
+                        Aide & Support
+                    </a></li>
+                </ul>
+                <hr class="my-4">
+                <div class="d-grid">
+                    <a href="{{ route('auth.logout.view') }}" class="btn btn-outline-danger w-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        Se déconnecter
+                    </a>
+                </div>
+            @endguest
         </div>
     </div>
 

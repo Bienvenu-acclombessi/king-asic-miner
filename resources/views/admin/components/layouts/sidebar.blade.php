@@ -162,6 +162,18 @@
 					</a>
 				</li>
 
+				<!-- Shipping Methods -->
+				<li class="nav-item">
+					<a class="nav-link {{ request()->routeIs('admin.shipping-methods.*') ? 'active' : '' }}" href="{{ route('admin.shipping-methods.index') }}">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon">
+								<i class="bi bi-truck"></i>
+							</span>
+							<span class="nav-link-text">Shipping Methods</span>
+						</div>
+					</a>
+				</li>
+
 				<!-- Marketing Section -->
 				<li class="nav-item mt-6 mb-3">
 					<span class="nav-label">Marketing</span>
@@ -199,6 +211,30 @@
 								<i class="bi bi-envelope"></i>
 							</span>
 							<span class="nav-link-text">Email Campaigns</span>
+						</div>
+					</a>
+				</li>
+
+				<!-- Product Slides -->
+				<li class="nav-item">
+					<a class="nav-link {{ request()->routeIs('admin.product-slides.*') ? 'active' : '' }}" href="{{ route('admin.product-slides.index') }}">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon">
+								<i class="bi bi-image"></i>
+							</span>
+							<span class="nav-link-text">Product Slides</span>
+						</div>
+					</a>
+				</li>
+
+				<!-- Minable Coins -->
+				<li class="nav-item">
+					<a class="nav-link {{ request()->routeIs('admin.minable-coins.*') ? 'active' : '' }}" href="{{ route('admin.minable-coins.index') }}">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon">
+								<i class="bi bi-coin"></i>
+							</span>
+							<span class="nav-link-text">Minable Coins</span>
 						</div>
 					</a>
 				</li>
@@ -386,6 +422,18 @@
 					</a>
 				</li>
 
+				<!-- Shipping Methods -->
+				<li class="nav-item">
+					<a class="nav-link {{ request()->routeIs('admin.shipping-methods.*') ? 'active' : '' }}" href="{{ route('admin.shipping-methods.index') }}">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon">
+								<i class="bi bi-truck"></i>
+							</span>
+							<span class="nav-link-text">Shipping Methods</span>
+						</div>
+					</a>
+				</li>
+
 				<!-- Marketing Section -->
 				<li class="nav-item mt-6 mb-3">
 					<span class="nav-label">Marketing</span>
@@ -423,6 +471,30 @@
 								<i class="bi bi-envelope"></i>
 							</span>
 							<span class="nav-link-text">Email Campaigns</span>
+						</div>
+					</a>
+				</li>
+
+				<!-- Product Slides -->
+				<li class="nav-item">
+					<a class="nav-link {{ request()->routeIs('admin.product-slides.*') ? 'active' : '' }}" href="{{ route('admin.product-slides.index') }}">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon">
+								<i class="bi bi-image"></i>
+							</span>
+							<span class="nav-link-text">Product Slides</span>
+						</div>
+					</a>
+				</li>
+
+				<!-- Minable Coins -->
+				<li class="nav-item">
+					<a class="nav-link {{ request()->routeIs('admin.minable-coins.*') ? 'active' : '' }}" href="{{ route('admin.minable-coins.index') }}">
+						<div class="d-flex align-items-center">
+							<span class="nav-link-icon">
+								<i class="bi bi-coin"></i>
+							</span>
+							<span class="nav-link-text">Minable Coins</span>
 						</div>
 					</a>
 				</li>

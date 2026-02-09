@@ -1,3 +1,22 @@
+@php
+    // Extract numeric values from custom attributes
+    $hashrate = $product->getCustomAttribute('hashrate', '100');
+    $power = $product->getCustomAttribute('power', '3000');
+
+    // Extract numeric value from hashrate string (e.g., "293Th/s" -> 293)
+    preg_match('/[\d.]+/', $hashrate, $hashrateMatches);
+    $hashrateValue = $hashrateMatches[0] ?? 100;
+
+    // Extract numeric value from power string (e.g., "5567W" -> 5567)
+    preg_match('/[\d.]+/', $power, $powerMatches);
+    $powerValue = $powerMatches[0] ?? 3000;
+
+    // Get price
+    $primaryVariant = $product->variants->first();
+    $price = $primaryVariant?->prices->first()?->price ?? 500000;
+    $priceInDollars = $price / 100;
+@endphp
+
 <div class="container mb-5">
     <style>
         .calculator-container {
@@ -239,7 +258,7 @@
 
     <div class="calculator-container">
         <h2 class="calculator-title">
-            <span class="product-name">{{ $product->name ?? 'Miner' }}</span> Profitability Calculator
+            <span class="product-name">{{ $product->name }}</span> Profitability Calculator
         </h2>
 
         <div class="calculator-wrapper">
@@ -249,10 +268,24 @@
                         <label for="coinSelect">Coin</label>
                         <div class="coin-select-wrapper">
                             <select id="coinSelect" class="form-select">
-                                <option value="BTC" data-difficulty="1.0590823241980708e+21" data-block-time="600" data-block-reward="3.125">BTC (Bitcoin)</option>
-                                <option value="LTC" data-difficulty="3.5e+7" data-block-time="150" data-block-reward="6.25">LTC (Litecoin)</option>
-                                <option value="DOGE" data-difficulty="2.5e+7" data-block-time="60" data-block-reward="10000">DOGE (Dogecoin)</option>
-                                <option value="KAS" data-difficulty="1.5e+15" data-block-time="1" data-block-reward="50">KAS (Kaspa)</option>
+                                @if($product->minableCoins && $product->minableCoins->count() > 0)
+                                    @foreach($product->minableCoins as $coin)
+                                        <option value="{{ $coin->symbol }}"
+                                                data-difficulty="{{ $coin->difficulty ?? '1e20' }}"
+                                                data-block-time="{{ $coin->block_time ?? 600 }}"
+                                                data-block-reward="{{ $coin->block_reward ?? 1 }}"
+                                                data-price="{{ $coin->default_price ?? 1 }}"
+                                                data-algorithm="{{ $coin->algorithm }}">
+                                            {{ $coin->symbol }} ({{ $coin->name }})
+                                        </option>
+                                    @endforeach
+                                @else
+                                    {{-- Fallback to default coins if no minable coins specified --}}
+                                    <option value="BTC" data-difficulty="1.0590823241980708e+21" data-block-time="600" data-block-reward="3.125" data-price="100000" data-algorithm="SHA-256">BTC (Bitcoin)</option>
+                                    <option value="LTC" data-difficulty="3.5e+7" data-block-time="150" data-block-reward="6.25" data-price="100" data-algorithm="Scrypt">LTC (Litecoin)</option>
+                                    <option value="DOGE" data-difficulty="2.5e+7" data-block-time="60" data-block-reward="10000" data-price="0.15" data-algorithm="Scrypt">DOGE (Dogecoin)</option>
+                                    <option value="KAS" data-difficulty="1.5e+15" data-block-time="1" data-block-reward="50" data-price="0.15" data-algorithm="kHeavyHash">KAS (Kaspa)</option>
+                                @endif
                             </select>
                         </div>
                     </div>
@@ -276,17 +309,17 @@
                 <div class="input-grid">
                     <div class="input-group">
                         <label for="hashrate">Hashrate (<span id="hashrateUnit">TH/s</span>)</label>
-                        <input type="number" id="hashrate" placeholder="Enter hashrate" step="0.1" value="{{ $product->hashrate ?? 100 }}">
+                        <input type="number" id="hashrate" placeholder="Enter hashrate" step="0.1" value="{{ $hashrateValue }}">
                     </div>
 
                     <div class="input-group">
                         <label for="power">Power Consumption (W)</label>
-                        <input type="number" id="power" placeholder="Enter power" step="1" value="{{ $product->power ?? 3000 }}">
+                        <input type="number" id="power" placeholder="Enter power" step="1" value="{{ $powerValue }}">
                     </div>
 
                     <div class="input-group">
                         <label for="minerPrice">Miner Price (USD)</label>
-                        <input type="number" id="minerPrice" placeholder="Enter miner price" step="1" value="{{ $product->price ?? 5000 }}">
+                        <input type="number" id="minerPrice" placeholder="Enter miner price" step="1" value="{{ $priceInDollars }}">
                     </div>
 
                     <div class="input-group">
@@ -367,22 +400,53 @@
             const hashrateUnit = document.getElementById('hashrateUnit');
             const rewardCoin = document.getElementById('rewardCoin');
 
-            // Coin configurations avec les prix par défaut
-            const coinConfigs = {
-                'BTC': { unit: 'TH/s', multiplier: 1e12, defaultPrice: 100000 },
-                'LTC': { unit: 'MH/s', multiplier: 1e6, defaultPrice: 100 },
-                'DOGE': { unit: 'MH/s', multiplier: 1e6, defaultPrice: 0.15 },
-                'KAS': { unit: 'TH/s', multiplier: 1e12, defaultPrice: 0.15 }
-            };
+            // Build coin configurations dynamically from select options
+            const coinConfigs = {};
+            Array.from(coinSelect.options).forEach(option => {
+                const algorithm = option.dataset.algorithm || '';
+                let unit = 'TH/s';
+                let multiplier = 1e12;
+
+                // Determine unit based on algorithm
+                if (algorithm.toLowerCase().includes('scrypt') || algorithm.toLowerCase().includes('ethash')) {
+                    unit = 'MH/s';
+                    multiplier = 1e6;
+                } else if (algorithm.toLowerCase().includes('sha')) {
+                    unit = 'TH/s';
+                    multiplier = 1e12;
+                } else if (algorithm.toLowerCase().includes('kheavyhash') || algorithm.toLowerCase().includes('blake')) {
+                    unit = 'TH/s';
+                    multiplier = 1e12;
+                } else {
+                    unit = 'GH/s';
+                    multiplier = 1e9;
+                }
+
+                coinConfigs[option.value] = {
+                    unit: unit,
+                    multiplier: multiplier,
+                    defaultPrice: parseFloat(option.dataset.price) || 1
+                };
+            });
 
             // Update unit when coin changes
             coinSelect.addEventListener('change', function() {
+                const selectedOption = this.options[this.selectedIndex];
                 const coin = this.value;
                 const config = coinConfigs[coin];
                 hashrateUnit.textContent = config.unit;
                 rewardCoin.textContent = coin;
                 coinPrice.value = config.defaultPrice;
             });
+
+            // Set initial values
+            const initialCoin = coinSelect.value;
+            const initialConfig = coinConfigs[initialCoin];
+            if (initialConfig) {
+                hashrateUnit.textContent = initialConfig.unit;
+                rewardCoin.textContent = initialCoin;
+                coinPrice.value = initialConfig.defaultPrice;
+            }
 
             // Calculate mining profitability
             function calculateProfitability() {

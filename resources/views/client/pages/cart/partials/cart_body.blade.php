@@ -1,338 +1,268 @@
- <main>
-  <!-- section-->
-  <div class="mt-4">
+<section class="mt-8 mb-14">
     <div class="container">
-      <!-- row -->
-      <div class="row ">
-        <!-- col -->
-        <div class="col-12">
-          <!-- breadcrumb -->
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0">
-              <li class="breadcrumb-item"><a href="#!">Home</a></li>
-              <li class="breadcrumb-item"><a href="#!">Shop</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Shop Cart</li>
-            </ol>
-          </nav>
+        <!-- Breadcrumb -->
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Panier</li>
+                    </ol>
+                </nav>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <!-- section -->
-  <section class="mb-lg-14 mb-8 mt-8">
+</section>
+
+<section class="mb-lg-14 mb-8">
     <div class="container">
-      <!-- row -->
-      <div class="row">
-        <div class="col-12">
-          <!-- card -->
-          <div class="card py-1 border-0 mb-8">
-            <div>
-              <h1 class="fw-bold">Shop Cart</h1>
-              <p class="mb-0">Shopping in 382480</p>
+        <div class="row">
+            <div class="col-12">
+                <!-- Heading -->
+                <div class="card mb-6 border-0">
+                    <div class="card-body p-6">
+                        <h1 class="mb-0 h2">Panier d'achat</h1>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <!-- row -->
-      <div class="row">
-        <div class="col-lg-8 col-md-7">
-
-          <div class="py-3">
-            <!-- alert -->
-            <div class="alert alert-danger p-2" role="alert">
-              You’ve got FREE delivery. Start <a href="#!" class="alert-link">checkout now!</a>
-            </div>
-            <ul class="list-group list-group-flush">
-              <!-- list group -->
-              <li class="list-group-item py-3 py-lg-0 px-0 border-top">
-                <!-- row -->
-                <div class="row align-items-center">
-                  <div class="col-3 col-md-2">
-                    <!-- img --> <img src="/assets/kingshop/assets/images/products/product-img-1.jpg" alt="Ecommerce"
-                      class="img-fluid"></div>
-                  <div class="col-4 col-md-5">
-                    <!-- title -->
-                    <a href="shop-single.html" class="text-inherit"><h6 class="mb-0">Haldiram's Sev Bhujia</h6></a>
-                    <span><small class="text-muted">.98 / lb</small></span>
-                    <!-- text -->
-                    <div class="mt-2 small lh-1"> <a href="#!" class="text-decoration-none text-inherit"> <span
-                          class="me-1 align-text-bottom">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-trash-2 text-success">
-                            <polyline points="3 6 5 6 21 6"></polyline>
-                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                            </path>
-                            <line x1="10" y1="11" x2="10" y2="17"></line>
-                            <line x1="14" y1="11" x2="14" y2="17"></line>
-                          </svg></span><span class="text-muted">Remove</span></a></div>
-                  </div>
-                  <!-- input group -->
-                  <div class="col-3 col-md-3 col-lg-2">
-                       <!-- input -->
-                  <div class="input-group input-spinner  ">
-                    <input type="button" value="-" class="button-minus  btn  btn-sm " data-field="quantity">
-                    <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input   ">
-                    <input type="button" value="+" class="button-plus btn btn-sm " data-field="quantity">
-                  </div>
-
-
-                  </div>
-                  <!-- price -->
-                  <div class="col-2 text-lg-end text-start text-md-end col-md-2">
-                    <span class="fw-bold">$5.00</span>
-
-                  </div>
-                </div>
-
-              </li>
-              <!-- list group -->
-              <li class="list-group-item py-3 py-lg-0 px-0">
-                <!-- row -->
-                <div class="row align-items-center">
-                  <div class="col-3 col-md-2">
-                    <!-- img --> <img src="/assets/kingshop/assets/images/products/product-img-2.jpg" alt="Ecommerce"
-                      class="img-fluid"></div>
-                  <div class="col-4 col-md-5">
-                    <!-- title -->
-                    <a href="shop-single.html" class="text-inherit"><h6 class="mb-0">NutriChoice Digestive </h6></a>
-                    <span><small class="text-muted">250g</small></span>
-                    <!-- text -->
-                        <div class="mt-2 small lh-1"> <a href="#!" class="text-decoration-none text-inherit"> <span
-                          class="me-1 align-text-bottom">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-trash-2 text-success">
-                            <polyline points="3 6 5 6 21 6"></polyline>
-                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                            </path>
-                            <line x1="10" y1="11" x2="10" y2="17"></line>
-                            <line x1="14" y1="11" x2="14" y2="17"></line>
-                          </svg></span><span class="text-muted">Remove</span></a></div>
-                  </div>
-                  <!-- input group -->
-                  <div class="col-3 col-md-3 col-lg-2">
-                       <!-- input -->
-                  <div class="input-group input-spinner  ">
-                    <input type="button" value="-" class="button-minus  btn  btn-sm " data-field="quantity">
-                    <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input   ">
-                    <input type="button" value="+" class="button-plus btn btn-sm " data-field="quantity">
-                  </div>
-
-                  </div>
-                  <!-- price -->
-                  <div class="col-2 text-lg-end text-start text-md-end col-md-2">
-                    <span class="fw-bold text-danger">$20.00</span>
-                    <div class="text-decoration-line-through text-muted small">$26.00</div>
-                  </div>
-                </div>
-
-              </li>
-              <!-- list group -->
-              <li class="list-group-item py-3 py-lg-0 px-0">
-                <!-- row -->
-                <div class="row align-items-center">
-                  <div class="col-3 col-md-2">
-                    <!-- img --> <img src="/assets/kingshop/assets/images/products/product-img-3.jpg" alt="Ecommerce"
-                      class="img-fluid"></div>
-                  <div class="col-4 col-md-5">
-                    <!-- title -->
-                    <a href="shop-single.html" class="text-inherit"><h6 class="mb-0">Cadbury 5 Star Chocolate</h6></a>
-                    <span><small class="text-muted">1 kg</small></span>
-                    <!-- text -->
-                        <div class="mt-2 small lh-1"> <a href="#!" class="text-decoration-none text-inherit"> <span
-                          class="me-1 align-text-bottom">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-trash-2 text-success">
-                            <polyline points="3 6 5 6 21 6"></polyline>
-                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                            </path>
-                            <line x1="10" y1="11" x2="10" y2="17"></line>
-                            <line x1="14" y1="11" x2="14" y2="17"></line>
-                          </svg></span><span class="text-muted">Remove</span></a></div>
-                  </div>
-                  <!-- input group -->
-                  <div class="col-3 col-md-3 col-lg-2">
-                       <!-- input -->
-                  <div class="input-group input-spinner  ">
-                    <input type="button" value="-" class="button-minus  btn  btn-sm " data-field="quantity">
-                    <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input   ">
-                    <input type="button" value="+" class="button-plus btn btn-sm " data-field="quantity">
-                  </div>
-
-                  </div>
-                  <!-- price -->
-                  <div class="col-2 text-lg-end text-start text-md-end col-md-2">
-                    <span class="fw-bold">$15.00</span>
-                    <div class="text-decoration-line-through text-muted small">$20.00</div>
-                  </div>
-                </div>
-
-              </li>
-              <!-- list group -->
-              <li class="list-group-item py-3 py-lg-0 px-0">
-                <!-- row -->
-                <div class="row align-items-center">
-                  <div class="col-3 col-md-2">
-                    <!-- img --> <img src="/assets/kingshop/assets/images/products/product-img-4.jpg" alt="Ecommerce"
-                      class="img-fluid"></div>
-                  <div class="col-4 col-md-5">
-                    <!-- title -->
-                    <a href="shop-single.html" class="text-inherit">  <h6 class="mb-0">Onion Flavour Potato</h6></a>
-                    <span><small class="text-muted">250g</small></span>
-                    <!-- text -->
-                        <div class="mt-2 small lh-1"> <a href="#!" class="text-decoration-none text-inherit"> <span
-                          class="me-1 align-text-bottom">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-trash-2 text-success">
-                            <polyline points="3 6 5 6 21 6"></polyline>
-                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                            </path>
-                            <line x1="10" y1="11" x2="10" y2="17"></line>
-                            <line x1="14" y1="11" x2="14" y2="17"></line>
-                          </svg></span><span class="text-muted">Remove</span></a></div>
-                  </div>
-                  <!-- input group -->
-                  <div class="col-3 col-md-3 col-lg-2">
-                       <!-- input -->
-                  <div class="input-group input-spinner  ">
-                    <input type="button" value="-" class="button-minus  btn  btn-sm " data-field="quantity">
-                    <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input   ">
-                    <input type="button" value="+" class="button-plus btn btn-sm " data-field="quantity">
-                  </div>
-
-                  </div>
-                  <!-- price -->
-                  <div class="col-2 text-lg-end text-start text-md-end col-md-2">
-                    <span class="fw-bold">$15.00</span>
-                    <div class="text-decoration-line-through text-muted small">$20.00</div>
-                  </div>
-                </div>
-
-              </li>
-              <!-- list group -->
-              <li class="list-group-item py-3 py-lg-0 px-0 border-bottom">
-                <!-- row -->
-                <div class="row align-items-center">
-                  <div class="col-3 col-md-2">
-                    <!-- img --> <img src="/assets/kingshop/assets/images/products/product-img-5.jpg" alt="Ecommerce"
-                      class="img-fluid"></div>
-                  <div class="col-4 col-md-5">
-                    <!-- title -->
-                    <a href="shop-single.html" class="text-inherit"><h6 class="mb-0">Salted Instant Popcorn </h6></a>
-                    <span><small class="text-muted">100g</small></span>
-                    <!-- text -->
-                        <div class="mt-2 small lh-1"> <a href="#!" class="text-decoration-none text-inherit"> <span
-                          class="me-1 align-text-bottom">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-trash-2 text-success">
-                            <polyline points="3 6 5 6 21 6"></polyline>
-                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                            </path>
-                            <line x1="10" y1="11" x2="10" y2="17"></line>
-                            <line x1="14" y1="11" x2="14" y2="17"></line>
-                          </svg></span><span class="text-muted">Remove</span></a></div>
-                  </div>
-                  <!-- input group -->
-                  <div class="col-3 col-md-3 col-lg-2">
-                       <!-- input -->
-                  <div class="input-group input-spinner  ">
-                    <input type="button" value="-" class="button-minus  btn  btn-sm " data-field="quantity">
-                    <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input   ">
-                    <input type="button" value="+" class="button-plus btn btn-sm " data-field="quantity">
-                  </div>
-
-                  </div>
-                  <!-- price -->
-                  <div class="col-2 text-lg-end text-start text-md-end col-md-2">
-                    <span class="fw-bold">$15.00</span>
-                    <div class="text-decoration-line-through text-muted small">$25.00</div>
-                  </div>
-                </div>
-
-              </li>
-
-            </ul>
-            <!-- btn -->
-            <div class="d-flex justify-content-between mt-4">
-              <a href="#!" class="btn btn-primary">Continue Shopping</a>
-              <a href="#!" class="btn btn-dark">Update Cart</a>
-            </div>
-
-          </div>
         </div>
 
-        <!-- sidebar -->
-        <div class="col-12 col-lg-4 col-md-5">
-          <!-- card -->
-          <div class="mb-5 card mt-6">
-            <div class="card-body p-6">
-              <!-- heading -->
-              <h2 class="h5 mb-4">Summary</h2>
-              <div class="card mb-2">
-                <!-- list group -->
-                <ul class="list-group list-group-flush">
-                  <!-- list group item -->
-                  <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="me-auto">
-                      <div>Item Subtotal</div>
-
+        <!-- Empty Cart Message -->
+        <div id="cart-page-empty" class="row" style="display: none;">
+            <div class="col-12">
+                <div class="card border-0">
+                    <div class="card-body text-center py-8">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="text-muted mb-4">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                        <h3 class="mb-3">Votre panier est vide</h3>
+                        <p class="text-muted mb-4">Vous n'avez aucun article dans votre panier. Commencez vos achats maintenant!</p>
+                        <a href="/" class="btn btn-primary btn-lg">
+                            <i class="bi bi-shop me-2"></i>Continuer vos achats
+                        </a>
                     </div>
-                    <span>$70.00</span>
-                  </li>
-
-                  <!-- list group item -->
-                  <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="me-auto">
-                      <div>Service Fee</div>
-
-                    </div>
-                    <span>$3.00</span>
-                  </li>
-                  <!-- list group item -->
-                  <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="me-auto">
-                      <div class="fw-bold">Subtotal</div>
-
-                    </div>
-                    <span class="fw-bold">$67.00</span>
-                  </li>
-                </ul>
-
-              </div>
-              <div class="d-grid mb-1 mt-4">
-                <!-- btn -->
-                <button class="btn btn-primary btn-lg d-flex justify-content-between align-items-center" type="submit">
-                  Go to Checkout <span class="fw-bold">$67.00</span></button>
-              </div>
-              <!-- text -->
-              <p><small>By placing your order, you agree to be bound by the Freshcart <a href="#!">Terms of Service</a>
-                  and <a href="#!">Privacy Policy.</a> </small></p>
-
-              <!-- heading -->
-              <div class="mt-8">
-                <h2 class="h5 mb-3">Add Promo or Gift Card</h2>
-                <form>
-                  <div class="mb-2">
-                    <!-- input -->
-                    <label for="giftcard" class="form-label sr-only">Email address</label>
-                    <input type="text" class="form-control" id="giftcard" placeholder="Promo or Gift Card">
-
-                  </div>
-                  <!-- btn -->
-                  <div class="d-grid"><button type="submit" class="btn btn-outline-dark mb-1">Redeem</button></div>
-                  <p class="text-muted mb-0"> <small>Terms & Conditions apply</small></p>
-                </form>
-              </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+
+        <!-- Cart Content -->
+        <div id="cart-page-content">
+            <div class="row">
+                <div class="col-lg-8 col-md-7">
+                    <div class="card mb-4">
+                        <div class="card-body p-6">
+                            <!-- Cart Items Table -->
+                            <div class="table-responsive">
+                                <table class="table table-borderless align-middle mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="border-bottom">Produit</th>
+                                            <th scope="col" class="border-bottom text-center">Prix</th>
+                                            <th scope="col" class="border-bottom text-center">Quantité</th>
+                                            <th scope="col" class="border-bottom text-end">Total</th>
+                                            <th scope="col" class="border-bottom"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cart-page-items">
+                                        <!-- Items will be inserted here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cart Actions -->
+                    <div class="d-flex justify-content-between">
+                        <a href="/" class="btn btn-outline-dark">
+                            <i class="bi bi-arrow-left me-2"></i>Continuer vos achats
+                        </a>
+                        <button type="button" class="btn btn-outline-danger" id="clear-cart-page-btn">
+                            <i class="bi bi-trash me-2"></i>Vider le panier
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-5">
+                    <!-- Cart Summary -->
+                    <div class="card mb-4">
+                        <div class="card-body p-6">
+                            <h4 class="mb-4">Résumé</h4>
+
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Sous-total (<span class="cart-count">0</span> articles)</span>
+                                <span class="cart-subtotal">$0.00</span>
+                            </div>
+
+                            <!-- Discount section -->
+                            <div id="cart-discount-section" class="d-flex justify-content-between mb-2 text-success" style="display: none !important;">
+                                <span>
+                                    Réduction (<span id="cart-coupon-code"></span>)
+                                    <button type="button" class="btn btn-sm btn-link text-danger p-0 ms-1" id="remove-coupon-btn" style="font-size: 0.8rem;">
+                                        ✕
+                                    </button>
+                                </span>
+                                <span class="cart-discount">-$0.00</span>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Livraison</span>
+                                <span id="cart-shipping-cost" class="cart-shipping">$0.00</span>
+                            </div>
+
+                            <hr class="my-3">
+
+                            <div class="d-flex justify-content-between mb-4">
+                                <span class="h5 mb-0">Total</span>
+                                <span class="h5 mb-0 cart-total">$0.00</span>
+                            </div>
+
+                            <!-- Shipping Method Section -->
+                            <div class="mb-4">
+                                <h6 class="mb-3">Méthode de livraison</h6>
+                                <div id="shipping-methods-container">
+                                    <div class="text-center py-3">
+                                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                        <small class="text-muted">Chargement...</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="my-3">
+
+                            <!-- Promo Code Section -->
+                            <div class="mb-4">
+                                <!-- Toggle Button -->
+                                <button type="button" class="btn btn-link p-0 text-decoration-none" id="toggle-coupon-btn">
+                                    <i class="bi bi-ticket-perforated me-2"></i>Avez-vous un code promo ?
+                                </button>
+
+                                <!-- Coupon Form (hidden by default) -->
+                                <div id="coupon-form-container" class="mt-3" style="display: none;">
+                                    <form id="coupon-form">
+                                        <div class="input-group mb-2">
+                                            <input type="text"
+                                                   id="coupon-input"
+                                                   class="form-control form-control-sm"
+                                                   placeholder="Entrez votre code"
+                                                   style="text-transform: uppercase;">
+                                            <button class="btn btn-outline-dark btn-sm" type="submit" id="apply-coupon-btn">
+                                                <span class="spinner-border spinner-border-sm me-2 d-none" role="status"></span>
+                                                Appliquer
+                                            </button>
+                                        </div>
+                                        <div id="coupon-message" class="alert d-none p-2" role="alert" style="font-size: 0.875rem;"></div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <hr class="my-3">
+
+                            <!-- Checkout Button -->
+                            <div class="d-grid">
+                                <a href="/checkout" class="btn btn-primary btn-lg">
+                                    <i class="bi bi-credit-card me-2"></i>Passer la commande
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Methods -->
+                    <div class="mt-4">
+                        <h6 class="mb-3">Méthodes de paiement acceptées</h6>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-secondary py-2 px-3">USD</span>
+                            <span class="badge bg-secondary py-2 px-3">USDT (TRC 20)</span>
+                            <span class="badge bg-secondary py-2 px-3">BTC</span>
+                            <span class="badge bg-secondary py-2 px-3">ETH</span>
+                            <span class="badge bg-secondary py-2 px-3">LTC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 
+<script>
+// Clear cart button on cart page
+document.addEventListener('click', (e) => {
+    if (e.target.closest('#clear-cart-page-btn')) {
+        e.preventDefault();
+        if (window.cartManager) {
+            window.cartManager.clearCart();
+        }
+    }
+});
 
-</main>
+// Toggle coupon form visibility
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleCouponBtn = document.getElementById('toggle-coupon-btn');
+    const couponFormContainer = document.getElementById('coupon-form-container');
+
+    if (toggleCouponBtn && couponFormContainer) {
+        toggleCouponBtn.addEventListener('click', () => {
+            if (couponFormContainer.style.display === 'none') {
+                couponFormContainer.style.display = 'block';
+                toggleCouponBtn.innerHTML = '<i class="bi bi-chevron-up me-2"></i>Masquer le code promo';
+            } else {
+                couponFormContainer.style.display = 'none';
+                toggleCouponBtn.innerHTML = '<i class="bi bi-ticket-perforated me-2"></i>Avez-vous un code promo ?';
+            }
+        });
+    }
+});
+
+// Coupon form submission
+document.addEventListener('DOMContentLoaded', () => {
+    const couponForm = document.getElementById('coupon-form');
+    const couponInput = document.getElementById('coupon-input');
+    const applyBtn = document.getElementById('apply-coupon-btn');
+    const spinner = applyBtn?.querySelector('.spinner-border');
+    const couponMessage = document.getElementById('coupon-message');
+    const removeCouponBtn = document.getElementById('remove-coupon-btn');
+
+    if (couponForm) {
+        couponForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const couponCode = couponInput.value.trim();
+
+            if (!couponCode) {
+                couponMessage.className = 'alert alert-warning';
+                couponMessage.textContent = 'Veuillez entrer un code promo';
+                couponMessage.classList.remove('d-none');
+                return;
+            }
+
+            // Show loading
+            applyBtn.disabled = true;
+            spinner?.classList.remove('d-none');
+            couponMessage.classList.add('d-none');
+
+            // Apply coupon via cart manager
+            if (window.cartManager) {
+                await window.cartManager.applyCoupon(couponCode);
+                couponInput.value = '';
+            }
+
+            // Hide loading
+            applyBtn.disabled = false;
+            spinner?.classList.add('d-none');
+        });
+    }
+
+    // Remove coupon button
+    if (removeCouponBtn) {
+        removeCouponBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (window.cartManager) {
+                await window.cartManager.removeCoupon();
+                couponInput.value = '';
+            }
+        });
+    }
+});
+</script>

@@ -39,9 +39,25 @@ class CartLineOptionValue extends Model
     }
 
     /**
+     * L'option sélectionnée (alias pour compatibilité controller)
+     */
+    public function productOption(): BelongsTo
+    {
+        return $this->belongsTo(ProductOption::class, 'product_option_id');
+    }
+
+    /**
      * La valeur sélectionnée (null pour champs texte)
      */
     public function value(): BelongsTo
+    {
+        return $this->belongsTo(ProductOptionValue::class, 'product_option_value_id');
+    }
+
+    /**
+     * La valeur sélectionnée (alias pour compatibilité controller)
+     */
+    public function productOptionValue(): BelongsTo
     {
         return $this->belongsTo(ProductOptionValue::class, 'product_option_value_id');
     }

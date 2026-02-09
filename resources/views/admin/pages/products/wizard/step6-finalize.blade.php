@@ -35,10 +35,11 @@
             <select class="form-select" name="tags[]" id="tags" multiple size="8">
                 @foreach($tags as $tag)
                     @php
-                        $tagName = $tag->name ?? (is_array($tag->attribute_data) ? ($tag->attribute_data['name'] ?? '') : '');
-                        $tagName = is_array($tagName) ? ($tagName['en'] ?? $tagName[0] ?? '') : $tagName;
+                        // Tags use 'value' field, not 'name'
+                        $tagValue = $tag->value ?? '';
+                        $tagValue = is_array($tagValue) ? ($tagValue['en'] ?? $tagValue['fr'] ?? $tagValue[0] ?? '') : $tagValue;
                     @endphp
-                    <option value="{{ $tag->id }}">{{ $tagName ?: 'Tag #' . $tag->id }}</option>
+                    <option value="{{ $tag->id }}">{{ $tagValue ?: 'Tag #' . $tag->id }}</option>
                 @endforeach
             </select>
             <small class="form-text text-muted">Hold Ctrl/Cmd to select multiple</small>

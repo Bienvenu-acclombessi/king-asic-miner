@@ -13,6 +13,11 @@ class CollectionGroup extends Model
     protected $fillable = [
         'name',
         'handle',
+        'meta',
+    ];
+
+    protected $casts = [
+        'meta' => 'array',
     ];
 
     /**

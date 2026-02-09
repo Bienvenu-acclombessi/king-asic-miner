@@ -3,6 +3,7 @@
 namespace App\Models\Orders;
 
 use App\Models\Customers\Customer;
+use App\Models\Shipping\ShippingMethod;
 use App\Models\Users\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,11 +21,17 @@ class Cart extends Model
         'customer_id',
         'merged_id',
         'currency_code',
+        'currency_id',
         'channel_id',
+        'coupon_code',
+        'shipping_method_id',
+        'shipping_cost',
+        'completed_at',
         'meta',
     ];
 
     protected $casts = [
+        'shipping_cost' => 'decimal:2',
         'meta' => 'array',
         'completed_at' => 'datetime',
     ];
@@ -83,5 +90,13 @@ class Cart extends Model
     public function order(): HasOne
     {
         return $this->hasOne(Order::class);
+    }
+
+    /**
+     * Get the shipping method
+     */
+    public function shippingMethod(): BelongsTo
+    {
+        return $this->belongsTo(ShippingMethod::class);
     }
 }

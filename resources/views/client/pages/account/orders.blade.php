@@ -1,236 +1,135 @@
 @extends('client.pages.account.layouts.base')
 
-@section('page_title') Paramètres de compte @endsection
+@section('page_title') Mes Commandes @endsection
 
 @section('content')
     <div class="py-6 p-md-6 p-lg-10">
         <!-- heading -->
-        <h2 class="mb-6">Your Orders</h2>
+        <h2 class="mb-6">Mes Commandes</h2>
 
-        <div class="table-responsive-xxl border-0">
-            <!-- Table -->
-            <table class="table mb-0 text-nowrap table-centered ">
-                <!-- Table Head -->
-                <thead class="bg-light">
-                    <tr>
-                        <th>&nbsp;</th>
-                        <th>Product</th>
-                        <th>Order</th>
-                        <th>Date</th>
-                        <th>Items</th>
-                        <th>Status</th>
-                        <th>Amount</th>
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
 
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Table body -->
-                    <tr>
-                        <td class="align-middle border-top-0 w-0">
-                            <a href="#"> <img src="../assets/images/products/product-img-1.jpg" alt="Ecommerce"
-                                    class="icon-shape icon-xl"></a>
+        @if(session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
 
-                        </td>
-                        <td class="align-middle border-top-0">
+        @if($orders->isEmpty())
+            <div class="text-center py-10">
+                <i class="bi bi-bag-x" style="font-size: 4rem; color: #ccc;"></i>
+                <h4 class="mt-4">Aucune commande pour le moment</h4>
+                <p class="text-muted">Vous n'avez pas encore passé de commande.</p>
+                <a href="{{ route('public.shop.index') }}" class="btn btn-primary mt-3">Commencer vos achats</a>
+            </div>
+        @else
+            <div class="table-responsive-xxl border-0">
+                <!-- Table -->
+                <table class="table mb-0 text-nowrap table-centered">
+                    <!-- Table Head -->
+                    <thead class="bg-light">
+                        <tr>
+                            <th>Commande</th>
+                            <th>Date</th>
+                            <th>Articles</th>
+                            <th>Statut</th>
+                            <th>Paiement</th>
+                            <th>Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($orders as $order)
+                            @php
+                                $statusColors = [
+                                    'pending' => 'warning',
+                                    'processing' => 'info',
+                                    'shipped' => 'primary',
+                                    'completed' => 'success',
+                                    'cancelled' => 'danger'
+                                ];
+                                $statusLabels = [
+                                    'pending' => 'En attente',
+                                    'processing' => 'En traitement',
+                                    'shipped' => 'Expédiée',
+                                    'completed' => 'Complétée',
+                                    'cancelled' => 'Annulée'
+                                ];
+                                $paymentStatusColors = [
+                                    'pending' => 'warning',
+                                    'paid' => 'success',
+                                    'failed' => 'danger',
+                                    'refunded' => 'info'
+                                ];
+                                $paymentStatusLabels = [
+                                    'pending' => 'En attente',
+                                    'paid' => 'Payée',
+                                    'failed' => 'Échouée',
+                                    'refunded' => 'Remboursée'
+                                ];
+                            @endphp
+                            <tr>
+                                <td class="align-middle">
+                                    <a href="{{ route('customer.orders.show', $order->id) }}" class="text-inherit fw-bold">
+                                        #{{ $order->reference }}
+                                    </a>
+                                </td>
+                                <td class="align-middle">
+                                    {{ $order->created_at->format('d/m/Y') }}
+                                </td>
+                                <td class="align-middle">
+                                    {{ $order->lines->count() }} article(s)
+                                </td>
+                                <td class="align-middle">
+                                    <span class="badge bg-{{ $statusColors[$order->status] ?? 'secondary' }}">
+                                        {{ $statusLabels[$order->status] ?? $order->status }}
+                                    </span>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="badge bg-{{ $paymentStatusColors[$order->payment_status] ?? 'secondary' }}">
+                                        {{ $paymentStatusLabels[$order->payment_status] ?? $order->payment_status }}
+                                    </span>
+                                </td>
+                                <td class="align-middle fw-bold">
+                                    ${{ number_format($order->total / 100, 2) }}
+                                </td>
+                                <td class="align-middle">
+                                    <div class="d-flex gap-2">
+                                        <a href="{{ route('customer.orders.show', $order->id) }}"
+                                           class="btn btn-sm btn-outline-primary"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="top"
+                                           title="Voir les détails">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        @if($order->payment_status === 'pending' && $order->payment_method === 'coinpal')
+                                            <a href="{{ route('public.checkout.payment', ['order' => $order->id]) }}"
+                                               class="btn btn-sm btn-success"
+                                               data-bs-toggle="tooltip"
+                                               data-bs-placement="top"
+                                               title="Payer maintenant">
+                                                <i class="bi bi-credit-card"></i>
+                                            </a>
+                                        @endif
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
 
-                            <a href="#" class="fw-semi-bold text-inherit">
-                                <h6 class="mb-0">Haldiram's Nagpur Aloo Bhujia</h6>
-                            </a>
-                            <span><small class="text-muted">400g</small></span>
-
-                        </td>
-                        <td class="align-middle border-top-0">
-                            <a href="#" class="text-inherit">#14899</a>
-
-                        </td>
-                        <td class="align-middle border-top-0">
-                            March 5, 2023
-
-                        </td>
-                        <td class="align-middle border-top-0">
-                            1
-
-                        </td>
-                        <td class="align-middle border-top-0">
-                            <span class="badge bg-warning">Processing</span>
-                        </td>
-                        <td class="align-middle border-top-0">
-                            $15.00
-                        </td>
-                        <td class="text-muted align-middle border-top-0">
-                            <a href="#" class="text-inherit" data-bs-toggle="tooltip" data-bs-placement="top"
-                                data-bs-title="View"><i class="feather-icon icon-eye"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle border-top-0 w-0">
-                            <a href="#"> <img src="../assets/images/products/product-img-2.jpg" alt="Ecommerce"
-                                    class="icon-shape icon-xl"></a>
-
-                        </td>
-                        <td class="align-middle border-top-0">
-                            <a href="#" class="fw-semi-bold text-inherit">
-                                <h6 class="mb-0">Nutri Choise Biscuit</h6>
-                            </a>
-                            <span><small class="text-muted">2 Pkt</small></span>
-
-                        </td>
-                        <td class="align-middle border-top-0">
-                            <a href="#" class="text-inherit">#14658
-                            </a>
-                        </td>
-                        <td class="align-middle border-top-0">
-                            July 9, 2023
-                        </td>
-                        <td class="align-middle border-top-0">
-                            2
-                        </td>
-                        <td class="align-middle border-top-0">
-                            <span class="badge bg-success">Completed</span>
-                        </td>
-                        <td class="align-middle border-top-0">
-                            $45.00
-                        </td>
-                        <td class="text-muted align-middle border-top-0">
-                            <a href="#" class="text-inherit" data-bs-toggle="tooltip" data-bs-placement="top"
-                                data-bs-title="View"><i class="feather-icon icon-eye"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle border-top-0 w-0">
-                            <a href="#"> <img src="../assets/images/products/product-img-3.jpg" alt="Ecommerce"
-                                    class="icon-shape icon-xl"></a>
-                        </td>
-                        <td class="align-middle border-top-0">
-                            <a href="#" class="text-inherit">
-                                <h6 class="mb-0">Cadbury Dairy Milk 5 Star Bites </h6>
-                                <span><small class="text-muted">202 g</small></span>
-                            </a>
-
-                        </td>
-                        <td class="align-middle border-top-0">
-                            <a href="#" class="text-inherit">#13778
-                            </a>
-                        </td>
-                        <td class="align-middle border-top-0">
-                            Oct 03, 2023
-                        </td>
-                        <td class="align-middle border-top-0">
-                            4
-
-                        </td>
-                        <td class="align-middle border-top-0">
-                            <span class="badge bg-success">Completed</span>
-                        </td>
-                        <td class="align-middle border-top-0">
-                            $99.00
-                        </td>
-                        <td class="text-muted align-middle border-top-0">
-                            <a href="#" class="text-inherit" data-bs-toggle="tooltip" data-bs-placement="top"
-                                data-bs-title="View"><i class="feather-icon icon-eye"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle border-top-0 w-0">
-                            <a href="#"> <img src="../assets/images/products/product-img-4.jpg" alt="Ecommerce"
-                                    class="icon-shape icon-xl"></a>
-
-                        </td>
-                        <td class="align-middle border-top-0">
-                            <a href="#" class="fw-semi-bold text-inherit">
-                                <h6 class="mb-0">Onion Flavour Potato </h6>
-                            </a>
-                            <span><small class="text-muted">100 g</small></span>
-                        </td>
-                        <td class="align-middle border-top-0">
-                            <a href="#" class="text-inherit">#13746
-                            </a>
-                        </td>
-                        <td class="align-middle border-top-0">
-                            March 5, 2023
-                        </td>
-                        <td class="align-middle border-top-0">
-                            1
-                        </td>
-                        <td class="align-middle border-top-0">
-                            <span class="badge bg-success">Completed</span>
-                        </td>
-                        <td class="align-middle border-top-0">
-                            $12.00
-                        </td>
-                        <td class="text-muted align-middle border-top-0">
-                            <a href="#" class="text-inherit" data-bs-toggle="tooltip" data-bs-placement="top"
-                                data-bs-title="View"><i class="feather-icon icon-eye"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle border-top-0 w-0">
-                            <a href="#"> <img src="../assets/images/products/product-img-5.jpg" alt="Ecommerce"
-                                    class="icon-shape icon-xl"></a>
-                        </td>
-                        <td class="align-middle border-top-0">
-                            <a href="#" class="fw-semi-bold text-inherit">
-                                <h6 class="mb-0">Salted Instant Popcorn </h6>
-                            </a>
-                            <span><small class="text-muted">500 g</small></span>
-                        </td>
-                        <td class="align-middle border-top-0">
-                            <a href="#" class="text-inherit">#13566
-                            </a>
-                        </td>
-                        <td class="align-middle border-top-0">
-                            July 9, 2023
-                        </td>
-                        <td class="align-middle border-top-0">
-                            2
-                        </td>
-                        <td class="align-middle border-top-0">
-                            <span class="badge bg-danger">Cancel</span>
-                        </td>
-                        <td class="align-middle border-top-0">
-                            $6.00
-                        </td>
-                        <td class="text-muted align-middle border-top-0">
-                            <a href="#" class="text-inherit" data-bs-toggle="tooltip" data-bs-placement="top"
-                                data-bs-title="View"><i class="feather-icon icon-eye"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle border-top-0 w-0">
-                            <a href="#"> <img src="../assets/images/products/product-img-6.jpg" alt="Ecommerce"
-                                    class="icon-shape icon-xl"></a>
-                        </td>
-                        <td class="align-middle border-top-0">
-                            <a href="#" class="fw-semi-bold text-inherit">
-                                <h6 class="mb-0">Blueberry Greek Yogurt </h6>
-                            </a>
-                            <span><small class="text-muted">500 g</small></span>
-                        </td>
-                        <td class="align-middle border-top-0">
-                            <a href="#" class="text-inherit">#12094
-                            </a>
-                        </td>
-                        <td class="align-middle border-top-0">
-                            Oct 03, 2023
-                        </td>
-                        <td class="align-middle border-top-0">
-                            4
-                        </td>
-                        <td class="align-middle border-top-0">
-                            <span class="badge bg-success">Completed</span>
-                        </td>
-                        <td class="align-middle border-top-0">
-                            $18.00
-                        </td>
-                        <td class="text-muted align-middle border-top-0">
-                            <a href="#" class="text-inherit" data-bs-toggle="tooltip" data-bs-placement="top"
-                                data-bs-title="View"><i class="feather-icon icon-eye"></i></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+            <!-- Pagination -->
+            <div class="mt-4">
+                {{ $orders->links() }}
+            </div>
+        @endif
     </div>
 
 @endsection

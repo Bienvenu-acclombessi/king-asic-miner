@@ -95,13 +95,8 @@
                                 @forelse($products as $product)
                                     <tr>
                                         <td>
-                                            @php
-                                                $images = $product->attribute_data['images'] ?? null;
-                                                $thumbnailPath = $images['thumbnail'] ?? null;
-                                                $thumbnailUrl = $thumbnailPath ? asset('storage/' . $thumbnailPath) : null;
-                                            @endphp
-                                            @if($thumbnailUrl)
-                                                <img src="{{ $thumbnailUrl }}" alt="{{ $product->attribute_data['name']['en'] ?? 'Product' }}" class="rounded" style="width: 50px; height: 50px; object-fit: cover;">
+                                            @if($product->thumbnail_url)
+                                                <img src="{{ $product->thumbnail_url }}" alt="{{ $product->name }}" class="rounded" style="width: 50px; height: 50px; object-fit: cover;">
                                             @else
                                                 <div class="icon-shape icon-md bg-light rounded d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
                                                     <i class="bi bi-image"></i>
@@ -110,7 +105,6 @@
                                         </td>
                                         <td>
                                             @php
-                                                $productName = $product->attribute_data['name']['en'] ?? $product->attribute_data['name'] ?? 'N/A';
                                                 $firstVariant = $product->variants->first();
                                                 $sku = $firstVariant ? $firstVariant->sku : 'N/A';
                                                 $stock = $firstVariant ? $firstVariant->stock : 0;
@@ -129,7 +123,7 @@
                                             @endphp
                                             <div>
                                                 <h5 class="mb-0 text-primary-hover">
-                                                    <a href="{{ route('admin.products.edit', $product) }}">{{ $productName }}</a>
+                                                    <a href="{{ route('admin.products.edit', $product) }}">{{ $product->name }}</a>
                                                 </h5>
                                                 <small class="text-muted">SKU: {{ $sku }}</small>
                                             </div>

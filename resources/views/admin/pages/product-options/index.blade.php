@@ -1,6 +1,26 @@
 @extends('admin.components.app')
 @section('title', 'Product Options Management')
 
+@push('styles')
+<style>
+/* Fix modal and backdrop z-index to appear above sidebar */
+.modal-backdrop.show {
+    z-index: 9998 !important;
+}
+.modal.show {
+    z-index: 9999 !important;
+}
+.modal-dialog {
+    z-index: 9999 !important;
+}
+/* Ensure modal body can scroll */
+.modal-dialog-scrollable .modal-body {
+    overflow-y: auto !important;
+    max-height: calc(100vh - 200px) !important;
+}
+</style>
+@endpush
+
 @section('content')
 <div class="container-fluid">
     <!-- Page Header -->
@@ -221,19 +241,32 @@
 
     // Edit Product Option Function
     function editProductOption(productOptionId) {
-        fetch(`/admin/product-options/${productOptionId}/edit`)
+        const editUrl = "{{ route('admin.product-options.edit', ':id') }}".replace(':id', productOptionId);
+
+        fetch(editUrl)
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
                     const productOption = data.productOption;
 
+                    // Set basic info
                     document.getElementById('edit_product_option_id').value = productOption.id;
-                    document.getElementById('edit_name').value = productOption.name.en || '';
-                    document.getElementById('edit_label').value = productOption.label ? (productOption.label.en || '') : '';
+                    document.getElementById('edit_name').value = productOption.name.en || productOption.name || '';
+                    document.getElementById('edit_label').value = productOption.label ? (productOption.label.en || productOption.label || '') : '';
                     document.getElementById('edit_handle').value = productOption.handle || '';
                     document.getElementById('edit_shared').checked = productOption.shared || false;
 
-                    document.getElementById('editProductOptionForm').action = `/admin/product-options/${productOption.id}`;
+                    // Load existing values
+                    if (typeof loadExistingValues === 'function') {
+                        loadExistingValues(productOption.values || []);
+                    }
+
+                    // Reset edit value index
+                    editValueIndex = 0;
+
+                    // Set form action using Laravel route
+                    const updateUrl = "{{ route('admin.product-options.update', ':id') }}".replace(':id', productOption.id);
+                    document.getElementById('editProductOptionForm').action = updateUrl;
 
                     const editModal = new bootstrap.Modal(document.getElementById('editProductOptionModal'));
                     editModal.show();
@@ -249,9 +282,49 @@
 
     // Delete Product Option Function
     function deleteProductOption(productOptionId, productOptionName) {
+        // Set basic info
         document.getElementById('delete_product_option_name').textContent = productOptionName;
-        document.getElementById('deleteProductOptionForm').action = `/admin/product-options/${productOptionId}`;
 
+        // Set form action using Laravel route
+        const destroyUrl = "{{ route('admin.product-options.destroy', ':id') }}".replace(':id', productOptionId);
+        document.getElementById('deleteProductOptionForm').action = destroyUrl;
+
+        // Fetch option details for statistics
+        const editUrl = "{{ route('admin.product-options.edit', ':id') }}".replace(':id', productOptionId);
+        fetch(editUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const productOption = data.productOption;
+                    const productsCount = productOption.products_count || 0;
+                    const valuesCount = (productOption.values || []).length;
+
+                    // Update statistics
+                    document.getElementById('delete_products_count').textContent = productsCount;
+                    document.getElementById('delete_values_count').textContent = valuesCount;
+
+                    // Update warning message based on usage
+                    const warningText = document.getElementById('delete_warning_text');
+                    if (productsCount > 0) {
+                        warningText.innerHTML = `This option is currently used by <strong>${productsCount} product${productsCount !== 1 ? 's' : ''}</strong>. Deleting it will affect ${productsCount === 1 ? 'that product' : 'those products'}.`;
+                        document.getElementById('delete_warning_message').className = 'alert alert-danger';
+                    } else {
+                        warningText.innerHTML = `This option is not currently used by any products. It has <strong>${valuesCount} value${valuesCount !== 1 ? 's' : ''}</strong> that will also be deleted.`;
+                        document.getElementById('delete_warning_message').className = 'alert alert-warning';
+                    }
+                } else {
+                    // Default values if fetch fails
+                    document.getElementById('delete_products_count').textContent = '?';
+                    document.getElementById('delete_values_count').textContent = '?';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching option details:', error);
+                document.getElementById('delete_products_count').textContent = '?';
+                document.getElementById('delete_values_count').textContent = '?';
+            });
+
+        // Show modal
         const deleteModal = new bootstrap.Modal(document.getElementById('deleteProductOptionModal'));
         deleteModal.show();
     }

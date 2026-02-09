@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Products\ProductOption;
+use App\Models\Products\ProductOptionValue;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -46,9 +47,20 @@ class ProductOptionController extends Controller
             'label' => 'nullable|string|max:255',
             'handle' => 'nullable|string|max:255|unique:product_options,handle',
             'shared' => 'nullable|boolean',
+            'values' => 'required|array|min:1',
+            'values.*.name' => 'required|string|max:255',
         ]);
 
         if ($validator->fails()) {
+            // Check if it's an AJAX request (from wizard)
+            if ($request->expectsJson() || $request->ajax()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Validation failed',
+                    'errors' => $validator->errors()
+                ], 422);
+            }
+
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
@@ -72,17 +84,49 @@ class ProductOptionController extends Controller
             $handle = $request->filled('handle') ? $request->handle : Str::slug($request->name);
 
             // Create product option
-            ProductOption::create([
+            $productOption = ProductOption::create([
                 'name' => $nameData,
                 'label' => $labelData,
                 'handle' => $handle,
                 'shared' => $request->boolean('shared', false),
             ]);
 
+            // Create option values
+            if ($request->filled('values')) {
+                foreach ($request->values as $index => $valueData) {
+                    $productOption->values()->create([
+                        'name' => ['en' => $valueData['name']],
+                        'position' => $index + 1,
+                        'is_available' => true,
+                        'is_default' => $index === 0,
+                    ]);
+                }
+            }
+
+            // Reload with values for JSON response
+            $productOption->load('values');
+
+            // Check if it's an AJAX request (from wizard)
+            if ($request->expectsJson() || $request->ajax()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Product Option created successfully!',
+                    'productOption' => $productOption
+                ]);
+            }
+
             return redirect()->route('admin.product-options.index')
                 ->with('success', 'Product Option created successfully!');
 
         } catch (\Exception $e) {
+            // Check if it's an AJAX request (from wizard)
+            if ($request->expectsJson() || $request->ajax()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Error creating product option: ' . $e->getMessage()
+                ], 500);
+            }
+
             return redirect()->back()
                 ->with('error', 'Error creating product option: ' . $e->getMessage())
                 ->withInput();
@@ -95,7 +139,9 @@ class ProductOptionController extends Controller
     public function edit($id)
     {
         try {
-            $productOption = ProductOption::findOrFail($id);
+            $productOption = ProductOption::with('values')
+                ->withCount(['products', 'values'])
+                ->findOrFail($id);
 
             return response()->json([
                 'success' => true,
@@ -120,6 +166,13 @@ class ProductOptionController extends Controller
             'label' => 'nullable|string|max:255',
             'handle' => 'nullable|string|max:255|unique:product_options,handle,' . $id,
             'shared' => 'nullable|boolean',
+            'existing_values' => 'nullable|array',
+            'existing_values.*.id' => 'required|exists:product_option_values,id',
+            'existing_values.*.name' => 'required|string|max:255',
+            'new_values' => 'nullable|array',
+            'new_values.*.name' => 'required|string|max:255',
+            'deleted_values' => 'nullable|array',
+            'deleted_values.*' => 'exists:product_option_values,id',
         ]);
 
         if ($validator->fails()) {
@@ -154,6 +207,40 @@ class ProductOptionController extends Controller
                 'handle' => $handle,
                 'shared' => $request->boolean('shared', false),
             ]);
+
+            // Update existing values
+            if ($request->filled('existing_values')) {
+                foreach ($request->existing_values as $valueData) {
+                    $value = ProductOptionValue::find($valueData['id']);
+                    if ($value && $value->product_option_id == $productOption->id) {
+                        $value->update([
+                            'name' => ['en' => $valueData['name']],
+                        ]);
+                    }
+                }
+            }
+
+            // Create new values
+            if ($request->filled('new_values')) {
+                $maxPosition = $productOption->values()->max('position') ?? 0;
+                foreach ($request->new_values as $index => $valueData) {
+                    $productOption->values()->create([
+                        'name' => ['en' => $valueData['name']],
+                        'position' => $maxPosition + $index + 1,
+                        'is_available' => true,
+                    ]);
+                }
+            }
+
+            // Delete removed values
+            if ($request->filled('deleted_values')) {
+                foreach ($request->deleted_values as $valueId) {
+                    $value = ProductOptionValue::find($valueId);
+                    if ($value && $value->product_option_id == $productOption->id) {
+                        $value->delete();
+                    }
+                }
+            }
 
             return redirect()->route('admin.product-options.index')
                 ->with('success', 'Product Option updated successfully!');

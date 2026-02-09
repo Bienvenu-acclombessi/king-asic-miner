@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="KING-ASIC-MINER" name="author">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('page_title') - KING-ASIC-MINER </title>
 
     <link href="/assets/kingshop/assets/libs/slick-carousel/slick/slick.css" rel="stylesheet" />
@@ -93,7 +94,11 @@
     <script src="/assets/kingshop/assets/js/vendors/increment-value.js"></script>
     <script src="//code.tidio.co/vy7fga8fhtel5qwbcvixk7ccxabojogz.js" async></script>
 
+    <!-- Cart Management -->
+    <script src="/client/js/cart.js"></script>
 
+    <!-- Toast Container for Notifications -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;"></div>
 
 </body>
 

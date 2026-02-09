@@ -11,6 +11,8 @@ class ProductWizard {
             status: 'draft',
             short_description: '',
             description: '',
+            attributes: {},
+            minable_coins: [],
             product_options: [],
             variants: [],
             collections: [],
@@ -270,6 +272,31 @@ class ProductWizard {
             this.formData.status = document.getElementById('status').value;
             this.formData.short_description = document.getElementById('short_description').value;
             this.formData.description = document.getElementById('description').value;
+
+            // Collect attributes
+            this.formData.attributes = {};
+            document.querySelectorAll('.attribute-input').forEach(input => {
+                const attributeId = input.dataset.attributeId;
+                const attributeHandle = input.dataset.attributeHandle;
+                let value;
+
+                if (input.type === 'checkbox') {
+                    value = input.checked ? '1' : '0';
+                } else {
+                    value = input.value;
+                }
+
+                // Always add attribute, even if empty (server will filter if needed)
+                if (attributeHandle) {
+                    this.formData.attributes[attributeHandle] = value || '';
+                }
+            });
+
+            // Collect minable coins
+            this.formData.minable_coins = [];
+            document.querySelectorAll('.minable-coin-checkbox:checked').forEach(checkbox => {
+                this.formData.minable_coins.push(parseInt(checkbox.value));
+            });
         } else if (step === 6) {
             const collectionsSelect = document.getElementById('collections');
             this.formData.collections = Array.from(collectionsSelect.selectedOptions).map(opt => parseInt(opt.value));
@@ -298,7 +325,10 @@ class ProductWizard {
      * Prepare a step when entering it
      */
     prepareStep(step) {
-        if (step === 3) {
+        if (step === 2) {
+            // Render options when entering or returning to step 2
+            this.renderOptions();
+        } else if (step === 3) {
             // Auto-generate default variant if needed
             if (this.formData.variants.length === 0) {
                 // Always create at least one default variant
@@ -429,7 +459,11 @@ class ProductWizard {
             const option = window.wizardData.productOptions.find(opt => opt.id === optConfig.option_id);
             if (!option) return;
 
-            const optionName = option.label || option.name || option.attribute_data?.name || 'Option #' + option.id;
+            // Extract name from multilingual object if needed
+            let rawName = option.label || option.name || option.attribute_data?.name;
+            const optionName = (typeof rawName === 'object' && rawName !== null)
+                ? (rawName.en || rawName.fr || Object.values(rawName)[0] || '')
+                : (rawName || 'Option #' + option.id);
 
             html += `
                 <div class="option-card" data-option-id="${option.id}">
@@ -474,7 +508,11 @@ class ProductWizard {
                     </div>
                     <div class="option-values-grid">
                         ${option.values.map(val => {
-                            const valName = val.name || val.attribute_data?.name || 'Value #' + val.id;
+                            // Extract value name from multilingual object if needed
+                            let rawValName = val.name || val.attribute_data?.name;
+                            const valName = (typeof rawValName === 'object' && rawValName !== null)
+                                ? (rawValName.en || rawValName.fr || Object.values(rawValName)[0] || '')
+                                : (rawValName || 'Value #' + val.id);
                             return `<span class="option-value-badge">${valName}</span>`;
                         }).join('')}
                     </div>
@@ -838,15 +876,28 @@ class ProductWizard {
         // Get collection names
         const collections = this.formData.collections || [];
         const collectionNames = collections.map(collId => {
-            const selectOption = document.querySelector(`#collections option[value="${collId}"]`);
-            return selectOption ? selectOption.textContent.trim() : `Collection #${collId}`;
+            const collection = window.wizardData.collections?.find(c => c.id === collId);
+            if (collection) {
+                const name = collection.name;
+                return (typeof name === 'object' && name !== null)
+                    ? (name.en || name.fr || Object.values(name)[0] || `Collection #${collId}`)
+                    : (name || `Collection #${collId}`);
+            }
+            return `Collection #${collId}`;
         });
 
         // Get tag names
         const tags = this.formData.tags || [];
         const tagNames = tags.map(tagId => {
-            const selectOption = document.querySelector(`#tags option[value="${tagId}"]`);
-            return selectOption ? selectOption.textContent.trim() : `Tag #${tagId}`;
+            const tag = window.wizardData.tags?.find(t => t.id === tagId);
+            if (tag) {
+                // Tags use 'value' field instead of 'name'
+                const value = tag.value;
+                return (typeof value === 'object' && value !== null)
+                    ? (value.en || value.fr || Object.values(value)[0] || `Tag #${tagId}`)
+                    : (value || `Tag #${tagId}`);
+            }
+            return `Tag #${tagId}`;
         });
 
         let html = `
@@ -922,10 +973,22 @@ class ProductWizard {
         formData.append('short_description', this.formData.short_description || '');
         formData.append('description', this.formData.description || '');
 
+        // Attributes
+        if (this.formData.attributes) {
+            Object.keys(this.formData.attributes).forEach(key => {
+                formData.append(`attributes[${key}]`, this.formData.attributes[key]);
+            });
+        }
+
         // Product options
         this.formData.product_options.forEach((opt, i) => {
             Object.keys(opt).forEach(key => {
-                formData.append(`product_options[${i}][${key}]`, opt[key]);
+                let value = opt[key];
+                // Convert booleans to 1/0 for Laravel validation
+                if (key === 'required' || key === 'affects_price' || key === 'affects_stock') {
+                    value = value ? 1 : 0;
+                }
+                formData.append(`product_options[${i}][${key}]`, value);
             });
         });
 
@@ -962,6 +1025,11 @@ class ProductWizard {
         // Tags
         this.formData.tags.forEach(id => {
             formData.append('tags[]', id);
+        });
+
+        // Minable Coins
+        this.formData.minable_coins.forEach(id => {
+            formData.append('minable_coins[]', id);
         });
 
         // Customer groups

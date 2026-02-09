@@ -27,6 +27,7 @@ class Attribute extends Model
 
     protected $casts = [
         'name' => 'array',
+        'description' => 'array',
         'configuration' => 'array',
         'required' => 'boolean',
         'system' => 'boolean',

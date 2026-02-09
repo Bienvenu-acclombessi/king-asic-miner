@@ -42,7 +42,8 @@ class ProductOption extends Model
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class, 'product_product_option')
-            ->withPivot('position')
+            ->withPivot('position', 'display_type', 'required', 'affects_price', 'affects_stock')
+            ->withTimestamps()
             ->orderByPivot('position');
     }
 

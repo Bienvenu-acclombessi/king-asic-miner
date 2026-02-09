@@ -75,6 +75,157 @@
         </div>
     </div>
 
+    <!-- Product Attributes Section -->
+    <div class="mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <h5 class="mb-1">Product Attributes</h5>
+                <p class="text-muted small mb-0">Add descriptive attributes to your product (e.g., Weight, Dimensions, Material)</p>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#createAttributeModal">
+                <i class="bi bi-plus-circle"></i> New Attribute
+            </button>
+        </div>
+
+        <div id="attributesContainer">
+            @if(isset($attributes) && $attributes->count() > 0)
+                @foreach($attributes as $attribute)
+                    @php
+                        $attrName = is_array($attribute->name) ? ($attribute->name['en'] ?? $attribute->name[0] ?? '') : $attribute->name;
+                        $attrType = $attribute->type;
+                        $isRequired = $attribute->required;
+                        $config = $attribute->configuration ?? [];
+                        $attrDescription = is_array($attribute->description) ? ($attribute->description['en'] ?? $attribute->description[0] ?? '') : $attribute->description;
+                    @endphp
+
+                    <div class="mb-3" data-attribute-id="{{ $attribute->id }}">
+                        <label class="form-label">
+                            {{ $attrName }}
+                            @if($isRequired) <span class="text-danger">*</span> @endif
+                        </label>
+
+                        @if($attrDescription)
+                            <small class="text-muted d-block mb-1">{{ $attrDescription }}</small>
+                        @endif
+
+                        @if($attrType === 'text' || $attrType === 'string')
+                            <input type="text"
+                                   class="form-control attribute-input"
+                                   data-attribute-id="{{ $attribute->id }}"
+                                   data-attribute-handle="{{ $attribute->handle }}"
+                                   placeholder="Enter {{ strtolower($attrName) }}"
+                                   {{ $isRequired ? 'required' : '' }}>
+                        @elseif($attrType === 'textarea')
+                            <textarea class="form-control attribute-input"
+                                      data-attribute-id="{{ $attribute->id }}"
+                                      data-attribute-handle="{{ $attribute->handle }}"
+                                      rows="2"
+                                      placeholder="Enter {{ strtolower($attrName) }}"
+                                      {{ $isRequired ? 'required' : '' }}></textarea>
+                        @elseif($attrType === 'number' || $attrType === 'integer' || $attrType === 'decimal')
+                            <input type="number"
+                                   class="form-control attribute-input"
+                                   data-attribute-id="{{ $attribute->id }}"
+                                   data-attribute-handle="{{ $attribute->handle }}"
+                                   step="{{ $attrType === 'decimal' ? '0.01' : '1' }}"
+                                   placeholder="Enter {{ strtolower($attrName) }}"
+                                   {{ $isRequired ? 'required' : '' }}>
+                        @elseif($attrType === 'select' || $attrType === 'dropdown')
+                            <select class="form-select attribute-input"
+                                    data-attribute-id="{{ $attribute->id }}"
+                                    data-attribute-handle="{{ $attribute->handle }}"
+                                    {{ $isRequired ? 'required' : '' }}>
+                                <option value="">Select {{ strtolower($attrName) }}</option>
+                                @if(isset($config['options']) && is_array($config['options']))
+                                    @foreach($config['options'] as $option)
+                                        <option value="{{ is_array($option) ? ($option['value'] ?? $option['label']) : $option }}">
+                                            {{ is_array($option) ? ($option['label'] ?? $option['value']) : $option }}
+                                        </option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        @elseif($attrType === 'boolean' || $attrType === 'checkbox')
+                            <div class="form-check form-switch">
+                                <input class="form-check-input attribute-input"
+                                       type="checkbox"
+                                       data-attribute-id="{{ $attribute->id }}"
+                                       data-attribute-handle="{{ $attribute->handle }}"
+                                       value="1">
+                                <label class="form-check-label">
+                                    Enable {{ strtolower($attrName) }}
+                                </label>
+                            </div>
+                        @elseif($attrType === 'date')
+                            <input type="date"
+                                   class="form-control attribute-input"
+                                   data-attribute-id="{{ $attribute->id }}"
+                                   data-attribute-handle="{{ $attribute->handle }}"
+                                   {{ $isRequired ? 'required' : '' }}>
+                        @else
+                            <input type="text"
+                                   class="form-control attribute-input"
+                                   data-attribute-id="{{ $attribute->id }}"
+                                   data-attribute-handle="{{ $attribute->handle }}"
+                                   placeholder="Enter {{ strtolower($attrName) }}"
+                                   {{ $isRequired ? 'required' : '' }}>
+                        @endif
+                    </div>
+                @endforeach
+            @else
+                <p class="text-muted small mb-0">No attributes configured for products yet.</p>
+            @endif
+        </div>
+    </div>
+
+    <!-- Minable Coins Section -->
+    <div class="mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <h5 class="mb-1">Minable Coins</h5>
+                <p class="text-muted small mb-0">Select which cryptocurrencies this product can mine</p>
+            </div>
+        </div>
+
+        <div id="minableCoinsContainer" class="row g-3">
+            @if(isset($minableCoins) && $minableCoins->count() > 0)
+                @foreach($minableCoins as $coin)
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card h-100">
+                            <div class="card-body p-3">
+                                <div class="form-check">
+                                    <input class="form-check-input minable-coin-checkbox"
+                                           type="checkbox"
+                                           name="minable_coins[]"
+                                           value="{{ $coin->id }}"
+                                           id="coin-{{ $coin->id }}"
+                                           data-coin-symbol="{{ $coin->symbol }}">
+                                    <label class="form-check-label w-100" for="coin-{{ $coin->id }}">
+                                        <div class="d-flex align-items-center">
+                                            @if($coin->logo_url)
+                                                <img src="{{ $coin->logo_url }}" alt="{{ $coin->name }}" style="width: 30px; height: 30px; object-fit: contain;" class="me-2">
+                                            @else
+                                                <div style="width: 30px; height: 30px; background-color: {{ $coin->color ?? '#ccc' }}; border-radius: 50%;" class="me-2"></div>
+                                            @endif
+                                            <div>
+                                                <div class="fw-bold">{{ $coin->symbol }}</div>
+                                                <small class="text-muted">{{ $coin->name }}</small>
+                                            </div>
+                                        </div>
+                                        <small class="text-muted d-block mt-1">{{ $coin->algorithm }}</small>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                <div class="col-12">
+                    <p class="text-muted small mb-0">No minable coins configured yet. <a href="{{ route('admin.minable-coins.index') }}" target="_blank">Add coins here</a>.</p>
+                </div>
+            @endif
+        </div>
+    </div>
+
     <!-- Product Type Info Alert -->
     <div class="alert alert-info mt-3" id="productTypeInfo" style="display: none;">
         <i class="bi bi-info-circle me-2"></i>

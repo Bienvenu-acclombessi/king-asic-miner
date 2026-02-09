@@ -1,62 +1,41 @@
 <section class="mt-8">
   <div class="container">
-    <div class="hero-slider">
-      <!-- Slide 1 -->
-      <div class="product-slide" style="background-image: url('https://apextomining.com/apexto/uploads/2024/09/Antminer-L9.jpg'); background-size: cover; background-position: center center; background-color: rgb(0,5,11);">
-        <div class="row align-items-center g-0">
-          <div class="col-md-6 col-lg-5 p-5">
-            <h2 class="text-white fw-bold mb-3">Antminer L9</h2>
-            <p class="text-white mb-4">Mineur ASIC haute performance avec puissance de hachage optimale. Idéal pour le minage professionnel avec une efficacité énergétique exceptionnelle.</p>
-            <a href="#!" class="btn btn-light">Acheter maintenant <i class="feather-icon icon-arrow-right ms-1"></i></a>
-          </div>
-        </div>
-      </div>
+    @if($productSlides && $productSlides->count() > 0)
+      <div class="hero-slider">
+        @foreach($productSlides as $slide)
+          @php
+            $product = $slide->product;
+            if (!$product) continue;
 
-      <!-- Slide 2 -->
-      <div class="product-slide" style="background-image: url('https://apextomining.com/apexto/uploads/2024/08/Bitmain-Antminer-S21.jpg'); background-size: cover; background-position: center center; background-color: rgb(0,5,11);">
-        <div class="row align-items-center g-0">
-          <div class="col-md-6 col-lg-5 p-5">
-            <h2 class="text-white fw-bold mb-3">Bitmain Antminer S21</h2>
-            <p class="text-white mb-4">Mineur Bitcoin de nouvelle génération offrant une puissance de hachage exceptionnelle avec consommation énergétique optimisée. Performance maximale pour vos profits.</p>
-            <a href="#!" class="btn btn-light">Acheter maintenant <i class="feather-icon icon-arrow-right ms-1"></i></a>
-          </div>
-        </div>
-      </div>
+            // Colonnes directes
+            $productName = $product->name ?? 'N/A';
+            $productSlug = $product->slug ?? '';
+            $shortDesc = $product->short_description ?? '';
 
-      <!-- Slide 3 -->
-      <div class="product-slide" style="background-image: url('https://apextomining.com/apexto/uploads/2024/08/Bitmain-Antminer-S21-XP-Hydro.jpg'); background-size: cover; background-position: center center; background-color: rgb(0,5,11);">
-        <div class="row align-items-center g-0">
-          <div class="col-md-6 col-lg-5 p-5">
-            <h2 class="text-white fw-bold mb-3">Antminer S21 XP Hydro</h2>
-            <p class="text-white mb-4">Mineur Bitcoin avec refroidissement hydro ultra-performant. Technologie de pointe pour une efficacité maximale et une rentabilité optimisée.</p>
-            <a href="#!" class="btn btn-light">Acheter maintenant <i class="feather-icon icon-arrow-right ms-1"></i></a>
-          </div>
-        </div>
-      </div>
+            $backgroundImage = $slide->background_image
+              ? asset('storage/' . $slide->background_image)
+              : 'https://via.placeholder.com/1920x400';
+          @endphp
 
-      <!-- Slide 4 -->
-      <div class="product-slide" style="background-image: url('https://apextomining.com/apexto/uploads/2024/08/bitmain-antminer-s21-hydro.jpg'); background-size: cover; background-position: center center; background-color: #fefefe;">
-        <div class="row align-items-center g-0">
-          <div class="col-md-6 col-lg-5 p-5">
-            <h2 class="text-white fw-bold mb-3">Antminer S21 Hydro</h2>
-            <p class="text-white mb-4">Mineur ASIC robuste avec système de refroidissement hydro. Design innovant et refroidissement efficace pour une exploitation minière stable et performante.</p>
-            <a href="#!" class="btn btn-light">Acheter maintenant <i class="feather-icon icon-arrow-right ms-1"></i></a>
+          <div class="product-slide" style="background-image: url('{{ $backgroundImage }}'); background-size: cover; background-position: center center; background-color: rgb(0,5,11);">
+            <div class="row align-items-center g-0">
+              <div class="col-md-6 col-lg-5 p-5">
+                <h2 class="text-white fw-bold mb-3">{{ $productName }}</h2>
+                <p class="text-white mb-4">{{ $shortDesc ?: 'Discover this amazing product.' }}</p>
+                <a href="{{ route('public.product.show', ['slug' => $productSlug]) }}" class="btn btn-light">
+                  Acheter maintenant <i class="feather-icon icon-arrow-right ms-1"></i>
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
+        @endforeach
       </div>
-
-      <!-- Slide 5 -->
-      <div class="product-slide" style="background-image: url('https://apextomining.com/apexto/uploads/2024/04/Volcminer-D1-Mini-Pre.jpg'); background-size: cover; background-position: center center; background-color: rgb(0,5,11);">
-        <div class="row align-items-center g-0">
-          <div class="col-md-6 col-lg-5 p-5">
-            <h2 class="text-white fw-bold mb-3">Volcminer D1 Mini</h2>
-            <p class="text-white mb-4">Le mineur compact le plus avancé. Technologie de dernière génération pour une efficacité énergétique inégalée et des profits maximisés dans un format compact.</p>
-            <a href="#!" class="btn btn-light">Acheter maintenant <i class="feather-icon icon-arrow-right ms-1"></i></a>
-          </div>
-        </div>
+    @else
+      <div class="alert alert-info text-center">
+        <i class="bi bi-info-circle me-2"></i>
+        Aucun slide produit disponible pour le moment.
       </div>
-
-    </div>
+    @endif
   </div>
 </section>
 

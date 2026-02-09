@@ -14,9 +14,12 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\CouponController;
+use App\Http\Controllers\Admin\ShippingMethodController;
 use App\Http\Controllers\Admin\PromotionController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\EmailCampaignController;
+use App\Http\Controllers\Admin\ProductSlideController;
+use App\Http\Controllers\Admin\MinableCoinController;
 use Illuminate\Support\Facades\Route;
 
 // Admin Routes
@@ -65,6 +68,12 @@ Route::prefix('/king-admin')->name('admin.')->middleware('admin')->group(functio
 
     // Coupons Management
     Route::resource('coupons', CouponController::class)->except(['show']);
+    Route::get('coupons-data/products', [CouponController::class, 'getProducts'])->name('coupons.data.products');
+    Route::get('coupons-data/collections', [CouponController::class, 'getCollections'])->name('coupons.data.collections');
+    Route::get('coupons-data/brands', [CouponController::class, 'getBrands'])->name('coupons.data.brands');
+
+    // Shipping Methods Management
+    Route::resource('shipping-methods', ShippingMethodController::class)->except(['show']);
 
     // Promotions Management
     Route::resource('promotions', PromotionController::class);
@@ -74,4 +83,12 @@ Route::prefix('/king-admin')->name('admin.')->middleware('admin')->group(functio
 
     // Email Campaigns Management
     Route::resource('email-campaigns', EmailCampaignController::class)->except(['show']);
+
+    // Product Slides Management
+    Route::resource('product-slides', ProductSlideController::class)->except(['show']);
+    Route::post('product-slides/update-positions', [ProductSlideController::class, 'updatePositions'])->name('product-slides.update-positions');
+
+    // Minable Coins Management
+    Route::resource('minable-coins', MinableCoinController::class)->except(['show']);
+    Route::post('minable-coins/update-positions', [MinableCoinController::class, 'updatePositions'])->name('minable-coins.update-positions');
 });

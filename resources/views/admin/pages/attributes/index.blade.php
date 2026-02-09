@@ -76,19 +76,25 @@
                                     <tr>
                                         <td>{{ $attribute->id }}</td>
                                         <td>
-                                            <strong>{{ $attribute->name }}</strong>
+                                            <strong>{{ $attribute->name['en'] ?? $attribute->name[array_key_first($attribute->name)] ?? 'N/A' }}</strong>
                                         </td>
                                         <td>
                                             <div class="d-flex flex-wrap gap-1">
-                                                @forelse($attribute->values as $value)
-                                                    <span class="badge bg-light-primary text-dark-primary">
-                                                        {{ $value->value }}
-                                                    </span>
-                                                @empty
+                                                @if(isset($attribute->configuration['options']) && is_array($attribute->configuration['options']) && count($attribute->configuration['options']) > 0)
+                                                    @foreach($attribute->configuration['options'] as $option)
+                                                        <span class="badge bg-light-primary text-dark-primary">
+                                                            {{ $option }}
+                                                        </span>
+                                                    @endforeach
+                                                @else
                                                     <span class="text-muted small">No values</span>
-                                                @endforelse
+                                                @endif
                                             </div>
-                                            <small class="text-muted">{{ $attribute->values->count() }} value(s)</small>
+                                            @if(isset($attribute->configuration['options']) && is_array($attribute->configuration['options']))
+                                                <small class="text-muted">{{ count($attribute->configuration['options']) }} value(s)</small>
+                                            @else
+                                                <small class="text-muted">0 value(s)</small>
+                                            @endif
                                         </td>
                                         <td>{{ $attribute->created_at->format('M d, Y') }}</td>
                                         <td>

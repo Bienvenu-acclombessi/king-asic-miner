@@ -19,6 +19,8 @@ class Order extends Model
         'cart_id',
         'channel_id',
         'status',
+        'payment_method',
+        'payment_status',
         'reference',
         'customer_reference',
         'sub_total',

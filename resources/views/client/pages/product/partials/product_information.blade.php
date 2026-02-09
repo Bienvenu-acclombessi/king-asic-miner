@@ -1,14 +1,30 @@
+@php
+  // Algorithm - try to get from product type or tags
+  $algorithm = 'SHA-256'; // Default
+  if ($product->tags->isNotEmpty()) {
+    foreach ($product->tags as $tag) {
+      $tagName = is_array($tag->name) ? ($tag->name['en'] ?? '') : ($tag->name ?? '');
+      if (in_array(strtoupper($tagName), ['SHA-256', 'SCRYPT', 'ETHASH', 'KHEAVYHASH', 'X11', 'BLAKE2B'])) {
+        $algorithm = strtoupper($tagName);
+        break;
+      }
+    }
+  }
+@endphp
+
 <section class="mt-lg-14 mt-8">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9 col-12">
 				<!-- Product Description -->
 				<div class="mb-5">
-					<h2 class="mb-4">Antminer S19 XP+ Hydro Description</h2>
+					<h2 class="mb-4">{{ $product->name }} Description</h2>
 					<div class="my-4">
-						<p class="mb-3">The Bitmain Antminer S19 XP+ Hydro is a professional water-cooled Bitcoin mining machine built for the SHA-256 algorithm. It delivers a hashrate of 293 TH/s with a power consumption of 5,567 W, achieving an energy efficiency of 19 J/TH.</p>
-						<p class="mb-3">Designed for water cooling mining, this hydro miner offers stable performance under continuous high loads while reducing heat, noise, and thermal stress compared to air-cooled miners.</p>
-						<p class="mb-0">The advanced hydro cooling system makes it well suited for medium to large-scale mining farms, containerized deployments, and liquid-cooled hosting environments focused on reliable Bitcoin mining efficiency.</p>
+						@if($product->description)
+							{!! nl2br(e($product->description)) !!}
+						@else
+							<p class="mb-3">{{ $product->name }} is a professional ASIC mining machine.</p>
+						@endif
 					</div>
 				</div>
 
@@ -19,86 +35,67 @@
 						<div class="table-responsive">
 							<table class="table table-striped">
 								<tbody>
-									<tr>
-										<th style="width: 40%;">Manufacturer</th>
-										<td>Bitmain</td>
-									</tr>
-									<tr>
-										<th>Model</th>
-										<td>Antminer S19 XP+ Hyd</td>
-									</tr>
-									<tr>
-										<th>Release</th>
-										<td>Jan-25</td>
-									</tr>
-									<tr>
-										<th>Size</th>
-										<td>410 x 170 x 209mm</td>
-									</tr>
-									<tr>
-										<th>Weight</th>
-										<td>13400g</td>
-									</tr>
-									<tr>
-										<th>Noise level</th>
-										<td>50db</td>
-									</tr>
-									<tr>
-										<th>Cooling</th>
-										<td>Hydro cooling</td>
-									</tr>
-									<tr>
-										<th>Hashrate</th>
-										<td>293Th</td>
-									</tr>
-									<tr>
-										<th>Power</th>
-										<td>5567W</td>
-									</tr>
-									<tr>
-										<th>Voltage</th>
-										<td>380-415V</td>
-									</tr>
-									<tr>
-										<th>Coolant Flow, L/min</th>
-										<td>8.0~10.0</td>
-									</tr>
-									<tr>
-										<th>Coolant pressure, bar</th>
-										<td>≤3.5</td>
-									</tr>
-									<tr>
-										<th rowspan="3">Coolant PH value</th>
-										<td>Antifreeze: 7.0~9.0</td>
-									</tr>
-									<tr>
-										<td>Pure water: 6.5~7.5</td>
-									</tr>
-									<tr>
-										<td>Deionized water: 8.5~9.5</td>
-									</tr>
-									<tr>
-										<th>Working coolant</th>
-										<td>Antifreeze / Pure water / Deionized water</td>
-									</tr>
-									<tr>
-										<th>Interface</th>
-										<td>Ethernet</td>
-									</tr>
-									<tr>
-										<th>Temperature</th>
-										<td>5 – 40 °C</td>
-									</tr>
-									<tr>
-										<th>Humidity</th>
-										<td>10 – 90 %</td>
-									</tr>
+									{{-- Dynamic Attributes from Database --}}
+									@if($product->attributes && $product->attributes->count() > 0)
+										@foreach($product->attributes as $attribute)
+											@php
+												// Get attribute value from pivot table
+												$attrValue = $attribute->pivot->value ?? null;
+
+												// Skip if no value
+												if ($attrValue === null || $attrValue === '') {
+													continue;
+												}
+
+												// Get attribute name (multilingual support)
+												$attrName = is_array($attribute->name)
+													? ($attribute->name['en'] ?? $attribute->name['fr'] ?? $attribute->name[0] ?? $attribute->handle)
+													: ($attribute->name ?? $attribute->handle);
+
+												// Special styling for certain attributes
+												$isHighlighted = in_array($attribute->handle, ['hashrate', 'power', 'efficiency']);
+												$highlightClass = '';
+												if ($attribute->handle === 'hashrate') {
+													$highlightClass = 'text-primary fw-bold';
+												} elseif ($attribute->handle === 'power') {
+													$highlightClass = 'text-success fw-bold';
+												} elseif ($attribute->handle === 'efficiency') {
+													$highlightClass = 'text-info fw-bold';
+												}
+											@endphp
+
+											<tr>
+												<th style="width: 40%;">{{ ucfirst($attrName) }}</th>
+												<td>
+													@if($attribute->type === 'boolean' || $attribute->type === 'checkbox')
+														@if($attrValue == '1' || $attrValue === true || $attrValue === 'true')
+															<span class="badge bg-success">Yes</span>
+														@else
+															<span class="badge bg-secondary">No</span>
+														@endif
+													@elseif($attribute->type === 'select' || $attribute->type === 'dropdown')
+														<strong>{{ $attrValue }}</strong>
+													@elseif($isHighlighted)
+														<strong class="{{ $highlightClass }}">{{ $attrValue }}</strong>
+													@else
+														{{ $attrValue }}
+													@endif
+												</td>
+											</tr>
+										@endforeach
+									@else
+										{{-- Fallback if no attributes --}}
+										<tr>
+											<th>Model</th>
+											<td>{{ $product->name }}</td>
+										</tr>
+									@endif
 								</tbody>
 							</table>
 						</div>
 					</div>
 				</div>
-				
+
 			</div>
 
 			<!-- Sidebar -->
@@ -106,41 +103,55 @@
 				<!-- Product Quick Info -->
 				<div class="card mb-4">
 					<div class="card-body">
-						<h5 class="card-title fw-bold mb-4">Antminer S19 XP+ Hyd</h5>
+						<h5 class="card-title fw-bold mb-4">{{ $product->name }}</h5>
 						<div class="row text-center mb-4">
 							<div class="col-4">
 								<div class="mb-2">
-									<img src="/status/img/algorithms.png" alt="Algorithm" style="width: 40px; height: 40px;">
+									<img src="/assets/img/product/algorithms.webp" alt="Algorithm" style="width: 40px; height: 40px;">
 								</div>
 								<p class="small text-muted mb-1">Algorithm</p>
-								<p class="fw-bold mb-0">SHA-256</p>
+								<p class="fw-bold mb-0">{{ $algorithm }}</p>
 							</div>
 							<div class="col-4">
 								<div class="mb-2">
-									<img src="/status/img/consumption.png" alt="Hashrate" style="width: 40px; height: 40px;">
+									<img src="/assets/img/product/hashrate.webp" alt="Hashrate" style="width: 40px; height: 40px;">
 								</div>
 								<p class="small text-muted mb-1">Hashrate</p>
-								<p class="fw-bold mb-0">293Th/s</p>
+								<p class="fw-bold mb-0">{{ $product->getCustomAttribute('hashrate', 'N/A') }}</p>
 							</div>
 							<div class="col-4">
 								<div class="mb-2">
-									<img src="/status/img/hashrate.png" alt="Consumption" style="width: 40px; height: 40px;">
+									<img src="/assets/img/product/consumption.webp" alt="Consumption" style="width: 40px; height: 40px;">
 								</div>
 								<p class="small text-muted mb-1">Consumption</p>
-								<p class="fw-bold text-success mb-0">5567W</p>
+								<p class="fw-bold text-success mb-0">{{ $product->getCustomAttribute('power', 'N/A') }}</p>
 							</div>
 						</div>
 
 						<h6 class="fw-bold mb-3">Minable coins</h6>
-						<div class="d-flex gap-3">
-							<div class="text-center">
-								<img src="/assets/images/coins/bch.png" alt="BCH" style="width: 40px; height: 40px;">
-								<p class="small mt-1 mb-0">BCH</p>
-							</div>
-							<div class="text-center">
-								<img src="/assets/images/coins/btc.png" alt="BTC" style="width: 40px; height: 40px;">
-								<p class="small mt-1 mb-0">BTC</p>
-							</div>
+						<div class="d-flex flex-wrap gap-3">
+							@if($product->minableCoins && $product->minableCoins->count() > 0)
+								@foreach($product->minableCoins->take(4) as $coin)
+									<div class="text-center">
+										@if($coin->logo_url)
+											<img src="{{ $coin->logo_url }}"
+												 alt="{{ $coin->name }}"
+												 style="width: 40px; height: 40px; object-fit: contain;"
+												 onerror="this.style.display='none'">
+										@else
+											<div style="width: 40px; height: 40px; background-color: {{ $coin->color ?? '#ccc' }}; border-radius: 50%; display: inline-block;"></div>
+										@endif
+										<p class="small mt-1 mb-0 fw-bold">{{ $coin->symbol }}</p>
+									</div>
+								@endforeach
+								@if($product->minableCoins->count() > 4)
+									<div class="text-center align-self-center">
+										<p class="small text-muted mb-0">+{{ $product->minableCoins->count() - 4 }} more</p>
+									</div>
+								@endif
+							@else
+								<p class="small text-muted">No minable coins specified</p>
+							@endif
 						</div>
 					</div>
 				</div>
@@ -153,6 +164,7 @@
 						<p class="small text-muted mb-4">Enjoy discounted pricing on large orders of crypto mining products.</p>
 
 						<form action="#" method="POST">
+							@csrf
 							<div class="mb-3">
 								<input type="email" class="form-control" placeholder="Your email *" required>
 							</div>

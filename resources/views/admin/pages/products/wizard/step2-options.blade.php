@@ -4,7 +4,12 @@
 
     <!-- Options Selection -->
     <div class="mb-4">
-        <label class="form-label">Select Options</label>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <label class="form-label mb-0">Select Options</label>
+            <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#createProductOptionModal">
+                <i class="bi bi-plus-circle me-1"></i> Create New Option
+            </button>
+        </div>
         <select class="form-select" id="optionSelector">
             <option value="">Choose an option to add...</option>
             @foreach($productOptions as $option)
